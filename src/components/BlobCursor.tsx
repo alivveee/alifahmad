@@ -10,8 +10,8 @@ const BlobCursor = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
+      mouseX.set(e.clientX - 96); // 192px / 2 = 96px
+      mouseY.set(e.clientY - 96);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
