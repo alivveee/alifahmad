@@ -2,6 +2,7 @@ import { Turn as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 const menuItems = [
+  { name: "Home", href: "#" },
   { name: "About", href: "#about" },
   { name: "Projects", href: "#projects" },
   { name: "Contact", href: "#contact" },

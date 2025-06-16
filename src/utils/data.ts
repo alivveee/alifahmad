@@ -6,6 +6,7 @@ const Image = {
 
 export default Image;
 
+// Tools
 import Tools1 from "../assets/tools/vscode.png";
 import Tools2 from "../assets/tools/reactjs.png";
 import Tools3 from "../assets/tools/nextjs-icon.svg";
@@ -112,6 +113,7 @@ export const listTools: {
   },
 ];
 
+// Experience
 export interface Experience {
   id: number;
   type: string;
@@ -154,11 +156,11 @@ export const experiences: Experience[] = [
   {
     id: 2,
     type: "education",
-    title: "React Developer",
-    subtitle: "Learning Path",
+    title: "React App Developer",
+    subtitle: "Scholarship",
     company: {
       text: "IDCamp Indosat Ooredoo",
-      href: "https://idcamp.ioh.co.id/",
+      href: "https://drive.google.com/file/d/1Yf1-tiLYKMTAysNX3lB-InJ1BnpedWk1/view?usp=sharing",
     },
     description: [
       [
@@ -166,6 +168,44 @@ export const experiences: Experience[] = [
       ],
     ],
     period: "November 2023 - January 2024",
+  },
+];
+
+// Socials
+import Instagram from "../assets/socials/instagram-tile.svg";
+import Linkedin from "../assets/socials/linkedin-tile.svg";
+import Github from "../assets/socials/github-mark-white.svg";
+import Email from "../assets/socials/email-logo.png";
+
+export const socials: {
+  id: number;
+  name: string;
+  image: string;
+  href: string;
+}[] = [
+  {
+    id: 1,
+    name: "Instagram",
+    image: Instagram,
+    href: "https://www.instagram.com/alifamukhtr/",
+  },
+  {
+    id: 2,
+    name: "Linkedin",
+    image: Linkedin,
+    href: "https://www.linkedin.com/in/alifamukhtr",
+  },
+  {
+    id: 3,
+    name: "Github",
+    image: Github,
+    href: "https://github.com/alivveee",
+  },
+  {
+    id: 4,
+    name: "Email",
+    image: Email,
+    href: "https://mail.google.com/mail/?view=cm&fs=1&to=alifahmadmukhtar@gmail.com&su=Hello%20Alif&body=I%20saw%20your%20portfolio%20and%20wanted%20to%20reach%20out!",
   },
 ];
 // import Proyek1 from "/assets/proyek/proyek1.webp";

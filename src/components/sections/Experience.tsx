@@ -17,7 +17,7 @@ const ExperienceSection = () => {
 
   return (
     <div className="flex flex-col items-center">
-      <h1 className="text-4xl font-bold mt-10">Experience</h1>
+      <h1 className="text-3xl font-bold mt-10">Experience</h1>
       <div className="relative mt-12">
         <div className="absolute left-6 top-0 h-full w-1 bg-violet-600"></div>
         <div className="space-y-12">

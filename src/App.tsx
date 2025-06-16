@@ -1,4 +1,5 @@
 import BlobCursor from "./components/BlobCursor";
+import AboutSection from "./components/sections/About";
 import ExperienceSection from "./components/sections/Experience";
 import HeroSection from "./components/sections/Hero";
 import ProjectsSection from "./components/sections/Projects";
@@ -11,6 +12,9 @@ function App() {
 
       {/* Hero */}
       <HeroSection />
+
+      {/* About */}
+      <AboutSection />
 
       {/* Experience */}
       <ExperienceSection />
