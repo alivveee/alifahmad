@@ -26,7 +26,7 @@ const ExperienceSection = () => {
               <div className="absolute left-0 w-12 h-12 bg-violet-600 rounded-full flex items-center justify-center border-4 border-white shadow-lg z-10">
                 {getIcon(exp.type)}
               </div>
-              <div className="ml-20 w-full max-w-2xl">
+              <div className="ml-16 md:ml-20 w-full max-w-2xl">
                 <motion.div
                   initial={{
                     scale: 1,
@@ -39,7 +39,7 @@ const ExperienceSection = () => {
                     y: 0,
                   }}
                   viewport={{
-                    amount: 0.8, // 20% card terlihat untuk trigger
+                    amount: 0.6, // 60% card terlihat untuk trigger
                   }}
                   transition={{
                     duration: 0.6,

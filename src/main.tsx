@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="container mx-auto px-12">
+    <div className="container mx-auto">
       <Navbar />
       <App />
     </div>

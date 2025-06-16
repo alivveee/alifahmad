@@ -11,8 +11,8 @@ const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
 
   return (
-    <div className="relative w-full z-50">
-      <div className="navbar py-7 flex items-center justify-between px-4 rounded-b-2xl backdrop-blur-md bg-zinc-900/60">
+    <div className="w-full sticky top-0 z-50">
+      <div className="navbar py-4 px-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
         <Logo />
         <DesktopMenu />
         <div className="hamburger md:hidden">
