@@ -15,7 +15,7 @@ import Tools6 from "../assets/tools/tailwind.png";
 import Tools7 from "../assets/tools/chakra-ui-icon.svg";
 import Tools8 from "../assets/tools/git-scm-icon.svg";
 import Tools9 from "../assets/tools/supabase-icon.svg";
-import Tools10 from "../assets/tools/nodejs.png";
+import Tools10 from "../assets/tools/shadcn-ui-seeklogo.svg";
 import Tools11 from "../assets/tools/figma.png";
 import Tools12 from "../assets/tools/vitejsdev-icon.svg";
 
@@ -92,8 +92,8 @@ export const listTools: {
   {
     id: 10,
     gambar: Tools10,
-    nama: "Node JS",
-    ket: "JavaScript Runtime",
+    nama: "Shadcn UI",
+    ket: "React UI Library",
     dad: "1000",
   },
   {
@@ -117,8 +117,8 @@ export interface Experience {
   type: string;
   title: string;
   subtitle: string;
-  company: string;
-  description: string;
+  company: { text: string; href: string };
+  description: (string | { text: string; href: string })[][];
   period: string;
 }
 
@@ -128,9 +128,27 @@ export const experiences: Experience[] = [
     type: "internship",
     title: "Frontend Developer",
     subtitle: "Internship",
-    company: "PT Aksamedia",
-    description:
-      "Developed and maintained the SchoolMate LMS using React.js, TypeScript, and related technologies. Contributed to the design system by building and updating UI components and collaborating with backend teams to integrate APIs.",
+    company: {
+      text: "PT Aksamedia",
+      href: "https://aksamedia.co.id/",
+    },
+    description: [
+      [
+        "Developed and maintained the ",
+        {
+          text: "SchoolMate LMS",
+          href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
+        },
+        " using React.js, TypeScript and Chakra UI.",
+      ],
+      [
+        "Utilized Zod for schema validation and React Hook Form for efficient form handling",
+      ],
+      ["Leveraged Axios and SWR for efficient data fetching and caching."],
+      [
+        "Actively engaged in debugging and resolving issues to ensure optimal performance.",
+      ],
+    ],
     period: "February 2024 - July 2024",
   },
   {
@@ -138,9 +156,15 @@ export const experiences: Experience[] = [
     type: "education",
     title: "React Developer",
     subtitle: "Learning Path",
-    company: "IDCamp Indosat Ooredoo",
-    description:
-      "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+    company: {
+      text: "IDCamp Indosat Ooredoo",
+      href: "https://idcamp.ioh.co.id/",
+    },
+    description: [
+      [
+        "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+      ],
+    ],
     period: "November 2023 - January 2024",
   },
 ];
