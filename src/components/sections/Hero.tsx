@@ -31,7 +31,7 @@ const HeroSection = () => {
           >
             See My CV
           </a>
-          <a className="mt-5 flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded">
+          <a href="#projects" className="mt-5 flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded">
             Projects <FaArrowDown />
           </a>
         </div>
