@@ -31,7 +31,10 @@ const HeroSection = () => {
           >
             See My CV
           </a>
-          <a href="#projects" className="mt-5 flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded">
+          <a
+            href="#projects"
+            className="mt-5 flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
+          >
             Projects <FaArrowDown />
           </a>
         </div>
@@ -40,7 +43,7 @@ const HeroSection = () => {
         <img
           src={Image.HeroImage}
           alt="Hero Image"
-          className="w-[300px] max-w-full rounded-lg h-auto shadow-[0_0_30px_5px_#7F22FE] filter grayscale hover:grayscale-25"
+          className="w-[300px] max-w-full rounded-lg h-auto shadow-[0_0_15px_#7F22FE] filter grayscale hover:grayscale-25"
         />
       </div>
     </div>
