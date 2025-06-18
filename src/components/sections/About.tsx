@@ -1,4 +1,5 @@
 import { socials } from "../../utils/data";
+import { motion } from "framer-motion";
 
 const AboutSection = () => {
   return (
@@ -18,7 +19,16 @@ const AboutSection = () => {
         </p>
       </div>
 
-      <h1 className="mt-7">Let's connect or just say Hi👋</h1>
+      <h1 className="mt-7">
+        Let's connect or just say Hi
+        <motion.span
+          animate={{ rotate: [0, 20, -10, 20, 0] }}
+          transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
+          className="inline-block text-lg"
+        >
+          👋
+        </motion.span>
+      </h1>
       <div className="flex gap-6 mt-4">
         {socials.map((social) => (
           <a href={social.href} target="_blank">

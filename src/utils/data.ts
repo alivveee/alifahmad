@@ -1,4 +1,4 @@
-import HeroImage from "../assets/hero-image.jpg";
+import HeroImage from "../assets/hero-image-potrait.jpg";
 
 const Image = {
   HeroImage,
@@ -159,7 +159,7 @@ export const experiences: Experience[] = [
     title: "React App Developer",
     subtitle: "Scholarship",
     company: {
-      text: "IDCamp Indosat Ooredoo",
+      text: "IDCamp | Indosat",
       href: "https://drive.google.com/file/d/1Yf1-tiLYKMTAysNX3lB-InJ1BnpedWk1/view?usp=sharing",
     },
     description: [

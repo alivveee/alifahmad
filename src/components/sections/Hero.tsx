@@ -4,10 +4,10 @@ import Image from "../../utils/data";
 
 const HeroSection = () => {
   return (
-    <div className="hero grid md:grid-cols-2">
-      <div className="flex flex-col justify-center">
-        <h1 className="text-4xl font-bold">Alif Ahmad Mukhtar D.H.</h1>
-        <h1 className="text-2xl">
+    <div className="hero py-6 grid md:grid-cols-[2fr_1fr]">
+      <div className="flex flex-col justify-center mt-6 md:mt-0 text-center md:text-left">
+        <h1 className="text-3xl md:text-4xl font-bold">Alif Ahmad Mukhtar D.H.</h1>
+        <h1 className="text-xl md:text-2xl">
           <span>Hello, I'm </span>
           <span className="font-bold">
             <TypeAnimation
@@ -23,27 +23,27 @@ const HeroSection = () => {
           constantly explore modern technologies and ready to collaborate on
           building reliable and impactful products.
         </p>
-        <div className="flex gap-3 justify-center md:justify-start">
+        <div className="flex gap-3 mt-5 justify-center md:justify-start">
           <a
             href="https://drive.google.com/file/d/1s4yiw8paI9aHJr5xj8rGgi1dpnIb4UCS/view"
             target="_blank"
-            className="mt-5 flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
+            className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
           >
             See My CV
           </a>
           <a
             href="#projects"
-            className="mt-5 flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
+            className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
           >
             Projects <FaArrowDown />
           </a>
         </div>
       </div>
-      <div className="flex justify-center items-center p-10 order-first md:order-last">
+      <div className="flex justify-center items-center md:pl-6 order-first md:order-last">
         <img
           src={Image.HeroImage}
           alt="Hero Image"
-          className="w-[300px] max-w-full rounded-lg h-auto shadow-[0_0_15px_#7F22FE] filter grayscale hover:grayscale-25"
+          className="w-1/2 md:w-3/4 max-w-full rounded-full aspect-square object-cover md:aspect-auto filter grayscale hover:grayscale-25"
         />
       </div>
     </div>

@@ -42,30 +42,30 @@ const ExperienceSection = () => {
                     amount: 0.6, // 60% card terlihat untuk trigger
                   }}
                   transition={{
-                    duration: 0.6,
+                    duration: 0.3,
                   }}
-                  className="bg-white/90 text-gray-900 rounded-lg p-6"
+                  className="bg-zinc-700/50 text-white rounded-lg p-6"
                 >
-                  <h3 className="text-xl font-bold text-gray-900 mb-1">
+                  <h3 className="text-xl font-bold text-white mb-1">
                     {exp.title}{" "}
-                    <span className="text-xs font-normal text-violet-500">
+                    <span className="text-xs font-normal text-gray-400">
                       {exp.subtitle}
                     </span>
                   </h3>
 
-                  <h4 className="font-semibold text-gray-700 mb-3 underline">
+                  <h4 className="font-semibold text-white mb-3 underline">
                     <a href={exp.company.href} target="_blank">
                       {exp.company.text}
                     </a>
                   </h4>
 
-                  <div className="text-gray-600 leading-relaxed mb-4">
+                  <div className="leading-relaxed mb-4">
                     {exp.description.map((list, idx) => (
                       <div className="flex gap-1">
                         <span className="font-bold">• </span>
                         <p
                           key={idx}
-                          className="text-gray-600 leading-relaxed mb-1"
+                          className="mb-1"
                         >
                           {list.map((segment, index) =>
                             typeof segment === "string" ? (
@@ -75,7 +75,7 @@ const ExperienceSection = () => {
                                 key={index}
                                 href={segment.href}
                                 target="_blank"
-                                className="underline text-violet-900 hover:text-violet-600 transition-colors"
+                                className="underline text-violet-400 hover:text-violet-300 transition-colors"
                               >
                                 {segment.text}
                               </a>
@@ -86,7 +86,7 @@ const ExperienceSection = () => {
                     ))}
                   </div>
 
-                  <div className="text-sm font-medium text-gray-500">
+                  <div className="text-sm font-medium text-gray-400">
                     {exp.period}
                   </div>
                 </motion.div>

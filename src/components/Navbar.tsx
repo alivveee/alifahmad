@@ -13,14 +13,14 @@ const Navbar = () => {
 
   return (
     <div className="w-full sticky top-0 z-10">
-      <div className="navbar py-4 px-4 md:px-12 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
+      <div className="navbar py-4 px-4 md:px-20 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
         <Logo />
         <DesktopMenu />
         <div className="hamburger md:hidden">
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </div>
       </div>
-      <MobileMenu isOpen={isOpen} />
+      <MobileMenu isOpen={isOpen} setOpen={setOpen} />
     </div>
   );
 };
@@ -46,7 +46,15 @@ const DesktopMenu = () => (
   </ul>
 );
 
-const MobileMenu = ({ isOpen }: { isOpen: boolean }) => (
+import React from "react";
+
+const MobileMenu = ({
+  isOpen,
+  setOpen,
+}: {
+  isOpen: boolean;
+  setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}) => (
   <div
     className={`absolute top-full left-0 w-full transition-all duration-500 ease-in-out overflow-hidden backdrop-blur-md bg-zinc-900/60 z-40 ${
       isOpen ? "max-h-screen opacity-100" : "max-h-0 opacity-0"
@@ -56,7 +64,11 @@ const MobileMenu = ({ isOpen }: { isOpen: boolean }) => (
       <li className="text-2xl font-bold">Menus</li>
       {menuItems.map((item) => (
         <li key={item.href}>
-          <a href={item.href} className="text-lg font-medium">
+          <a
+            href={item.href}
+            onClick={() => setOpen(false)}
+            className="text-lg font-medium"
+          >
             {item.name}
           </a>
         </li>
