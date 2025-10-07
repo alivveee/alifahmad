@@ -4,13 +4,14 @@ import "./index.css";
 import App from "./App.tsx";
 import Navbar from "./components/Navbar.tsx";
 import ProgressBar from "./components/ProgressBar.tsx";
+import SmoothScrolling from "./components/SmoothScrolling.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <div className="container mx-auto">
-      <ProgressBar />
-      <Navbar />
-      <App />
-    </div>
+    <SmoothScrolling>
+        <ProgressBar />
+        <Navbar />
+        <App />
+    </SmoothScrolling>
   </StrictMode>
 );

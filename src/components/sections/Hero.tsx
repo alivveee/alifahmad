@@ -4,9 +4,11 @@ import Image from "../../utils/data";
 
 const HeroSection = () => {
   return (
-    <div className="hero py-6 grid md:grid-cols-[2fr_1fr]">
+    <div className="hero container mx-auto px-4 md:px-18 py-6 grid md:grid-cols-[2fr_1fr]">
       <div className="flex flex-col justify-center mt-6 md:mt-0 text-center md:text-left">
-        <h1 className="text-3xl md:text-4xl font-bold">Alif Ahmad Mukhtar D.H.</h1>
+        <h1 className="text-3xl md:text-4xl font-bold">
+          Alif Ahmad Mukhtar D.H.
+        </h1>
         <h1 className="text-xl md:text-2xl">
           <span>Hello, I'm </span>
           <span className="font-bold">

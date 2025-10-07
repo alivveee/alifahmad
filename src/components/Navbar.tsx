@@ -13,7 +13,7 @@ const Navbar = () => {
 
   return (
     <div className="w-full sticky top-0 z-30">
-      <div className="navbar py-4 px-4 md:px-20 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
+      <div className="navbar py-4 px-16 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
         <Logo />
         <DesktopMenu />
         <div className="hamburger md:hidden">
