@@ -10,9 +10,6 @@
   a:hover {
     cursor: pointer;
   }
-  html {
-    scroll-behavior: smooth;
-  }
 
   html.lenis,
   html.lenis body {
@@ -34,4 +31,16 @@
   .lenis.lenis-smooth iframe {
     pointer-events: none;
   }
+
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+@utility max-container {
+  @apply container mx-auto;
+}
+
+@utility padding-container {
+  @apply px-4 md:px-18;
 }

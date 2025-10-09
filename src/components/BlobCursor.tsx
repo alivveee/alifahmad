@@ -10,8 +10,8 @@ const BlobCursor = () => {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX - 120); // 192px / 2 = 96px
-      mouseY.set(e.clientY - 120);
+      mouseX.set(e.clientX - 320); // 240px / 2
+      mouseY.set(e.clientY - 320);
     };
 
     window.addEventListener("mousemove", handleMouseMove);
@@ -20,7 +20,7 @@ const BlobCursor = () => {
 
   return (
     <motion.div
-      className="fixed top-0 left-0 w-60 h-60 bg-violet-500/10 rounded-full blur-xl pointer-events-none z-0"
+      className="fixed top-0 left-0 w-160 h-160 bg-violet-500/10 rounded-full blur-3xl pointer-events-none -z-10"
       style={{
         x: smoothX,
         y: smoothY,

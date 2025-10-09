@@ -5,13 +5,15 @@ import App from "./App.tsx";
 import Navbar from "./components/Navbar.tsx";
 import ProgressBar from "./components/ProgressBar.tsx";
 import SmoothScrolling from "./components/SmoothScrolling.tsx";
+import Footer from "./components/Footer.tsx";
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <SmoothScrolling>
-        <ProgressBar />
-        <Navbar />
-        <App />
+      <ProgressBar />
+      <Navbar />
+      <App />
+      <Footer />
     </SmoothScrolling>
   </StrictMode>
 );

@@ -18,7 +18,7 @@ import Tools8 from "../assets/tools/git-scm-icon.svg";
 import Tools9 from "../assets/tools/supabase-icon.svg";
 import Tools10 from "../assets/tools/shadcn-ui-seeklogo.svg";
 import Tools11 from "../assets/tools/figma.png";
-import Tools12 from "../assets/tools/vitejsdev-icon.svg";
+import Tools12 from "../assets/tools/mongodb.svg";
 
 export const listTools: {
   id: number;
@@ -107,8 +107,8 @@ export const listTools: {
   {
     id: 12,
     gambar: Tools12,
-    nama: "Vite JS",
-    ket: "Build Tool",
+    nama: "MongoDB",
+    ket: "Database",
     dad: "1200",
   },
 ];
@@ -144,9 +144,11 @@ export const experiences: Experience[] = [
         " using React.js, TypeScript and Chakra UI.",
       ],
       [
-        "Utilized Zod for schema validation and React Hook Form for efficient form handling",
+        "Contributing to the development of a design system used by the front-end team, including implementing new components and updating existing ones.",
       ],
-      ["Leveraged Axios and SWR for efficient data fetching and caching."],
+      [
+        "Colaborating with the back-end team to manage data through APIs and worked closely with the design team to ensure accurate implementation of UI designs",
+      ],
       [
         "Actively engaged in debugging and resolving issues to ensure optimal performance.",
       ],
@@ -165,6 +167,13 @@ export const experiences: Experience[] = [
     description: [
       [
         "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+      ],
+      [
+        "Curriculum by ",
+        {
+          text: "Dicoding Indonesia",
+          href: "https://www.dicoding.com/",
+        },
       ],
     ],
     period: "November 2023 - January 2024",

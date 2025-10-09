@@ -1,21 +1,34 @@
+import { useLenis } from "@studio-freight/react-lenis";
+import { cubicBezier } from "framer-motion";
 import { Turn as Hamburger } from "hamburger-react";
 import { useState } from "react";
 
 const menuItems = [
-  { name: "Home", href: "#" },
   { name: "About", href: "#about" },
+  { name: "Technologies", href: "#technologies" },
   { name: "Projects", href: "#projects" },
-  { name: "Contact", href: "#contact" },
 ];
+
+type LenisType = {
+  scrollTo: (
+    target: string,
+    options?: {
+      offset?: number;
+      easing?: (t: number) => number;
+      duration?: number;
+    }
+  ) => void;
+};
 
 const Navbar = () => {
   const [isOpen, setOpen] = useState(false);
+  const lenis = useLenis();
 
   return (
     <div className="w-full sticky top-0 z-30">
-      <div className="navbar py-4 px-16 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
-        <Logo />
-        <DesktopMenu />
+      <div className="navbar py-4 px-4 sm:px-16 flex items-center justify-between backdrop-blur-md bg-zinc-900/60">
+        <Logo lenis={lenis} />
+        <DesktopMenu lenis={lenis} />
         <div className="hamburger md:hidden">
           <Hamburger toggled={isOpen} toggle={setOpen} />
         </div>
@@ -27,18 +40,37 @@ const Navbar = () => {
 
 export default Navbar;
 
-const Logo = () => (
-  <div className="logo flex gap-2 items-center">
+const Logo = ({ lenis }: { lenis: LenisType | undefined }) => (
+  <div
+    className="logo flex gap-2 items-center cursor-pointer"
+    onClick={() =>
+      lenis &&
+      lenis.scrollTo("#home", {
+        offset: -100,
+        easing: cubicBezier(0.65, 0, 0.35, 1),
+        duration: 1,
+      })
+    }
+  >
     <img src="/logo.png" alt="Logo" className="w-12" />
-    <h1 className="text-2xl text-white">Alif Ahmad</h1>
   </div>
 );
 
-const DesktopMenu = () => (
+const DesktopMenu = ({ lenis }: { lenis: LenisType | undefined }) => (
   <ul className="menu hidden md:flex items-center gap-10">
     {menuItems.map((item) => (
       <li key={item.href}>
-        <a href={item.href} className="text-lg font-medium">
+        <a
+          onClick={() =>
+            lenis &&
+            lenis.scrollTo(item.href, {
+              offset: -100,
+              easing: cubicBezier(0.65, 0, 0.35, 1),
+              duration: 1,
+            })
+          }
+          className="text-lg font-medium"
+        >
           {item.name}
         </a>
       </li>

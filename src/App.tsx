@@ -7,7 +7,7 @@ import StackSection from "./components/sections/Stacks";
 
 function App() {
   return (
-    <div className="space-y-20 md:space-y-40">
+    <div id="home" className="space-y-12 md:space-y-28">
       <BlobCursor />
 
       {/* Hero */}

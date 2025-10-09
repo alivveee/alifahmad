@@ -1,19 +1,29 @@
 import { TypeAnimation } from "react-type-animation";
 import { FaArrowDown } from "react-icons/fa";
 import Image from "../../utils/data";
+import { useLenis } from "@studio-freight/react-lenis";
+import { cubicBezier } from "framer-motion";
 
 const HeroSection = () => {
+  const lenis = useLenis();
   return (
-    <div className="hero container mx-auto px-4 md:px-18 py-6 grid md:grid-cols-[2fr_1fr]">
+    <div className="hero max-container padding-container h-screen sm:-mt-20 grid md:grid-cols-[2fr_1fr]">
       <div className="flex flex-col justify-center mt-6 md:mt-0 text-center md:text-left">
-        <h1 className="text-3xl md:text-4xl font-bold">
+        <h1 className="text-3xl md:text-5xl font-bold">
           Alif Ahmad Mukhtar D.H.
         </h1>
-        <h1 className="text-xl md:text-2xl">
+        <h1 className="text-xl md:text-3xl">
           <span>Hello, I'm </span>
           <span className="font-bold">
             <TypeAnimation
-              sequence={["Frontend Developer.", 1000, "Web Developer.", 1000]}
+              sequence={[
+                "Frontend Developer.",
+                500,
+                "Web Developer.",
+                500,
+                "Fullstack-Capable Developer.",
+                500,
+              ]}
               wrapper="span"
               repeat={Infinity}
             />
@@ -34,7 +44,14 @@ const HeroSection = () => {
             See My CV
           </a>
           <a
-            href="#projects"
+            onClick={() =>
+              lenis &&
+              lenis.scrollTo("#projects", {
+                offset: -100,
+                easing: cubicBezier(0.65, 0, 0.35, 1),
+                duration: 1,
+              })
+            }
             className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
           >
             Projects <FaArrowDown />
