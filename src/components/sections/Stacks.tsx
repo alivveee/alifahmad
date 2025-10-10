@@ -1,10 +1,19 @@
 import { listTools } from "../../utils/data";
+import { motion } from "framer-motion";
 
 const StackSection = () => {
   return (
     <section id="technologies">
       <div className="flex flex-col items-center">
-        <h1 className="text-3xl font-bold">Technologies</h1>
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold "
+        >
+          Technologies
+        </motion.h1>
         <div className="stacks grid grid-cols-3 md:grid-cols-6 gap-5 md:gap-10 mt-10">
           {listTools.map((tool) => (
             <div

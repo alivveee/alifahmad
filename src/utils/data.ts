@@ -228,11 +228,18 @@ export const project: {
   projectUrl: string;
 }[] = [
   {
-    title: "Paud Connect",
+    title: "PAUD Connect",
     year: "2025",
     description:
-      "A web application that connects parents with nearby early childhood education centers (PAUD) to facilitate enrollment and information sharing.",
-    stack: ["Next.js", "TypeScript", "ChakraUI", "TailwindCSS", "MongoDB"],
+      "PAUD Connect is a web-based information system developed for PAUD Mawar Tlogomas as part of a community service project at Universitas Brawijaya. It features an admin dashboard for managing student and alumni data, teacher accounts, an activity gallery, and school statistics.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "ChakraUI",
+      "TailwindCSS",
+      "MongoDB",
+      "Google Drive",
+    ],
     imageUrl: "projects/paud-connect.png",
     projectUrl: "https://paudmawar.vercel.app/",
   },
@@ -240,7 +247,7 @@ export const project: {
     title: "Distributor Management System",
     year: "2024",
     description:
-      "A comprehensive system for managing distributor operations, including inventory tracking, order processing, and customer management.",
+      "Nusantara Network Route Planner is a web and mobile-based information system designed to optimize distribution routes and field task management for PT Nusantara Network. Built with ReactJS, React Native, and Google Distance Matrix API, it uses a Genetic Algorithm to calculate the most efficient delivery routes. The system enables real-time employee tracking, customer data management, and automated route planning, significantly improving operational efficiency compared to manual methods.",
     stack: [
       "Next.js",
       "React Native",

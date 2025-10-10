@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 const AboutSection = () => {
   return (
     <section id="about">
-      <div className="flex flex-col padding-container items-center">
+      <div className="flex flex-col max-container padding-container items-center">
         <div className="w-[4px] h-16 bg-violet-600 rounded-full"></div>
         <h1 className="text-4xl md:text-5xl m-8 font-bold">About Me</h1>
-        <div className="flex flex-col gap-2 max-w-2xl text-center text-base/relaxed">
+        <div className="flex flex-col gap-2 text-center text-base/relaxed">
           <p>
             I'm Alif, a fresh graduate in Information Technology from Brawijaya
             University with a strong passion for front-end development.
@@ -47,7 +47,7 @@ const AboutSection = () => {
           <motion.span
             animate={{ rotate: [0, 20, -10, 20, 0] }}
             transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 1 }}
-            className="inline-block text-lg"
+            className="inline-block text-xl"
           >
             👋
           </motion.span>
