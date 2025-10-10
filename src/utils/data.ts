@@ -233,7 +233,7 @@ export const project: {
     description:
       "A web application that connects parents with nearby early childhood education centers (PAUD) to facilitate enrollment and information sharing.",
     stack: ["Next.js", "TypeScript", "ChakraUI", "TailwindCSS", "MongoDB"],
-    imageUrl: "/src/assets/projects/paud-connect.png",
+    imageUrl: "projects/paud-connect.png",
     projectUrl: "https://paudmawar.vercel.app/",
   },
   {
@@ -249,7 +249,7 @@ export const project: {
       "TailwindCSS",
       "Supabase",
     ],
-    imageUrl: "/src/assets/projects/nusantara-net.png",
+    imageUrl: "projects/nusantara-net.png",
     projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
   },
 ];
