@@ -234,7 +234,7 @@ export const project: {
       "A web application that connects parents with nearby early childhood education centers (PAUD) to facilitate enrollment and information sharing.",
     stack: ["Next.js", "TypeScript", "ChakraUI", "TailwindCSS", "MongoDB"],
     imageUrl: "/src/assets/projects/paud-connect.png",
-    projectUrl: "https://paud-connect.vercel.app/",
+    projectUrl: "https://paudmawar.vercel.app/",
   },
   {
     title: "Distributor Management System",
