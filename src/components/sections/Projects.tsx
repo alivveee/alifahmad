@@ -1,42 +1,12 @@
-const project: {
-  title: string;
-  year: string;
-  description: string;
-  stack: string[];
-  imageUrl: string;
-  projectUrl: string;
-}[] = [
-  {
-    title: "Paud Connect",
-    year: "2025",
-    description:
-      "A web application that connects parents with nearby early childhood education centers (PAUD) to facilitate enrollment and information sharing.",
-    stack: ["Next.js", "TypeScript", "ChakraUI", "TailwindCSS", "MongoDB"],
-    imageUrl: "/src/assets/projects/paud-connect.png",
-    projectUrl: "https://paud-connect.vercel.app/",
-  },
-  {
-    title: "Distributor Management System",
-    year: "2024",
-    description:
-      "A comprehensive system for managing distributor operations, including inventory tracking, order processing, and customer management.",
-    stack: [
-      "Next.js",
-      "React Native",
-      "TypeScript",
-      "ShadcnUI",
-      "TailwindCSS",
-      "Supabase",
-    ],
-    imageUrl: "/src/assets/projects/nusantara-net.png",
-    projectUrl: "https://nusantara-net.vercel.app/",
-  },
-];
+import { FaArrowRight } from "react-icons/fa";
+import { project } from "../../utils/data";
 
 const ProjectsSection = () => {
   return (
     <div id="projects" className="flex flex-col items-center">
-      <h1 className="text-4xl md:text-5xl font-bold mb-5 text-center">Selected Projects</h1>
+      <h1 className="text-4xl md:text-5xl font-bold mb-5 text-center">
+        Selected Projects
+      </h1>
       {project.map((proj, index) => (
         <ProjectItem
           key={index}
@@ -45,6 +15,7 @@ const ProjectsSection = () => {
           description={proj.description}
           stack={proj.stack}
           imageUrl={proj.imageUrl}
+          projectUrl={proj.projectUrl}
         />
       ))}
       <div className="divider w-full h-[0.5px] bg-violet-600 mt-16"></div>
@@ -54,20 +25,20 @@ const ProjectsSection = () => {
 
 export default ProjectsSection;
 
-import { FaArrowRight } from "react-icons/fa";
-
 function ProjectItem({
   title,
   year,
   description,
   stack,
   imageUrl,
+  projectUrl,
 }: {
   title: string;
   year: string;
   description: string;
   stack: string[];
   imageUrl: string;
+  projectUrl: string;
 }) {
   return (
     <>
@@ -97,7 +68,10 @@ function ProjectItem({
             </div>
           </div>
 
-          <button className="group flex items-center w-34 mt-4 bg-violet-700 hover:bg-violet-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300">
+          <button
+            className="group flex items-center w-34 mt-4 bg-violet-700 hover:bg-violet-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300"
+            onClick={() => window.open(projectUrl, "_blank")}
+          >
             {/* Panah kiri (muncul saat hover) */}
             <span className="-translate-x-7 transition-all duration-300 group-hover:translate-x-0">
               <FaArrowRight />

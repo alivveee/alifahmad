@@ -37,7 +37,7 @@ const HeroSection = () => {
         </p>
         <div className="flex gap-3 mt-5 justify-center md:justify-start">
           <a
-            href="https://drive.google.com/file/d/1s4yiw8paI9aHJr5xj8rGgi1dpnIb4UCS/view"
+            href="https://drive.google.com/file/d/1aHzpwTsLZR1bCe8qgU6QEJU4Z9iKttOo/view?usp=sharing"
             target="_blank"
             className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
           >
