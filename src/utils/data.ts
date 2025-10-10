@@ -250,6 +250,6 @@ export const project: {
       "Supabase",
     ],
     imageUrl: "/src/assets/projects/nusantara-net.png",
-    projectUrl: "https://nusantara-net.vercel.app/",
+    projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
   },
 ];
