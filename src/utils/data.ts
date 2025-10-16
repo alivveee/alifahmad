@@ -231,7 +231,7 @@ export const project: {
     title: "PAUD Connect",
     year: "2025",
     description:
-      "PAUD Connect is a web-based information system developed for PAUD Mawar Tlogomas as part of a community service project at Universitas Brawijaya. It features an admin dashboard for managing student and alumni data, teacher accounts, an activity gallery, and school statistics.",
+      "PAUD Connect is a web-based information system developed for PAUD Mawar Tlogomas as part of a community service project at Universitas Brawijaya with my partner. It features an admin dashboard for managing student and alumni data, teacher accounts, an activity gallery, and school statistics.",
     stack: [
       "Next.js",
       "TypeScript",

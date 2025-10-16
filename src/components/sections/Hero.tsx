@@ -43,7 +43,7 @@ const HeroSection = () => {
         </p>
         <div className="flex gap-3 mt-5 justify-center lg:justify-start">
           <a
-            href="https://drive.google.com/file/d/1aHzpwTsLZR1bCe8qgU6QEJU4Z9iKttOo/view?usp=sharing"
+            href="https://drive.google.com/file/d/1akPKrUWCu6uaV1xb34q2cfpmvy45uE-_/view?usp=sharing"
             target="_blank"
             className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
           >
@@ -87,7 +87,7 @@ function ScrollDown() {
           duration: 1,
           repeat: Infinity,
           repeatDelay: 0.3,
-          ease: [0.22, 1, 0.36, 1], // Cubic bezier untuk bouncing realistis
+          ease: [0.22, 1, 0.36, 1],
         }}
       >
         <IoChevronDownSharp size={24} />
