@@ -1,14 +1,13 @@
 import { useLenis } from "@studio-freight/react-lenis";
-import { cubicBezier, motion } from "framer-motion";
+import { cubicBezier } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
-import { IoChevronDownSharp } from "react-icons/io5";
 import { TypeAnimation } from "react-type-animation";
 import Image from "../../utils/data";
 
 const HeroSection = () => {
   const lenis = useLenis();
   return (
-    <div className="hero relative max-container padding-container pb-18 h-screen md:-mt-16 grid lg:grid-cols-[2fr_1fr]">
+    <div className="hero relative max-container padding-container pb-18 h-screen md:-mt-12 grid lg:grid-cols-[2fr_1fr]">
       <div className="flex flex-col justify-center text-center lg:text-left">
         <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
           Hello, I'm{" "}
@@ -80,19 +79,10 @@ export default HeroSection;
 
 function ScrollDown() {
   return (
-    <div className="flex flex-col items-center absolute bottom-10 left-1/2 -translate-x-1/2 text-center text-white opacity-100">
-      <motion.div
-        animate={{ y: [0, 8, 0] }}
-        transition={{
-          duration: 1,
-          repeat: Infinity,
-          repeatDelay: 0.3,
-          ease: [0.22, 1, 0.36, 1],
-        }}
-      >
-        <IoChevronDownSharp size={24} />
-      </motion.div>
-      <h1 className="text-sm mt-2 tracking-wide">Scroll Down</h1>
+    <div className="absolute bottom-0 md:bottom-10 lg:bottom-16 left-1/2 -translate-x-1/2 animate-bounce">
+      <div className="w-6 h-10 border-2 border-white rounded-full flex items-start justify-center p-2">
+        <div className="w-1 h-3 bg-white rounded-full animate-pulse"></div>
+      </div>
     </div>
   );
 }

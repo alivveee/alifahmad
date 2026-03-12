@@ -1,19 +1,41 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { IoSchool } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
-import { experiences, type Experience } from "../../utils/data";
+import api from "../../api/client";
+
+interface Experience {
+  id: string;
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+}
 
 const ExperienceSection = () => {
-  const getIcon = (iconType: Experience["type"]) => {
-    switch (iconType) {
-      case "work":
-        return <MdWork className="w-6 h-6 text-white" />;
-      case "education":
-        return <IoSchool className="w-6 h-6 text-white" />;
-      default:
-        return <MdWork className="w-6 h-6 text-white" />;
-    }
-  };
+  const [experiences, setExperiences] = useState<Experience[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchExp = async () => {
+      try {
+        const response = await api.get("/experiences");
+        setExperiences(response.data.data);
+      } catch (error) {
+        console.error("Error fetching experiences:", error);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    fetchExp();
+  }, []);
+
+  if (isLoading) {
+    return (
+      <div className="flex justify-center py-20">
+        <div className="w-10 h-10 border-4 border-violet-600 border-t-transparent rounded-full animate-spin"></div>
+      </div>
+    );
+  }
 
   return (
     <section id="experience" className="py-20">
@@ -29,7 +51,6 @@ const ExperienceSection = () => {
         </motion.h1>
 
         <div className="relative w-full max-w-4xl">
-          {/* Timeline line */}
           <div className="absolute left-6 md:left-8 top-0 h-full w-0.5 bg-gradient-to-b from-violet-500 via-violet-600 to-transparent"></div>
 
           <div className="space-y-16">
@@ -42,70 +63,29 @@ const ExperienceSection = () => {
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="relative flex items-start"
               >
-                {/* Icon circle */}
                 <div className="absolute left-0 md:left-2 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-violet-500 to-violet-700 rounded-full flex items-center justify-center shadow-lg shadow-violet-500/50 z-10 ring-4 ring-zinc-900">
-                  {getIcon(exp.type)}
+                  <MdWork className="w-6 h-6 text-white" />
                 </div>
 
-                {/* Content card */}
                 <div className="ml-20 md:ml-24 w-full">
                   <motion.div
                     whileHover={{ scale: 1.02, y: -4 }}
                     transition={{ duration: 0.2 }}
                     className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-xl border border-zinc-700/50 hover:border-violet-500/50 transition-colors"
                   >
-                    {/* Header */}
                     <div className="mb-4">
                       <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                        {exp.title}
+                        {exp.role}
                       </h3>
-                      {exp.subtitle && (
-                        <span className="text-sm md:text-base text-violet-300 font-medium">
-                          {exp.subtitle}
-                        </span>
-                      )}
-                    </div>
-
-                    {/* Company */}
-                    <a
-                      href={exp.company.href}
-                      target="_blank"
-                      className="inline-block mb-4 text-lg md:text-xl font-semibold text-white hover:text-violet-400 transition-colors group"
-                    >
-                      {exp.company.text}
-                      <span className="inline-block ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                        →
+                      <span className="text-lg md:text-xl font-semibold text-violet-300">
+                        {exp.company}
                       </span>
-                    </a>
-
-                    {/* Description */}
-                    <div className="space-y-2 mb-5 text-gray-300">
-                      {exp.description.map((list, idx) => (
-                        <div key={idx} className="flex gap-3 items-start">
-                          <span className="text-violet-400 mt-1.5 text-sm">
-                            ●
-                          </span>
-                          <p className="leading-relaxed">
-                            {list.map((segment, index) =>
-                              typeof segment === "string" ? (
-                                <span key={index}>{segment}</span>
-                              ) : (
-                                <a
-                                  key={index}
-                                  href={segment.href}
-                                  target="_blank"
-                                  className="text-violet-400 hover:text-violet-300 underline decoration-violet-400/30 hover:decoration-violet-300 underline-offset-2 transition-colors font-medium"
-                                >
-                                  {segment.text}
-                                </a>
-                              )
-                            )}
-                          </p>
-                        </div>
-                      ))}
                     </div>
 
-                    {/* Period */}
+                    <div className="text-gray-300 mb-5 whitespace-pre-wrap leading-relaxed">
+                      {exp.description}
+                    </div>
+
                     <div className="flex items-center gap-2 text-sm font-medium text-gray-400 pt-3 border-t border-zinc-700/50">
                       <svg
                         className="w-4 h-4"
