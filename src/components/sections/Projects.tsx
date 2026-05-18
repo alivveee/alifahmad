@@ -6,15 +6,17 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden">
       <div className="flex flex-col items-center">
-        <motion.h1
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold text-zinc-900"
-        >
-          Selected Projects
-        </motion.h1>
+        <div className="max-container padding-container w-full">
+          <motion.h1
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="text-4xl md:text-5xl font-bold text-zinc-900"
+          >
+            Selected Projects
+          </motion.h1>
+        </div>
         {project.map((proj, index) => (
           <ProjectItem
             key={index}

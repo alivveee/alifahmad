@@ -1,9 +1,54 @@
+import { socials } from "../utils/data";
+import { FiArrowUpRight } from "react-icons/fi";
+
 const Footer = () => {
   return (
-    <footer className="w-full text-center py-4 bg-zinc-900 text-white mt-10">
-      <small>
-        &copy; {new Date().getFullYear()} Alif Ahmad. All rights reserved.
-      </small>
+    <footer className="w-full bg-zinc-900 text-white pt-16 pb-8 border-t border-zinc-800">
+      <div className="max-container padding-container">
+        <div className="flex flex-col justify-between items-start mb-12">
+          <div className="max-w-4xl">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Let's talk or build awesome things together!
+            </h2>
+            <p className="text-zinc-400 text-base md:text-lg mb-8 max-w-3xl">
+              I'm actively seeking opportunities as a Frontend Engineer. Feel
+              free to reach out to me for collaborations, inquiries, or just to
+              say hello.
+            </p>
+
+            <div className="flex flex-wrap gap-8">
+              {socials.map((social) => (
+                <a
+                  key={social.name}
+                  href={social.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex items-center gap-1 hover:text-zinc-300 transition-colors"
+                >
+                  {social.name} <FiArrowUpRight className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+          <div className="flex items-center gap-6">
+            <a
+              href="https://drive.google.com/file/d/1tDkidzlk_YO683uFLQgjMfVS1qp9dEnK/view?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-zinc-300 transition-colors font-medium"
+            >
+              Resume
+            </a>
+          </div>
+
+          <small className="text-zinc-400">
+            &copy; 2026 Alif Ahmad, Indonesia
+          </small>
+        </div>
+      </div>
     </footer>
   );
 };

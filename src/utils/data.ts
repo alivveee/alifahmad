@@ -175,7 +175,7 @@ export const experiences: Experience[] = [
   {
     id: 1,
     type: "internship",
-    title: "Frontend Developer",
+    title: "Frontend Engineer",
     subtitle: "Internship",
     company: {
       text: "PT Aksamedia",

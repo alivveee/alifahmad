@@ -1,5 +1,4 @@
 import { Routes, Route } from "react-router-dom";
-import BlobCursor from "./components/BlobCursor";
 import AboutSection from "./components/sections/About";
 import ExperienceSection from "./components/sections/Experience";
 import HeroSection from "./components/sections/Hero";
@@ -13,7 +12,7 @@ function App() {
         path="/"
         element={
           <div id="home" className="">
-            <BlobCursor />
+            {/* <BlobCursor /> */}
             <HeroSection />
             <AboutSection />
             <ExperienceSection />

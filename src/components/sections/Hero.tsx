@@ -21,7 +21,7 @@ const HeroSection = () => {
           <span className="font-semibold text-white">
             <TypeAnimation
               sequence={[
-                "Frontend Developer",
+                "Frontend Engineer",
                 1500,
                 "Web Developer",
                 1500,
@@ -38,10 +38,10 @@ const HeroSection = () => {
           </span>
         </h2>
         <p className="mt-5 text-sm/relaxed md:text-base/relaxed opacity-70">
-          Passionate about building user-friendly web applications, I specialize
-          in building accessible user interfaces. As a <b>developer</b>, I
-          constantly explore modern technologies and ready to collaborate on
-          building reliable and impactful products.
+          Passionate about crafting exceptional, user-centric web applications, I specialize
+          in building highly responsive and accessible user interfaces. As a <b>frontend engineer</b>, I
+          constantly explore modern technologies and am always ready to collaborate on
+          building reliable and impactful digital products.
         </p>
         <div className="flex gap-3 mt-5 justify-center lg:justify-start">
           <a
