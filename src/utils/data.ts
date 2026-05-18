@@ -225,6 +225,107 @@ export const experiences: Experience[] = [
   },
 ];
 
+export const experiences_id: Experience[] = [
+  {
+    id: 3,
+    type: "work",
+    title: "Frontend Engineer",
+    subtitle: "Kontrak",
+    company: {
+      text: "PT Node Solusi Teknologi",
+      href: "https://nodewave.id",
+    },
+    description: [
+      [
+        "Mengembangkan dan memelihara berbagai sistem berbasis web termasuk platform RMS, DMS, Backoffice, dan Profil Perusahaan.",
+      ],
+      [
+        "Membangun antarmuka pengguna yang dapat diskalakan dan responsif menggunakan React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, dan React Query.",
+      ],
+      [
+        "Berkolaborasi erat dengan Product Manager, Backend Engineer, dan tim QA untuk menghadirkan fitur siap produksi dan meningkatkan keandalan sistem.",
+      ],
+      [
+        "Mengoptimalkan performa, SEO, dan terus-menerus memperbaiki bug untuk memastikan stabilitas sistem dan pengalaman pengguna yang lebih baik.",
+      ],
+    ],
+    period: "November 2025 - Mei 2026",
+  },
+  {
+    id: 4,
+    type: "work",
+    title: "Frontend Programmer",
+    subtitle: "Berbasis Proyek",
+    company: {
+      text: "PT AZlogistik Dot Com",
+      href: "https://muatmuat.com/",
+    },
+    description: [
+      [
+        "Membangun dan memelihara aplikasi web marketplace dengan React, Next.js, Zustand, React Hook Form, dan Tailwind CSS.",
+      ],
+      [
+        "Menerjemahkan desain Figma ke antarmuka responsif dan pixel-perfect di berbagai perangkat.",
+      ],
+      ["Mengintegrasikan API untuk mendukung fungsionalitas utama situs web."],
+    ],
+    period: "November 2025",
+  },
+  {
+    id: 1,
+    type: "internship",
+    title: "Frontend Developer",
+    subtitle: "Magang",
+    company: {
+      text: "PT Aksamedia",
+      href: "https://aksamedia.co.id/",
+    },
+    description: [
+      [
+        "Mengembangkan dan memelihara ",
+        {
+          text: "SchoolMate LMS",
+          href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
+        },
+        " menggunakan React.js, TypeScript dan Chakra UI.",
+      ],
+      [
+        "Berkontribusi pada pengembangan sistem desain yang digunakan oleh tim front-end, termasuk mengimplementasikan komponen baru dan memperbarui yang sudah ada.",
+      ],
+      [
+        "Berkolaborasi dengan tim back-end untuk mengelola data melalui API dan bekerja erat dengan tim desain untuk memastikan implementasi desain UI yang akurat",
+      ],
+      [
+        "Terlibat aktif dalam debugging dan penyelesaian masalah untuk memastikan performa yang optimal.",
+      ],
+    ],
+    period: "Februari 2024 - Juli 2024",
+  },
+  {
+    id: 2,
+    type: "education",
+    title: "React App Developer",
+    subtitle: "Beasiswa",
+    company: {
+      text: "IDCamp | Indosat",
+      href: "https://drive.google.com/file/d/1Yf1-tiLYKMTAysNX3lB-InJ1BnpedWk1/view?usp=sharing",
+    },
+    description: [
+      [
+        "Menguasai dasar-dasar React dan mengembangkan aplikasi catatan dengan operasi CRUD lengkap dan integrasi REST API.",
+      ],
+      [
+        "Kurikulum oleh ",
+        {
+          text: "Dicoding Indonesia",
+          href: "https://www.dicoding.com/",
+        },
+      ],
+    ],
+    period: "November 2023 - Januari 2024",
+  },
+];
+
 // Socials
 import Instagram from "../assets/socials/instagram-tile.svg";
 import Linkedin from "../assets/socials/linkedin-tile.svg";
@@ -293,6 +394,48 @@ export const project: {
     year: "2024",
     description:
       "Nusantara Network Route Planner is a web and mobile-based information system designed to optimize distribution routes and field task management for PT Nusantara Network. Built with ReactJS, React Native, and Google Distance Matrix API, it uses a Genetic Algorithm to calculate the most efficient delivery routes. The system enables real-time employee tracking, customer data management, and automated route planning, significantly improving operational efficiency compared to manual methods.",
+    stack: [
+      "Next.js",
+      "React Native",
+      "TypeScript",
+      "ShadcnUI",
+      "TailwindCSS",
+      "Supabase",
+    ],
+    imageUrl: "projects/nusantara-net.png",
+    projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
+  },
+];
+
+export const project_id: {
+  title: string;
+  year: string;
+  description: string;
+  stack: string[];
+  imageUrl: string;
+  projectUrl: string;
+}[] = [
+  {
+    title: "PAUD Connect",
+    year: "2025",
+    description:
+      "PAUD Connect adalah sistem informasi berbasis web yang dikembangkan untuk PAUD Mawar Tlogomas sebagai bagian dari proyek pengabdian masyarakat di Universitas Brawijaya bersama rekan saya. Sistem ini dilengkapi dengan dasbor admin untuk mengelola data siswa dan alumni, akun guru, galeri aktivitas, dan statistik sekolah.",
+    stack: [
+      "Next.js",
+      "TypeScript",
+      "ChakraUI",
+      "TailwindCSS",
+      "MongoDB",
+      "Google Drive",
+    ],
+    imageUrl: "projects/paud-connect.png",
+    projectUrl: "https://paudmawar.vercel.app/",
+  },
+  {
+    title: "Distributor Management System",
+    year: "2024",
+    description:
+      "Nusantara Network Route Planner adalah sistem informasi berbasis web dan mobile yang dirancang untuk mengoptimalkan rute distribusi dan manajemen tugas lapangan untuk PT Nusantara Network. Dibangun menggunakan ReactJS, React Native, dan Google Distance Matrix API, sistem ini menggunakan Algoritma Genetika untuk menghitung rute pengiriman yang paling efisien. Sistem ini memungkinkan pelacakan karyawan secara real-time, manajemen data pelanggan, dan perencanaan rute otomatis, secara signifikan meningkatkan efisiensi operasional dibandingkan metode manual.",
     stack: [
       "Next.js",
       "React Native",

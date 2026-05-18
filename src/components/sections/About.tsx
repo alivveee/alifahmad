@@ -1,5 +1,6 @@
 import { socials } from "../../utils/data";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const skillCategories = [
   {
@@ -48,6 +49,7 @@ const skillCategories = [
 ];
 
 const AboutSection = () => {
+  const { t } = useTranslation();
   return (
     <section
       id="about"
@@ -68,29 +70,24 @@ const AboutSection = () => {
               transition={{ duration: 0.5 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
-                About Me
+                {t('about.title')}
               </h1>
               <div className="flex flex-col gap-4 text-zinc-600 text-center lg:text-left">
                 <p>
-                  I'm a{" "}
-                  <strong className="text-zinc-900">Frontend Engineer</strong>{" "}
-                  with{" "}
+                  {t('about.p1_1')}{" "}
+                  <strong className="text-zinc-900">{t('about.p1_bold1')}</strong>{" "}
+                  {t('about.p1_2')}{" "}
                   <strong className="text-zinc-900">
-                    1+ year of professional experience
+                    {t('about.p1_bold2')}
                   </strong>{" "}
-                  building scalable and responsive web applications using{" "}
+                  {t('about.p1_3')}{" "}
                   <strong className="text-zinc-900">
-                    React.js, Next.js, TypeScript
+                    {t('about.p1_bold3')}
                   </strong>
-                  , and modern frontend technologies.
+                  {t('about.p1_4')}
                 </p>
                 <p>
-                  I have a proven track record of delivering complex dashboards,
-                  marketplace platforms, mobile apps, company profiles, and many
-                  more in fast-paced startup environments. I am highly skilled
-                  in collaborating with cross-functional teams to deliver
-                  production-ready applications and translating UI/UX designs
-                  into clean, reusable, and responsive interfaces.
+                  {t('about.p2')}
                 </p>
               </div>
             </motion.div>
@@ -103,7 +100,7 @@ const AboutSection = () => {
               className="flex flex-col items-center lg:items-start"
             >
               <h3 className="mt-2 mb-4 text-xl font-bold text-zinc-900 flex items-center gap-2">
-                Let's connect or just say Hi
+                {t('about.lets_connect')}
                 <motion.span
                   animate={{ rotate: [0, 20, -10, 20, 0] }}
                   transition={{
@@ -164,7 +161,7 @@ const AboutSection = () => {
             className="flex flex-col w-full"
           >
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
-              Skills
+              {t('about.skills')}
             </h1>
             <div className="w-full bg-zinc-50 rounded-2xl border border-zinc-200/80 overflow-hidden shadow-sm">
               {skillCategories.map((item, index) => (

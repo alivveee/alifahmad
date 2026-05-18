@@ -1,8 +1,13 @@
 import { motion } from "framer-motion";
 import { FaArrowRight } from "react-icons/fa";
-import { project } from "../../utils/data";
+import { project as project_en, project_id } from "../../utils/data";
+import { useTranslation } from "react-i18next";
+import type { TFunction } from "i18next";
 
 const ProjectsSection = () => {
+  const { t, i18n } = useTranslation();
+  const project = i18n.language.startsWith('id') ? project_id : project_en;
+
   return (
     <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden">
       <div className="flex flex-col items-center">
@@ -14,7 +19,7 @@ const ProjectsSection = () => {
             transition={{ duration: 0.5 }}
             className="text-4xl md:text-5xl font-bold text-zinc-900"
           >
-            Selected Projects
+            {t('projects.title')}
           </motion.h1>
         </div>
         {project.map((proj, index) => (
@@ -27,6 +32,7 @@ const ProjectsSection = () => {
             stack={proj.stack}
             imageUrl={proj.imageUrl}
             projectUrl={proj.projectUrl}
+            t={t}
           />
         ))}
         <motion.div
@@ -51,6 +57,7 @@ function ProjectItem({
   imageUrl,
   projectUrl,
   index,
+  t,
 }: {
   title: string;
   year: string;
@@ -59,6 +66,7 @@ function ProjectItem({
   imageUrl: string;
   projectUrl: string;
   index: number;
+  t: TFunction;
 }) {
   const isEven = index % 2 === 0;
 
@@ -146,7 +154,7 @@ function ProjectItem({
             </span>
             {/* Teks */}
             <span className="-translate-x-2 transition-all duration-300 group-hover:translate-x-2">
-              See Project
+              {t('projects.see_project')}
             </span>
             {/* Panah kanan (hilang saat hover) */}
             <span className="transition-all duration-300 group-hover:translate-x-100">

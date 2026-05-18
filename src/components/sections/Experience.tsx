@@ -1,9 +1,13 @@
 import { motion } from "framer-motion";
 import { IoSchool } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
-import { experiences, type Experience } from "../../utils/data";
+import { experiences as experiences_en, experiences_id, type Experience } from "../../utils/data";
+import { useTranslation } from "react-i18next";
 
 const ExperienceSection = () => {
+  const { t, i18n } = useTranslation();
+  const experiences = i18n.language.startsWith('id') ? experiences_id : experiences_en;
+
   const getIcon = (iconType: Experience["type"]) => {
     switch (iconType) {
       case "work":
@@ -25,7 +29,7 @@ const ExperienceSection = () => {
           transition={{ duration: 0.5 }}
           className="text-4xl md:text-5xl font-bold mb-12"
         >
-          Experience
+          {t('experience.title')}
         </motion.h1>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">

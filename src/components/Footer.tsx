@@ -1,19 +1,19 @@
 import { socials } from "../utils/data";
 import { FiArrowUpRight } from "react-icons/fi";
+import { useTranslation } from "react-i18next";
 
 const Footer = () => {
+  const { t } = useTranslation();
   return (
     <footer className="w-full bg-zinc-900 text-white pt-16 pb-8 border-t border-zinc-800">
       <div className="max-container padding-container">
         <div className="flex flex-col justify-between items-start mb-12">
           <div className="max-w-4xl">
             <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Let's talk or build awesome things together!
+              {t('footer.title')}
             </h2>
             <p className="text-zinc-400 text-base md:text-lg mb-8 max-w-3xl">
-              I'm actively seeking opportunities as a Frontend Engineer. Feel
-              free to reach out to me for collaborations, inquiries, or just to
-              say hello.
+              {t('footer.desc')}
             </p>
 
             <div className="flex flex-wrap gap-8">
@@ -40,7 +40,7 @@ const Footer = () => {
               rel="noopener noreferrer"
               className="hover:text-zinc-300 transition-colors font-medium"
             >
-              Resume
+              {t('footer.resume')}
             </a>
           </div>
 

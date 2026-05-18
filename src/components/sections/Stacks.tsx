@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 
 const skillCategories = [
   {
@@ -32,6 +33,7 @@ const skillCategories = [
 ];
 
 const StackSection = () => {
+  const { t } = useTranslation();
   return (
     <section id="skills" className="py-20">
       <div className="padding-container flex flex-col items-center">
@@ -42,7 +44,7 @@ const StackSection = () => {
           transition={{ duration: 0.5 }}
           className="text-3xl md:text-4xl font-bold mb-12"
         >
-          Skills & Technologies
+          {t('stacks.title')}
         </motion.h1>
         
         <motion.div 
