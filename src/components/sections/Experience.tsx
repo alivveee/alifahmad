@@ -7,11 +7,11 @@ const ExperienceSection = () => {
   const getIcon = (iconType: Experience["type"]) => {
     switch (iconType) {
       case "work":
-        return <MdWork className="w-6 h-6 text-white" />;
+        return <MdWork className="w-4 h-4 md:w-5 h-5 text-white" />;
       case "education":
-        return <IoSchool className="w-6 h-6 text-white" />;
+        return <IoSchool className="w-4 h-4 md:w-5 h-5 text-white" />;
       default:
-        return <MdWork className="w-6 h-6 text-white" />;
+        return <MdWork className="w-4 h-4 md:w-5 h-5 text-white" />;
     }
   };
 
@@ -28,11 +28,11 @@ const ExperienceSection = () => {
           Experience
         </motion.h1>
 
-        <div className="relative w-full max-w-4xl">
+        <div className="relative w-full max-w-3xl">
           {/* Timeline line */}
-          <div className="absolute left-6 md:left-8 top-0 h-full w-0.5 bg-gradient-to-b from-violet-500 via-violet-600 to-transparent"></div>
+          <div className="absolute left-5 md:left-7 top-0 h-full w-0.5 bg-gradient-to-b from-violet-500 via-violet-600 to-transparent"></div>
 
-          <div className="space-y-16">
+          <div className="space-y-8">
             {experiences.map((exp, index) => (
               <motion.div
                 key={exp.id}
@@ -43,46 +43,77 @@ const ExperienceSection = () => {
                 className="relative flex items-start"
               >
                 {/* Icon circle */}
-                <div className="absolute left-0 md:left-2 w-12 h-12 md:w-14 md:h-14 bg-gradient-to-br from-violet-500 to-violet-700 rounded-full flex items-center justify-center shadow-lg shadow-violet-500/50 z-10 ring-4 ring-zinc-900">
+                <div className="absolute left-1 md:left-2 w-8 h-8 md:w-10 md:h-10 bg-gradient-to-br from-violet-500 to-violet-700 rounded-full flex items-center justify-center shadow-lg shadow-violet-500/30 z-10 ring-2 md:ring-4 ring-zinc-900">
                   {getIcon(exp.type)}
                 </div>
 
                 {/* Content card */}
-                <div className="ml-20 md:ml-24 w-full">
+                <div className="ml-14 md:ml-18 w-full">
                   <motion.div
-                    whileHover={{ scale: 1.02, y: -4 }}
+                    whileHover={{ scale: 1.01, y: -2 }}
                     transition={{ duration: 0.2 }}
-                    className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-sm rounded-xl p-6 md:p-8 shadow-xl border border-zinc-700/50 hover:border-violet-500/50 transition-colors"
+                    className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-sm rounded-xl p-4 md:p-5 shadow-xl border border-zinc-700/50 hover:border-violet-500/50 transition-colors"
                   >
                     {/* Header */}
-                    <div className="mb-4">
-                      <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
-                        {exp.title}
-                      </h3>
-                      {exp.subtitle && (
-                        <span className="text-sm md:text-base text-violet-300 font-medium">
-                          {exp.subtitle}
-                        </span>
-                      )}
+                    <div className="mb-2 flex flex-col md:flex-row md:items-center md:justify-between gap-1">
+                      <div className="flex items-center gap-2 flex-wrap">
+                        <h3 className="text-lg md:text-xl font-bold text-white">
+                          {exp.title}
+                        </h3>
+                        {exp.subtitle && (
+                          <span className="text-[10px] md:text-xs text-violet-300 font-medium bg-violet-500/10 px-2 py-0.5 rounded border border-violet-500/20">
+                            {exp.subtitle}
+                          </span>
+                        )}
+                      </div>
+                      
+                      {/* Period (Desktop) */}
+                      <div className="hidden md:flex items-center gap-1.5 text-xs font-medium text-gray-400">
+                        <svg
+                          className="w-3.5 h-3.5"
+                          fill="none"
+                          stroke="currentColor"
+                          viewBox="0 0 24 24"
+                        >
+                          <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                          />
+                        </svg>
+                        {exp.period}
+                      </div>
                     </div>
 
                     {/* Company */}
                     <a
                       href={exp.company.href}
                       target="_blank"
-                      className="inline-block mb-4 text-lg md:text-xl font-semibold text-white hover:text-violet-400 transition-colors group"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-500/10 hover:bg-violet-500/20 text-xs md:text-sm font-semibold text-violet-300 hover:text-violet-200 border border-violet-500/20 hover:border-violet-500/40 transition-all duration-200 shadow-sm shadow-violet-500/5 mb-3.5 group w-fit"
                     >
                       {exp.company.text}
-                      <span className="inline-block ml-1 opacity-0 group-hover:opacity-100 group-hover:translate-x-1 transition-all">
-                        →
-                      </span>
+                      <svg
+                        className="w-3.5 h-3.5 transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform duration-200 text-violet-400"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
+                        />
+                      </svg>
                     </a>
 
                     {/* Description */}
-                    <div className="space-y-2 mb-5 text-gray-300">
+                    <div className="space-y-1.5 mb-4 text-gray-300 text-xs md:text-sm">
                       {exp.description.map((list, idx) => (
-                        <div key={idx} className="flex gap-3 items-start">
-                          <span className="text-violet-400 mt-1.5 text-sm">
+                        <div key={idx} className="flex gap-2.5 items-start">
+                          <span className="text-violet-400 mt-1 text-[9px]">
                             ●
                           </span>
                           <p className="leading-relaxed">
@@ -105,10 +136,10 @@ const ExperienceSection = () => {
                       ))}
                     </div>
 
-                    {/* Period */}
-                    <div className="flex items-center gap-2 text-sm font-medium text-gray-400 pt-3 border-t border-zinc-700/50">
+                    {/* Period (Mobile) */}
+                    <div className="flex md:hidden items-center gap-1.5 text-xs font-medium text-gray-400 pt-2 border-t border-zinc-700/50">
                       <svg
-                        className="w-4 h-4"
+                        className="w-3.5 h-3.5"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"

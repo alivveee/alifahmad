@@ -126,6 +126,53 @@ export interface Experience {
 
 export const experiences: Experience[] = [
   {
+    id: 3,
+    type: "work",
+    title: "Frontend Engineer",
+    subtitle: "Contract",
+    company: {
+      text: "PT Node Solusi Teknologi",
+      href: "https://nodewave.id",
+    },
+    description: [
+      [
+        "Developed and maintained multiple web-based systems including RMS, DMS, Backoffice, and Company Profile platforms.",
+      ],
+      [
+        "Built scalable and responsive user interfaces using React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, and React Query.",
+      ],
+      [
+        "Collaborated closely with Product Managers, Backend Engineers, and QA teams to deliver production-ready features and improve system reliability.",
+      ],
+      [
+        "Optimized performance, SEO, and continuous bug fixing to ensure system stability and a better user experience.",
+      ],
+    ],
+    period: "November 2025 - May 2026",
+  },
+  {
+    id: 4,
+    type: "work",
+    title: "Frontend Programmer",
+    subtitle: "Project-based",
+    company: {
+      text: "PT AZlogistik Dot Com",
+      href: "https://muatmuat.com/",
+    },
+    description: [
+      [
+        "Built and maintained a marketplace web app with React, Next.js, Zustand, React Hook Form, and Tailwind CSS.",
+      ],
+      [
+        "Translated Figma designs into responsive, pixel-perfect interfaces across devices.",
+      ],
+      [
+        "Integrated APIs to support core website functionality.",
+      ],
+    ],
+    period: "November 2025",
+  },
+  {
     id: 1,
     type: "internship",
     title: "Frontend Developer",
