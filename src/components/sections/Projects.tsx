@@ -4,36 +4,38 @@ import { project } from "../../utils/data";
 
 const ProjectsSection = () => {
   return (
-    <div id="projects" className="flex flex-col items-center py-20">
-      <motion.h1
-        initial={{ opacity: 0, y: 20 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.5 }}
-        className="text-4xl md:text-5xl font-bold "
-      >
-        Selected Projects
-      </motion.h1>
-      {project.map((proj, index) => (
-        <ProjectItem
-          key={index}
-          index={index}
-          title={proj.title}
-          year={proj.year}
-          description={proj.description}
-          stack={proj.stack}
-          imageUrl={proj.imageUrl}
-          projectUrl={proj.projectUrl}
+    <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden">
+      <div className="flex flex-col items-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="text-4xl md:text-5xl font-bold text-zinc-900"
+        >
+          Selected Projects
+        </motion.h1>
+        {project.map((proj, index) => (
+          <ProjectItem
+            key={index}
+            index={index}
+            title={proj.title}
+            year={proj.year}
+            description={proj.description}
+            stack={proj.stack}
+            imageUrl={proj.imageUrl}
+            projectUrl={proj.projectUrl}
+          />
+        ))}
+        <motion.div
+          initial={{ scaleX: 0 }}
+          whileInView={{ scaleX: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8, delay: 0.2 }}
+          className="divider w-full h-[0.5px] bg-zinc-200 mt-16 origin-left"
         />
-      ))}
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.8, delay: 0.2 }}
-        className="divider w-full h-[0.5px] bg-violet-600 mt-16 origin-left"
-      />
-    </div>
+      </div>
+    </section>
   );
 };
 
@@ -65,7 +67,7 @@ function ProjectItem({
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.6 }}
-        className="divider w-full h-[0.5px] bg-violet-600 my-10 sm:my-14 origin-left"
+        className="divider w-full h-[0.5px] bg-zinc-200 my-10 sm:my-14 origin-left"
       />
       {}
       <div className="flex flex-col lg:flex-row max-container padding-container w-full rounded gap-6 lg:gap-12">
@@ -84,12 +86,12 @@ function ProjectItem({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className={`text-3xl md:text-4xl font-bold ${
+              className={`text-3xl md:text-4xl font-bold text-zinc-900 ${
                 isEven ? "lg:text-left" : "lg:text-right"
               }`}
             >
               {title}{" "}
-              <span className="text-sm md:text-base text-violet-300 font-normal">
+              <span className="text-sm md:text-base text-violet-500 font-normal">
                 ({year})
               </span>
             </motion.h2>
@@ -99,7 +101,7 @@ function ProjectItem({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className={`text-sm md:text-base leading-relaxed text-gray-300 text-justify`}
+              className={`text-sm md:text-base leading-relaxed text-zinc-600 text-justify`}
             >
               {description}
             </motion.p>
@@ -121,7 +123,7 @@ function ProjectItem({
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
                   whileHover={{ scale: 1.1 }}
-                  className="bg-violet-700/20 text-violet-300 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-violet-500/20"
+                  className="bg-violet-50 text-violet-700 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-violet-100/60 shadow-sm"
                 >
                   {tech}
                 </motion.span>

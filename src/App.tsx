@@ -4,7 +4,6 @@ import AboutSection from "./components/sections/About";
 import ExperienceSection from "./components/sections/Experience";
 import HeroSection from "./components/sections/Hero";
 import ProjectsSection from "./components/sections/Projects";
-import StackSection from "./components/sections/Stacks";
 import ProjectDetail from "./pages/ProjectDetail";
 
 function App() {
@@ -13,12 +12,11 @@ function App() {
       <Route
         path="/"
         element={
-          <div id="home" className="space-y-12 md:space-y-28">
+          <div id="home" className="">
             <BlobCursor />
             <HeroSection />
             <AboutSection />
             <ExperienceSection />
-            <StackSection />
             <ProjectsSection />
           </div>
         }

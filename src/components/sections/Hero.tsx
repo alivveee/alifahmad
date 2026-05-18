@@ -8,7 +8,7 @@ import Image from "../../utils/data";
 const HeroSection = () => {
   const lenis = useLenis();
   return (
-    <div className="hero relative max-container padding-container pb-18 h-screen md:-mt-16 grid lg:grid-cols-[2fr_1fr]">
+    <div className="hero relative max-container padding-container pb-18 h-screen grid lg:grid-cols-[2fr_1fr]">
       <div className="flex flex-col justify-center text-center lg:text-left">
         <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
           Hello, I'm{" "}
