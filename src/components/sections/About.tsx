@@ -145,7 +145,7 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 4 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex justify-center mt-auto mb-0 mr-20"
+              className="flex justify-center mt-auto mb-0 md:mr-20"
             >
               <motion.img
                 src="/alif-ahmad-emoji.png"

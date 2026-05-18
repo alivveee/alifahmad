@@ -166,16 +166,14 @@ export const experiences: Experience[] = [
       [
         "Translated Figma designs into responsive, pixel-perfect interfaces across devices.",
       ],
-      [
-        "Integrated APIs to support core website functionality.",
-      ],
+      ["Integrated APIs to support core website functionality."],
     ],
     period: "November 2025",
   },
   {
     id: 1,
     type: "internship",
-    title: "Frontend Engineer",
+    title: "Frontend Developer",
     subtitle: "Internship",
     company: {
       text: "PT Aksamedia",

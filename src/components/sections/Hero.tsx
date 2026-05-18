@@ -70,7 +70,7 @@ const HeroSection = () => {
         <img
           src={Image.HeroImage}
           alt="Hero Image"
-          className="w-1/2 lg:w-3/4 rounded-full aspect-square object-cover lg:aspect-auto filter grayscale hover:grayscale-25"
+          className="w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
         />
       </div>
       <ScrollDown />
