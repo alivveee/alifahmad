@@ -27,6 +27,8 @@ const HeroSection = () => {
                 1500,
                 "Fullstack-Capable Developer",
                 1500,
+                "Mobile Developer",
+                1500,
               ]}
               wrapper="span"
               repeat={Infinity}

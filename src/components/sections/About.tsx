@@ -7,38 +7,21 @@ const AboutSection = () => {
       <div className="flex flex-col max-container padding-container items-center">
         <div className="w-[4px] h-16 bg-violet-600 rounded-full"></div>
         <h1 className="text-4xl md:text-5xl m-8 font-bold">About Me</h1>
-        <div className="flex flex-col gap-2 text-center text-base/relaxed">
+        <div className="flex flex-col gap-4 text-center text-base/relaxed max-w-3xl">
           <p>
-            I'm Alif, a fresh graduate in Information Technology from Brawijaya
-            University with a strong passion for front-end development.
-            Originally from Probolinggo, East Java, Indonesia, I love exploring
-            modern web technologies and continuously seek opportunities to learn
-            and grow.
+            I'm a <strong>Frontend Engineer</strong> with{" "}
+            <strong>1+ year of professional experience</strong> building
+            scalable and responsive web applications using{" "}
+            <strong>React.js, Next.js, TypeScript</strong>, and modern frontend
+            technologies.
           </p>
           <p>
-            My journey began with a deep curiosity and a passion for creating
-            meaningful digital experiences. This passion led me to earn a
-            scholarship from{" "}
-            <a href="https://idcamp.ioh.co.id/" target="_blank">
-              <strong>
-                <u> ID Camp</u>
-              </strong>
-            </a>
-            , where I learned the fundamentals of front-end development and
-            React.js up to the intermediate level. After completing the program,
-            I had the opportunity to work on real-world projects during my
-            internship at{" "}
-            <a href="https://aksamedia.co.id/" target="_blank">
-              <strong>
-                <u>PT. Aksamedia</u>
-              </strong>
-            </a>
-            , where I gained hands-on experience in building and maintaining
-            complex web applications.
-          </p>
-          <p>
-            Outside of tech, I’m passionate about health and wellness, enjoy
-            watching movies, and occasionally unwind with video games.
+            I have a proven track record of delivering complex dashboards,
+            marketplace platforms, mobile apps, company profiles, and many more
+            in fast-paced startup environments. I am highly skilled in
+            collaborating with cross-functional teams to deliver
+            production-ready applications and translating UI/UX designs into
+            clean, reusable, and responsive interfaces.
           </p>
         </div>
 
