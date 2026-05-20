@@ -56,14 +56,17 @@ const HeroSection = () => {
             {t('hero.see_cv')}
           </a>
           <a
-            onClick={() =>
-              lenis &&
-              lenis.scrollTo("#projects", {
-                offset: -100,
-                easing: cubicBezier(0.65, 0, 0.35, 1),
-                duration: 1,
-              })
-            }
+            href="#projects"
+            onClick={(e) => {
+              e.preventDefault();
+              if (lenis) {
+                lenis.scrollTo("#projects", {
+                  offset: -100,
+                  easing: cubicBezier(0.65, 0, 0.35, 1),
+                  duration: 1,
+                });
+              }
+            }}
             className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
           >
             {t('hero.projects')} <FaArrowDown />

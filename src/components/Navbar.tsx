@@ -149,14 +149,17 @@ const DesktopMenu = ({ lenis, t, isScrolled }: { lenis: LenisType | undefined; t
     {menuItems.map((item) => (
       <li key={item.href}>
         <a
-          onClick={() =>
-            lenis &&
-            lenis.scrollTo(item.href, {
-              offset: -100,
-              easing: cubicBezier(0.65, 0, 0.35, 1),
-              duration: 1,
-            })
-          }
+          href={item.href}
+          onClick={(e) => {
+            e.preventDefault();
+            if (lenis) {
+              lenis.scrollTo(item.href, {
+                offset: -100,
+                easing: cubicBezier(0.65, 0, 0.35, 1),
+                duration: 1,
+              });
+            }
+          }}
           className={`text-sm md:text-base font-medium transition-colors cursor-pointer ${
             isScrolled 
               ? "text-zinc-100 hover:text-violet-300" 
