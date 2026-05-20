@@ -48,8 +48,9 @@ const HeroSection = () => {
         </p>
         <div className="flex gap-3 mt-5 justify-center lg:justify-start">
           <a
-            href="https://drive.google.com/file/d/1tDkidzlk_YO683uFLQgjMfVS1qp9dEnK/view?usp=sharing"
+            href="/CV_Alif Ahmad Mukhtar D.H._Frontend Engineer.pdf"
             target="_blank"
+            rel="noopener noreferrer"
             className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
           >
             {t('hero.see_cv')}

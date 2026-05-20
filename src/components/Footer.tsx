@@ -35,7 +35,7 @@ const Footer = () => {
         <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-6">
             <a
-              href="https://drive.google.com/file/d/1tDkidzlk_YO683uFLQgjMfVS1qp9dEnK/view?usp=sharing"
+              href="/CV_Alif Ahmad Mukhtar D.H._Frontend Engineer.pdf"
               target="_blank"
               rel="noopener noreferrer"
               className="hover:text-zinc-300 transition-colors font-medium"
