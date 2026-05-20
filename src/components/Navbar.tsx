@@ -28,6 +28,11 @@ const Navbar = () => {
   const lenis = useLenis();
   const { t, i18n } = useTranslation();
 
+  // Sync <html lang> attribute with current language for SEO & accessibility
+  useEffect(() => {
+    document.documentElement.lang = i18n.language.startsWith('id') ? 'id' : 'en';
+  }, [i18n.language]);
+
   useEffect(() => {
     const handleScroll = () => {
       if (window.scrollY > 50) {
@@ -42,7 +47,7 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-out ${isScrolled ? 'top-4 px-4 md:px-8' : 'top-0 px-0'}`}>
+    <nav aria-label="Main navigation" className={`fixed left-0 right-0 z-50 transition-all duration-500 ease-out ${isScrolled ? 'top-4 px-4 md:px-8' : 'top-0 px-0'}`}>
       <div 
         className={`mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out
           ${isScrolled 
@@ -113,7 +118,7 @@ const Navbar = () => {
           </ul>
         </div>
       </div>
-    </div>
+    </nav>
   );
 };
 
@@ -131,10 +136,10 @@ const Logo = ({ lenis, isScrolled }: { lenis: LenisType | undefined, isScrolled:
       })
     }
   >
-    <img 
-      src="/logo.png" 
-      alt="Logo" 
-      className={`transition-all duration-500 ease-out group-hover:scale-105 ${isScrolled ? 'w-10' : 'w-12'}`} 
+    <img
+      src="/logo.png"
+      alt="Alif Ahmad - Home"
+      className={`transition-all duration-500 ease-out group-hover:scale-105 ${isScrolled ? 'w-10' : 'w-12'}`}
     />
   </div>
 );

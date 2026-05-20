@@ -69,9 +69,9 @@ const AboutSection = () => {
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
             >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
+              <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
                 {t('about.title')}
-              </h1>
+              </h2>
               <div className="flex flex-col gap-4 text-zinc-600 text-center lg:text-left">
                 <p>
                   {t('about.p1_1')}{" "}
@@ -146,7 +146,8 @@ const AboutSection = () => {
             >
               <motion.img
                 src="/alif-ahmad-emoji.png"
-                alt="Alif Ahmad Emoji"
+                alt="Alif Ahmad Mukhtar D.H. illustrated emoji avatar"
+                loading="lazy"
                 className="w-56 h-56 md:w-100 lg:w-200 xl:w-210 2xl:w-220 md:h-56 lg:h-110 xl:h-120 2xl:h-130 object-contain pointer-events-none drop-shadow-xl"
               />
             </motion.div>
@@ -160,9 +161,9 @@ const AboutSection = () => {
             transition={{ duration: 0.5, delay: 0.2 }}
             className="flex flex-col w-full"
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
+            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
               {t('about.skills')}
-            </h1>
+            </h2>
             <div className="w-full bg-zinc-50 rounded-2xl border border-zinc-200/80 overflow-hidden shadow-sm">
               {skillCategories.map((item, index) => (
                 <div

@@ -37,7 +37,7 @@ const StackSection = () => {
   return (
     <section id="skills" className="py-20">
       <div className="padding-container flex flex-col items-center">
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -45,7 +45,7 @@ const StackSection = () => {
           className="text-3xl md:text-4xl font-bold mb-12"
         >
           {t('stacks.title')}
-        </motion.h1>
+        </motion.h2>
         
         <motion.div 
           initial={{ opacity: 0, y: 20 }}

@@ -12,7 +12,7 @@ const ProjectsSection = () => {
     <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden">
       <div className="flex flex-col items-center">
         <div className="max-container padding-container w-full">
-          <motion.h1
+          <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -20,7 +20,7 @@ const ProjectsSection = () => {
             className="text-4xl md:text-5xl font-bold text-zinc-900"
           >
             {t('projects.title')}
-          </motion.h1>
+          </motion.h2>
         </div>
         {project.map((proj, index) => (
           <ProjectItem
@@ -180,7 +180,8 @@ function ProjectItem({
           >
             <img
               src={imageUrl}
-              alt={title}
+              alt={`${title} project screenshot`}
+              loading="lazy"
               className="w-full h-full rounded-xl object-cover"
             />
           </motion.div>

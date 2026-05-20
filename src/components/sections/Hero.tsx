@@ -73,7 +73,7 @@ const HeroSection = () => {
       <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last">
         <img
           src={Image.HeroImage}
-          alt="Hero Image"
+          alt="Alif Ahmad Mukhtar D.H. - Frontend Engineer"
           className="w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
         />
       </div>
@@ -98,7 +98,7 @@ function ScrollDown({ t }: { t: TFunction }) {
       >
         <IoChevronDownSharp size={24} />
       </motion.div>
-      <h1 className="text-sm mt-2 tracking-wide">{t('hero.scroll_down')}</h1>
+      <p className="text-sm mt-2 tracking-wide">{t('hero.scroll_down')}</p>
     </div>
   );
 }

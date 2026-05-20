@@ -22,7 +22,7 @@ const ExperienceSection = () => {
   return (
     <section id="experience" className="py-20">
       <div className="padding-container max-container">
-        <motion.h1
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -30,7 +30,7 @@ const ExperienceSection = () => {
           className="text-4xl md:text-5xl font-bold mb-12"
         >
           {t('experience.title')}
-        </motion.h1>
+        </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
           {experiences.map((exp, index) => (
