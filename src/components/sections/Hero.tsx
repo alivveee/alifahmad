@@ -22,7 +22,7 @@ const HeroSection = () => {
     1500,
   ];
   return (
-    <div className="hero relative max-container padding-container pb-18 h-screen grid lg:grid-cols-[2fr_1fr]">
+    <div className="hero relative max-container padding-container pt-20 md:pt-28 pb-10 min-h-screen lg:h-screen grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-0 items-center justify-items-center lg:justify-items-stretch">
       <div className="flex flex-col justify-center text-center lg:text-left">
         <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
           {t('hero.hello')}{" "}
@@ -73,11 +73,11 @@ const HeroSection = () => {
           </a>
         </div>
       </div>
-      <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last">
+      <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last w-full">
         <img
           src={Image.HeroImage}
           alt="Alif Ahmad Mukhtar D.H. - Frontend Engineer"
-          className="w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
+          className="w-2/3 md:w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
         />
       </div>
       <ScrollDown t={t} />
@@ -89,7 +89,7 @@ export default HeroSection;
 
 function ScrollDown({ t }: { t: TFunction }) {
   return (
-    <div className="flex flex-col items-center absolute bottom-10 left-1/2 -translate-x-1/2 text-center text-white opacity-100">
+    <div className="hidden lg:flex flex-col items-center absolute bottom-10 left-1/2 -translate-x-1/2 text-center text-white opacity-100">
       <motion.div
         animate={{ y: [0, 8, 0] }}
         transition={{

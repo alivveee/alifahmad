@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   const project = i18n.language.startsWith('id') ? project_id : project_en;
 
   return (
-    <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden">
+    <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div className="flex flex-col items-center">
         <div className="max-container padding-container w-full">
           <motion.h2
@@ -17,7 +17,7 @@ const ProjectsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-zinc-900"
+            className="text-4xl md:text-5xl font-bold text-zinc-900 text-center lg:text-left"
           >
             {t('projects.title')}
           </motion.h2>

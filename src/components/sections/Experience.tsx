@@ -20,14 +20,14 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="experience" className="py-20">
+    <section id="experience" className="py-20 scroll-mt-20 md:scroll-mt-24">
       <div className="padding-container max-container">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-12"
+          className="text-4xl md:text-5xl font-bold mb-12 text-center md:text-left"
         >
           {t('experience.title')}
         </motion.h2>

@@ -53,7 +53,7 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="pt-20 pb-0 bg-white text-zinc-900 w-full overflow-hidden"
+      className="pt-20 pb-0 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
     >
       <div className="max-container padding-container">
         {/* <div className="flex justify-center mb-16">
@@ -136,10 +136,9 @@ const AboutSection = () => {
               </div>
             </motion.div>
 
-            {/* Emoji/Avatar Image */}
             <motion.div
               initial={{ opacity: 0, y: 100 }}
-              whileInView={{ opacity: 1, y: 4 }}
+              whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="flex justify-center mt-auto mb-0 md:mr-20"
@@ -148,7 +147,7 @@ const AboutSection = () => {
                 src="/alif-ahmad-emoji.png"
                 alt="Alif Ahmad Mukhtar D.H. illustrated emoji avatar"
                 loading="lazy"
-                className="w-56 h-56 md:w-100 lg:w-200 xl:w-210 2xl:w-220 md:h-56 lg:h-110 xl:h-120 2xl:h-130 object-contain pointer-events-none drop-shadow-xl"
+                className="w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] xl:w-[32rem] xl:h-[32rem] object-contain object-bottom pointer-events-none drop-shadow-xl"
               />
             </motion.div>
           </div>
@@ -164,7 +163,7 @@ const AboutSection = () => {
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
               {t('about.skills')}
             </h2>
-            <div className="w-full bg-zinc-50 rounded-2xl border border-zinc-200/80 overflow-hidden shadow-sm">
+            <div className="w-full bg-zinc-50 rounded-2xl border border-zinc-200/80 overflow-hidden shadow-sm mb-12 lg:mb-16">
               {skillCategories.map((item, index) => (
                 <div
                   key={item.category}
