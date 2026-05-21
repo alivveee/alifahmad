@@ -80,7 +80,7 @@ function ProjectItem({
         className="divider w-full h-[0.5px] bg-zinc-200 my-10 sm:my-14 origin-left"
       />
       {}
-      <div className="flex flex-col lg:flex-row max-container padding-container w-full rounded gap-6 lg:gap-12">
+      <div className="flex flex-col lg:flex-row lg:items-center max-container padding-container w-full rounded gap-6 lg:gap-12">
         <motion.div
           initial={{ opacity: 0, x: isEven ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -176,13 +176,13 @@ function ProjectItem({
           <motion.div
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
-            className="w-full h-full overflow-hidden shadow-2xl"
+            className="w-full h-full rounded-xl overflow-hidden shadow-2xl"
           >
             <img
               src={imageUrl}
               alt={`${title} project screenshot`}
               loading="lazy"
-              className="w-full h-full rounded-xl object-cover"
+              className="w-full h-full object-cover"
             />
           </motion.div>
         </motion.div>
