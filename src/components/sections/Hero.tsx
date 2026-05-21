@@ -27,7 +27,7 @@ const HeroSection = () => {
         <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
           {t('hero.hello')}{" "}
           <span className="text-transparent bg-clip-text bg-violet-600">
-            Alif Ahmad Mukhtar D.H.
+            Alif Ahmad Mukhtar Darma Hidayat
           </span>
         </h1>
         <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300">
@@ -48,7 +48,7 @@ const HeroSection = () => {
         </p>
         <div className="flex gap-3 mt-5 justify-center lg:justify-start">
           <a
-            href="/CV_Alif Ahmad Mukhtar D.H._Frontend Engineer.pdf"
+            href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
@@ -76,7 +76,7 @@ const HeroSection = () => {
       <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last w-full">
         <img
           src={Image.HeroImage}
-          alt="Alif Ahmad Mukhtar D.H. - Frontend Engineer"
+          alt="Alif Ahmad Mukhtar Darma Hidayat - Frontend Engineer"
           className="w-2/3 md:w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
         />
       </div>

@@ -145,7 +145,7 @@ const AboutSection = () => {
             >
               <motion.img
                 src="/alif-ahmad-emoji.png"
-                alt="Alif Ahmad Mukhtar D.H. illustrated emoji avatar"
+                alt="Alif Ahmad Mukhtar Darma Hidayat illustrated emoji avatar"
                 loading="lazy"
                 className="w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] xl:w-[32rem] xl:h-[32rem] object-contain object-bottom pointer-events-none drop-shadow-xl"
               />
