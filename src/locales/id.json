@@ -2,7 +2,7 @@
   "navbar": {
     "menu": "Menu",
     "about": "Tentang",
-    "experience": "Pengalaman",
+    "experience": "Portofolio",
     "projects": "Proyek"
   },
   "hero": {
@@ -35,11 +35,12 @@
     "skills": "Keahlian"
   },
   "experience": {
-    "title": "Pengalaman"
+    "title": "Portofolio",
+    "share_title": "Bagikan"
   },
   "projects": {
     "title": "Proyek Pilihan",
-    "see_project": "Lihat Proyek"
+    "see_project": "Lihat Selengkapnya"
   },
   "stacks": {
     "title": "Keahlian & Teknologi"

@@ -4,6 +4,7 @@ import ExperienceSection from "./components/sections/Experience";
 import HeroSection from "./components/sections/Hero";
 import ProjectsSection from "./components/sections/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
+import PortfolioDetail from "./pages/PortfolioDetail";
 
 function App() {
   return (
@@ -22,6 +23,7 @@ function App() {
       />
 
       <Route path="/project/:id" element={<ProjectDetail />} />
+      <Route path="/portfolio/:id" element={<PortfolioDetail />} />
     </Routes>
   );
 }

@@ -2,7 +2,7 @@
   "navbar": {
     "menu": "Menu",
     "about": "About",
-    "experience": "Experience",
+    "experience": "Portfolio",
     "projects": "Projects"
   },
   "hero": {
@@ -35,11 +35,12 @@
     "skills": "Skills"
   },
   "experience": {
-    "title": "Experience"
+    "title": "Portfolio",
+    "share_title": "Share"
   },
   "projects": {
     "title": "Selected Projects",
-    "see_project": "See Project"
+    "see_project": "See More"
   },
   "stacks": {
     "title": "Skills & Technologies"
