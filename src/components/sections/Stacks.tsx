@@ -28,7 +28,7 @@ const skillCategories = [
   },
   {
     category: "Performance",
-    skills: ["Lighthouse", "Web Vitals"]
+    skills: ["Lighthouse", "Web Vitals", "SEO Optimization"]
   }
 ];
 
