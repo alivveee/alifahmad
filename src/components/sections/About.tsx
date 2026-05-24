@@ -173,14 +173,26 @@ const AboutSection = () => {
                     {item.category}
                   </h3>
                   <div className="flex flex-wrap gap-2 w-full">
-                    {item.skills.map((skill) => (
-                      <span
-                        key={skill}
-                        className="px-3 py-1.5 bg-violet-50 text-violet-700 border border-violet-100/60 rounded-lg text-xs md:text-sm font-medium shadow-sm shadow-violet-500/5"
-                      >
-                        {skill}
-                      </span>
-                    ))}
+                    {item.skills.map((skill) => {
+                      const isHighlighted = [
+                        "React", "Next.js", "TypeScript", "Redux Toolkit",
+                        "TanStack Query", "Tailwind CSS", "Git", "Express.js",
+                        "SQL", "GitHub Actions", "SEO Optimization"
+                      ].includes(skill);
+                      
+                      return (
+                        <span
+                          key={skill}
+                          className={`px-3 py-1.5 rounded-lg text-xs md:text-sm shadow-sm transition-colors border ${
+                            isHighlighted 
+                              ? "bg-violet-600 text-white border-violet-600 font-semibold shadow-violet-600/20" 
+                              : "bg-violet-50 text-violet-700 border-violet-100/60 font-medium shadow-violet-500/5"
+                          }`}
+                        >
+                          {skill}
+                        </span>
+                      );
+                    })}
                   </div>
                 </div>
               ))}

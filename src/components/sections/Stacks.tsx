@@ -63,14 +63,26 @@ const StackSection = () => {
                 {item.category}
               </h3>
               <div className="flex flex-wrap gap-2 w-full">
-                {item.skills.map((skill) => (
-                  <span 
-                    key={skill} 
-                    className="px-3 py-1.5 bg-violet-500/10 text-violet-300 border border-violet-500/20 rounded-lg text-sm font-medium hover:bg-violet-500/20 hover:border-violet-500/40 transition-all duration-200 cursor-default shadow-sm shadow-violet-500/5"
-                  >
-                    {skill}
-                  </span>
-                ))}
+                {item.skills.map((skill) => {
+                  const isHighlighted = [
+                    "React", "Next.js", "TypeScript", "Redux Toolkit",
+                    "TanStack Query", "Tailwind CSS", "Git", "Express.js",
+                    "SQL", "GitHub Actions", "SEO Optimization"
+                  ].includes(skill);
+
+                  return (
+                    <span 
+                      key={skill} 
+                      className={`px-3 py-1.5 rounded-lg text-sm transition-all duration-200 cursor-default shadow-sm border ${
+                        isHighlighted
+                          ? "bg-violet-600 text-white border-violet-500 hover:bg-violet-500 shadow-violet-500/20 font-semibold"
+                          : "bg-violet-500/10 text-violet-300 border-violet-500/20 hover:bg-violet-500/20 hover:border-violet-500/40 shadow-violet-500/5 font-medium"
+                      }`}
+                    >
+                      {skill}
+                    </span>
+                  );
+                })}
               </div>
             </div>
           ))}
