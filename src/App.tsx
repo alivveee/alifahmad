@@ -12,7 +12,7 @@ function App() {
       <Route
         path="/"
         element={
-          <div id="home" className="">
+          <div id="home">
             {/* <BlobCursor /> */}
             <HeroSection />
             <AboutSection />

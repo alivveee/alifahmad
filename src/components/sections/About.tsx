@@ -141,13 +141,13 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex justify-center mt-auto mb-0 md:mr-20"
+              className="flex justify-center mt-auto mb-0 w-full"
             >
               <motion.img
                 src="/alif-ahmad-avatar.png"
                 alt="Alif Ahmad Mukhtar Darma Hidayat illustrated avatar"
                 loading="lazy"
-                className="w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] xl:w-[32rem] xl:h-[32rem] object-contain object-bottom pointer-events-none drop-shadow-xl"
+                className="w-full max-w-md lg:max-w-full object-contain pointer-events-none drop-shadow-xl"
               />
             </motion.div>
           </div>
