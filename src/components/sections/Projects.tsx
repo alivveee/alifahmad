@@ -142,7 +142,7 @@ function ProjectItem({
           </div>
 
           <button
-            className={`group flex items-center w-34 mt-4 bg-violet-700 hover:bg-violet-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
+            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-4 bg-violet-700 hover:bg-violet-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
               isEven ? "lg:self-start" : "lg:self-end"
             }`}
             aria-label={`See project ${title}`}
