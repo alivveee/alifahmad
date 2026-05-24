@@ -65,7 +65,7 @@ const StackSection = () => {
               <div className="flex flex-wrap gap-2 w-full">
                 {item.skills.map((skill) => {
                   const isHighlighted = [
-                    "React", "Next.js", "TypeScript", "Redux Toolkit",
+                    "React", "Next.js", "TypeScript", "React Native", "Redux Toolkit",
                     "TanStack Query", "Tailwind CSS", "Git", "Express.js",
                     "SQL", "GitHub Actions", "SEO Optimization"
                   ].includes(skill);
