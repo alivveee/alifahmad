@@ -144,8 +144,8 @@ const AboutSection = () => {
               className="flex justify-center mt-auto mb-0 md:mr-20"
             >
               <motion.img
-                src="/alif-ahmad-emoji.png"
-                alt="Alif Ahmad Mukhtar Darma Hidayat illustrated emoji avatar"
+                src="/alif-ahmad-avatar.png"
+                alt="Alif Ahmad Mukhtar Darma Hidayat illustrated avatar"
                 loading="lazy"
                 className="w-64 h-64 md:w-80 md:h-80 lg:w-[26rem] lg:h-[26rem] xl:w-[32rem] xl:h-[32rem] object-contain object-bottom pointer-events-none drop-shadow-xl"
               />
