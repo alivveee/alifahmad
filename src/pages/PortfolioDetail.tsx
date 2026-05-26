@@ -7,12 +7,12 @@ import { FaWhatsapp, FaInstagram, FaLinkedinIn, FaLink, FaCheck } from "react-ic
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function PortfolioDetail() {
-  const { id } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { t, i18n } = useTranslation();
   const experiences = i18n.language.startsWith('id') ? experiences_id : experiences_en;
 
-  const exp = experiences.find((e) => e.id === Number(id));
+  const exp = experiences.find((e) => e.slug === slug);
 
   const [selectedIndex, setSelectedIndex] = useState<number | null>(null);
   const [copiedPlatform, setCopiedPlatform] = useState<string | null>(null);

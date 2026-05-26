@@ -116,6 +116,7 @@ export const listTools: {
 // Experience
 export interface Experience {
   id: number;
+  slug: string;
   type: string;
   title: string;
   subtitle: string;
@@ -133,6 +134,7 @@ export interface Experience {
 export const experiences: Experience[] = [
   {
     id: 3,
+    slug: "pt-node-solusi-teknologi",
     type: "work",
     title: "Frontend Engineer",
     subtitle: "Contract",
@@ -182,6 +184,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 4,
+    slug: "pt-azlogistik-dot-com",
     type: "work",
     title: "Frontend Programmer",
     subtitle: "Project-based",
@@ -214,6 +217,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 1,
+    slug: "pt-aksamedia",
     type: "internship",
     title: "Frontend Developer",
     subtitle: "Internship",
@@ -256,6 +260,7 @@ export const experiences: Experience[] = [
   },
   {
     id: 2,
+    slug: "idcamp-indosat",
     type: "education",
     title: "React App Developer",
     subtitle: "Scholarship",
@@ -294,6 +299,7 @@ export const experiences: Experience[] = [
 export const experiences_id: Experience[] = [
   {
     id: 3,
+    slug: "pt-node-solusi-teknologi",
     type: "work",
     title: "Frontend Engineer",
     subtitle: "Kontrak",
@@ -343,6 +349,7 @@ export const experiences_id: Experience[] = [
   },
   {
     id: 4,
+    slug: "pt-azlogistik-dot-com",
     type: "work",
     title: "Frontend Programmer",
     subtitle: "Berbasis Proyek",
@@ -375,6 +382,7 @@ export const experiences_id: Experience[] = [
   },
   {
     id: 1,
+    slug: "pt-aksamedia",
     type: "internship",
     title: "Frontend Developer",
     subtitle: "Magang",
@@ -417,6 +425,7 @@ export const experiences_id: Experience[] = [
   },
   {
     id: 2,
+    slug: "idcamp-indosat",
     type: "education",
     title: "React App Developer",
     subtitle: "Beasiswa",

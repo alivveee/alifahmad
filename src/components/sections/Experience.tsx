@@ -38,7 +38,7 @@ const ExperienceSection = () => {
           {experiences.map((exp, index) => (
             <motion.div
               key={exp.id}
-              onClick={() => navigate(`/portfolio/${exp.id}`)}
+              onClick={() => navigate(`/portfolio/${exp.slug}`)}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true, amount: 0.2 }}
