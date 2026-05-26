@@ -306,7 +306,7 @@ export default function PortfolioDetail() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex flex-col justify-between bg-zinc-950/98 p-6 backdrop-blur-md select-none"
+            className="fixed inset-0 z-50 flex flex-col justify-between bg-zinc-900/80 p-6 backdrop-blur-xl select-none"
             data-lenis-prevent
             onClick={() => {
               setSelectedIndex(null);
