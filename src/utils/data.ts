@@ -156,14 +156,14 @@ export const experiences: Experience[] = [
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779804114/0c4122d4-3003-4141-9975-56f309cd5de4.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779806169/c7b0064e-ac5e-46ed-9836-740cc78511df.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779804713/44ba81d5-63f8-4bd3-86df-2a98c9cb64bd.png",
+      "https://res.cloudinary.com/dkapna2l6/image/upload/v1779804820/2862f46a-385c-4142-af2c-7c12110b4938.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779801246/89yew89y28j_201332_b7sot9.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779802940/7b01b90e-c2bc-45a5-b085-f14d63883b3d.png",
+      "https://res.cloudinary.com/dkapna2l6/image/upload/v1779803064/c8188fb2-d57c-4e17-999a-5e902f774610.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779802858/9d7a5aa2-7d72-4ba5-a3b5-eca170fa76e5.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779804552/b8599ed9-7767-4fda-b22e-ef537c28250a.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779805263/6adf6ca1-ccc8-4826-af74-58ed63900529.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779805270/fe8d2e48-8578-42dc-ba07-b2c8dd90615e.png",
-      "https://res.cloudinary.com/dkapna2l6/image/upload/v1779804820/2862f46a-385c-4142-af2c-7c12110b4938.png",
-      "https://res.cloudinary.com/dkapna2l6/image/upload/v1779803064/c8188fb2-d57c-4e17-999a-5e902f774610.png",
     ],
     description: [
       [

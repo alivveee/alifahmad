@@ -3,7 +3,7 @@ import { useTranslation } from "react-i18next";
 import { experiences as experiences_en, experiences_id } from "../utils/data";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { FaWhatsapp, FaInstagram, FaLinkedinIn, FaLink, FaCheck } from "react-icons/fa";
+import { FaWhatsapp, FaLinkedinIn, FaLink, FaCheck } from "react-icons/fa";
 import { FaXTwitter } from "react-icons/fa6";
 
 export default function PortfolioDetail() {
@@ -22,6 +22,32 @@ export default function PortfolioDetail() {
     navigator.clipboard.writeText(window.location.href);
     setCopiedPlatform(platform || "copy");
     setTimeout(() => setCopiedPlatform(null), 2000);
+  };
+
+  const handleSocialShare = (e: React.MouseEvent<HTMLAnchorElement>) => {
+    e.preventDefault();
+    const href = e.currentTarget.href;
+    const width = 550;
+    const height = 450;
+    const left = window.innerWidth / 2 - width / 2;
+    const top = window.innerHeight / 2 - height / 2;
+    window.open(href, 'share-dialog', `width=${width},height=${height},left=${left},top=${top},toolbar=0,status=0,menubar=0`);
+  };
+
+  const handleNativeShare = async () => {
+    if (navigator.share) {
+      try {
+        await navigator.share({
+          title: exp?.title || "Portfolio",
+          text: `Check out this project: ${exp?.title} - ${exp?.company?.text}`,
+          url: window.location.href,
+        });
+      } catch (error) {
+        console.log("Error sharing:", error);
+      }
+    } else {
+      handleCopyLink("copy");
+    }
   };
 
   useEffect(() => {
@@ -196,31 +222,21 @@ export default function PortfolioDetail() {
                     href={`https://api.whatsapp.com/send?text=${encodeURIComponent(exp.title + ' - ' + window.location.href)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleSocialShare}
                     className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to WhatsApp"
                   >
                     <FaWhatsapp className="w-5 h-5" />
                   </a>
 
-                  {/* Instagram */}
-                  <button
-                    onClick={() => handleCopyLink("instagram")}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105 relative cursor-pointer"
-                    title="Share to Instagram (Copy Link)"
-                  >
-                    <FaInstagram className="w-5 h-5" />
-                    {copiedPlatform === "instagram" && (
-                      <span className="absolute -top-9 left-1/2 -translate-x-1/2 bg-zinc-900 border border-zinc-800 text-emerald-400 text-[10px] py-1 px-2 rounded-md font-semibold whitespace-nowrap shadow-md z-10">
-                        Copied!
-                      </span>
-                    )}
-                  </button>
+
 
                   {/* X */}
                   <a
                     href={`https://twitter.com/intent/tweet?text=${encodeURIComponent(exp.title)}&url=${encodeURIComponent(window.location.href)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleSocialShare}
                     className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to X"
                   >
@@ -232,17 +248,18 @@ export default function PortfolioDetail() {
                     href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(window.location.href)}`}
                     target="_blank"
                     rel="noopener noreferrer"
+                    onClick={handleSocialShare}
                     className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to LinkedIn"
                   >
                     <FaLinkedinIn className="w-5 h-5" />
                   </a>
 
-                  {/* Copy Link */}
+                  {/* Copy Link / Native Share */}
                   <button
-                    onClick={() => handleCopyLink("copy")}
+                    onClick={handleNativeShare}
                     className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105 relative cursor-pointer"
-                    title="Copy Link"
+                    title="Share / Copy Link"
                   >
                     {copiedPlatform === "copy" ? (
                       <FaCheck className="w-5 h-5 text-emerald-500" />
