@@ -11,15 +11,15 @@ import DarkVeil from "../DarkVeil";
 const HeroSection = () => {
   const lenis = useLenis();
   const { t, i18n } = useTranslation();
-  
+
   const roles = [
-    t('hero.roles.0'),
+    t("hero.roles.0"),
     1500,
-    t('hero.roles.1'),
+    t("hero.roles.1"),
     1500,
-    t('hero.roles.2'),
+    t("hero.roles.2"),
     1500,
-    t('hero.roles.3'),
+    t("hero.roles.3"),
     1500,
   ];
   return (
@@ -31,14 +31,14 @@ const HeroSection = () => {
 
       <div className="hero relative max-container padding-container pt-20 md:pt-28 pb-10 min-h-screen lg:h-screen grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-0 items-center justify-items-center lg:justify-items-stretch">
         <div className="flex flex-col justify-center text-center lg:text-left">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
-            {t('hero.hello')}{" "}
+          <h1 className="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold leading-tight">
+            {t("hero.hello")}{" "}
             <span className="text-transparent bg-clip-text bg-violet-600">
               Alif Ahmad Mukhtar Darma Hidayat
             </span>
           </h1>
           <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300">
-            <span>{t('hero.a')} </span>
+            <span>{t("hero.a")} </span>
             <span className="font-semibold text-white">
               <TypeAnimation
                 key={i18n.language}
@@ -51,7 +51,9 @@ const HeroSection = () => {
             </span>
           </h2>
           <p className="mt-5 text-sm/relaxed md:text-base/relaxed opacity-70">
-            {t('hero.description_1')}<b>{t('hero.description_bold')}</b>{t('hero.description_2')}
+            {t("hero.description_1")}
+            <b>{t("hero.description_bold")}</b>
+            {t("hero.description_2")}
           </p>
           <div className="flex gap-3 mt-5 justify-center lg:justify-start">
             <a
@@ -60,7 +62,7 @@ const HeroSection = () => {
               rel="noopener noreferrer"
               className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
             >
-              {t('hero.see_cv')}
+              {t("hero.see_cv")}
             </a>
             <a
               href="#projects"
@@ -76,7 +78,7 @@ const HeroSection = () => {
               }}
               className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
             >
-              {t('hero.projects')} <FaArrowDown />
+              {t("hero.projects")} <FaArrowDown />
             </a>
           </div>
         </div>
@@ -109,7 +111,7 @@ function ScrollDown({ t }: { t: TFunction }) {
       >
         <IoChevronDownSharp size={24} />
       </motion.div>
-      <p className="text-sm mt-2 tracking-wide">{t('hero.scroll_down')}</p>
+      <p className="text-sm mt-2 tracking-wide">{t("hero.scroll_down")}</p>
     </div>
   );
 }
