@@ -6,6 +6,7 @@ import { TypeAnimation } from "react-type-animation";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 import Image from "../../utils/data";
+import DarkVeil from "../DarkVeil";
 
 const HeroSection = () => {
   const lenis = useLenis();
@@ -22,65 +23,72 @@ const HeroSection = () => {
     1500,
   ];
   return (
-    <div className="hero relative max-container padding-container pt-20 md:pt-28 pb-10 min-h-screen lg:h-screen grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-0 items-center justify-items-center lg:justify-items-stretch">
-      <div className="flex flex-col justify-center text-center lg:text-left">
-        <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
-          {t('hero.hello')}{" "}
-          <span className="text-transparent bg-clip-text bg-violet-600">
-            Alif Ahmad Mukhtar Darma Hidayat
-          </span>
-        </h1>
-        <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300">
-          <span>{t('hero.a')} </span>
-          <span className="font-semibold text-white">
-            <TypeAnimation
-              key={i18n.language}
-              sequence={roles}
-              wrapper="span"
-              repeat={Infinity}
-              cursor={true}
-              style={{ display: "inline-block" }}
-            />
-          </span>
-        </h2>
-        <p className="mt-5 text-sm/relaxed md:text-base/relaxed opacity-70">
-          {t('hero.description_1')}<b>{t('hero.description_bold')}</b>{t('hero.description_2')}
-        </p>
-        <div className="flex gap-3 mt-5 justify-center lg:justify-start">
-          <a
-            href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
-          >
-            {t('hero.see_cv')}
-          </a>
-          <a
-            href="#projects"
-            onClick={(e) => {
-              e.preventDefault();
-              if (lenis) {
-                lenis.scrollTo("#projects", {
-                  offset: -100,
-                  easing: cubicBezier(0.65, 0, 0.35, 1),
-                  duration: 1,
-                });
-              }
-            }}
-            className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
-          >
-            {t('hero.projects')} <FaArrowDown />
-          </a>
+    <div className="relative w-full overflow-hidden">
+      {/* Interactive DarkVeil Background */}
+      <div className="absolute inset-0 w-full h-full -z-10 bg-zinc-950">
+        <DarkVeil />
+      </div>
+
+      <div className="hero relative max-container padding-container pt-20 md:pt-28 pb-10 min-h-screen lg:h-screen grid grid-cols-1 lg:grid-cols-[2fr_1fr] gap-8 lg:gap-0 items-center justify-items-center lg:justify-items-stretch">
+        <div className="flex flex-col justify-center text-center lg:text-left">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight">
+            {t('hero.hello')}{" "}
+            <span className="text-transparent bg-clip-text bg-violet-600">
+              Alif Ahmad Mukhtar Darma Hidayat
+            </span>
+          </h1>
+          <h2 className="text-2xl md:text-3xl lg:text-4xl text-gray-300">
+            <span>{t('hero.a')} </span>
+            <span className="font-semibold text-white">
+              <TypeAnimation
+                key={i18n.language}
+                sequence={roles}
+                wrapper="span"
+                repeat={Infinity}
+                cursor={true}
+                style={{ display: "inline-block" }}
+              />
+            </span>
+          </h2>
+          <p className="mt-5 text-sm/relaxed md:text-base/relaxed opacity-70">
+            {t('hero.description_1')}<b>{t('hero.description_bold')}</b>{t('hero.description_2')}
+          </p>
+          <div className="flex gap-3 mt-5 justify-center lg:justify-start">
+            <a
+              href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex bg-violet-700 hover:bg-violet-600 text-white px-4 py-2 rounded"
+            >
+              {t('hero.see_cv')}
+            </a>
+            <a
+              href="#projects"
+              onClick={(e) => {
+                e.preventDefault();
+                if (lenis) {
+                  lenis.scrollTo("#projects", {
+                    offset: -100,
+                    easing: cubicBezier(0.65, 0, 0.35, 1),
+                    duration: 1,
+                  });
+                }
+              }}
+              className="flex items-center gap-1 bg-zinc-700 hover:bg-zinc-600 text-white px-4 py-2 rounded"
+            >
+              {t('hero.projects')} <FaArrowDown />
+            </a>
+          </div>
         </div>
+        <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last w-full">
+          <img
+            src={Image.HeroImage}
+            alt="Alif Ahmad Mukhtar Darma Hidayat - Frontend Engineer"
+            className="w-2/3 md:w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
+          />
+        </div>
+        <ScrollDown t={t} />
       </div>
-      <div className="flex justify-center lg:justify-end items-end lg:items-center order-first lg:order-last w-full">
-        <img
-          src={Image.HeroImage}
-          alt="Alif Ahmad Mukhtar Darma Hidayat - Frontend Engineer"
-          className="w-2/3 md:w-1/2 lg:w-3/4 rounded-2xl aspect-[3/4] object-cover filter grayscale hover:grayscale-25 shadow-2xl"
-        />
-      </div>
-      <ScrollDown t={t} />
     </div>
   );
 };
