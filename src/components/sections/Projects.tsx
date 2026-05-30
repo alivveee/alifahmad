@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   const project = i18n.language.startsWith('id') ? project_id : project_en;
 
   return (
-    <section id="projects" className="py-20 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="projects" className="py-14 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div className="flex flex-col items-center">
         <div className="max-container padding-container w-full">
           <motion.h2
@@ -40,7 +40,7 @@ const ProjectsSection = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="divider w-full h-[0.5px] bg-zinc-200 mt-16 origin-left"
+          className="divider w-full h-[0.5px] bg-zinc-200 mt-10 origin-left"
         />
       </div>
     </section>
@@ -77,10 +77,10 @@ function ProjectItem({
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.6 }}
-        className="divider w-full h-[0.5px] bg-zinc-200 my-10 sm:my-14 origin-left"
+        className="divider w-full h-[0.5px] bg-zinc-200 my-6 sm:my-8 origin-left"
       />
       {}
-      <div className="flex flex-col lg:flex-row lg:items-center max-container padding-container w-full rounded gap-6 lg:gap-12">
+      <div className="flex flex-col lg:flex-row lg:items-center max-container padding-container w-full rounded gap-4 lg:gap-8">
         <motion.div
           initial={{ opacity: 0, x: isEven ? -50 : 50 }}
           whileInView={{ opacity: 1, x: 0 }}
@@ -90,7 +90,7 @@ function ProjectItem({
             isEven ? "lg:order-1" : "lg:order-last"
           }`}
         >
-          <div className="flex flex-col gap-4 lg:gap-6">
+          <div className="flex flex-col gap-3 lg:gap-4">
             <motion.h2
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -142,7 +142,7 @@ function ProjectItem({
           </div>
 
           <button
-            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-4 bg-indigo-700 hover:bg-indigo-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
+            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-6 bg-indigo-700 hover:bg-indigo-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
               isEven ? "lg:self-start" : "lg:self-end"
             }`}
             aria-label={`See project ${title}`}

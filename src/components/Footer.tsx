@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="w-full bg-zinc-900 text-white pt-16 pb-8 border-t border-zinc-800">
+    <footer className="w-full bg-zinc-950 text-white pt-16 pb-8 border-t border-zinc-900">
       <div className="max-container padding-container">
         <div className="flex flex-col justify-between items-start mb-12">
           <div className="max-w-4xl">
@@ -32,7 +32,7 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-zinc-800 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-6">
             <a
               href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"

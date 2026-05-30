@@ -5,7 +5,7 @@ import { IoChevronDownSharp } from "react-icons/io5";
 import { TypeAnimation } from "react-type-animation";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
-import DarkVeil from "../DarkVeil";
+import LightRays from "../ui/LightRays";
 
 const HeroSection = () => {
   const lenis = useLenis();
@@ -23,9 +23,19 @@ const HeroSection = () => {
   ];
   return (
     <section className="relative w-full min-h-screen lg:h-screen flex items-center overflow-hidden">
-      {/* Interactive DarkVeil Background */}
+      {/* Interactive LightRays Background */}
       <div className="absolute inset-0 w-full h-full -z-10 bg-zinc-950">
-        <DarkVeil />
+        <LightRays
+          raysOrigin="top-center"
+          raysColor="#6366f1"
+          raysSpeed={1.5}
+          lightSpread={0.8}
+          rayLength={1.2}
+          followMouse={true}
+          mouseInfluence={0.1}
+          noiseAmount={0.1}
+          distortion={0.05}
+        />
       </div>
 
       <div className="hero max-container padding-container w-full flex flex-col justify-center items-center pt-20 md:pt-28 pb-10">

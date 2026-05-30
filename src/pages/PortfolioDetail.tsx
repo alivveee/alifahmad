@@ -142,7 +142,7 @@ export default function PortfolioDetail() {
 
             {/* Company Profile */}
             {exp.companyProfile && (
-              <section className="bg-zinc-900/50 rounded-2xl p-6 border border-zinc-800">
+              <section className="bg-gradient-to-br from-zinc-900/50 to-zinc-950/30 backdrop-blur-md rounded-2xl p-6 border border-zinc-800/60 shadow-xl">
                 <h2 className="text-xl font-bold text-white mb-4">Company Profile</h2>
                 <p className="leading-relaxed">{exp.companyProfile}</p>
               </section>
@@ -153,7 +153,7 @@ export default function PortfolioDetail() {
               <h2 className="text-2xl font-bold text-white mb-6">Experience & Details</h2>
               <div className="space-y-4">
                 {exp.description.map((list, idx) => (
-                  <div key={idx} className="flex gap-3 items-start bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
+                  <div key={idx} className="flex gap-3 items-start bg-zinc-900/20 backdrop-blur-md p-4 rounded-xl border border-zinc-800/40 hover:bg-zinc-900/30 hover:border-zinc-700/40 hover:shadow-lg transition-all duration-300">
                     <span className="text-indigo-500 mt-1 shrink-0">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -183,7 +183,7 @@ export default function PortfolioDetail() {
 
           {/* Aside */}
           <aside className="lg:w-80 shrink-0">
-            <div className="sticky top-28 bg-zinc-900/80 backdrop-blur-md rounded-2xl p-6 border border-zinc-800 shadow-xl flex flex-col gap-6">
+            <div className="sticky top-28 bg-gradient-to-br from-zinc-900/70 to-zinc-950/40 backdrop-blur-md rounded-2xl p-6 border border-zinc-800/60 shadow-2xl flex flex-col gap-6">
               
               <div className="space-y-4">
                 {exp.subtitle && (
@@ -210,7 +210,7 @@ export default function PortfolioDetail() {
                 )}
               </div>
 
-              <div className="h-px bg-zinc-800 w-full" />
+              <div className="h-px bg-zinc-800/60 w-full" />
 
               <div className="space-y-3">
                 <h3 className="text-xs text-zinc-500 font-bold uppercase tracking-wider">
@@ -223,13 +223,11 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/80 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to WhatsApp"
                   >
                     <FaWhatsapp className="w-5 h-5" />
                   </a>
-
-
 
                   {/* X */}
                   <a
@@ -237,7 +235,7 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/80 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to X"
                   >
                     <FaXTwitter className="w-5 h-5" />
@@ -249,7 +247,7 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/80 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to LinkedIn"
                   >
                     <FaLinkedinIn className="w-5 h-5" />
@@ -258,7 +256,7 @@ export default function PortfolioDetail() {
                   {/* Copy Link / Native Share */}
                   <button
                     onClick={handleNativeShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105 relative cursor-pointer"
+                    className="p-2.5 bg-zinc-900/40 backdrop-blur-sm border border-zinc-800/80 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105 relative cursor-pointer"
                     title="Share / Copy Link"
                   >
                     {copiedPlatform === "copy" ? (
@@ -286,7 +284,7 @@ export default function PortfolioDetail() {
                 <motion.div 
                   key={idx}
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900 border border-zinc-800 group"
+                  className="rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900/30 backdrop-blur-sm border border-zinc-800/50 group"
                   onClick={() => setSelectedIndex(idx)}
                 >
                   <img src={img} alt={`Gallery ${idx + 1}`} className="w-full h-full object-cover group-hover:opacity-80 transition-opacity" />
@@ -296,7 +294,7 @@ export default function PortfolioDetail() {
               {exp.galleryImages.length > 8 && (
                 <motion.div 
                   whileHover={{ y: -5, scale: 1.02 }}
-                  className="relative rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900 border border-zinc-800 group"
+                  className="relative rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900/30 backdrop-blur-sm border border-zinc-800/50 group"
                   onClick={() => setSelectedIndex(7)}
                 >
                   <img 

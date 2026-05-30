@@ -1,11 +1,3 @@
-import HeroImage from "../assets/hero-image-potrait.jpg";
-
-const Image = {
-  HeroImage,
-};
-
-export default Image;
-
 // Tools
 import Tools1 from "../assets/tools/vscode.png";
 import Tools2 from "../assets/tools/reactjs.png";
