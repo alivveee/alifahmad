@@ -55,7 +55,8 @@ const AboutSection = () => {
   return (
     <section
       id="about"
-      className="pt-20 pb-0 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
+      data-bg-color="#ffffff"
+      className="pt-20 pb-0 bg-transparent text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
     >
       <div className="max-container padding-container">
         {/* <div className="flex justify-center mb-16">
@@ -63,7 +64,7 @@ const AboutSection = () => {
         </div> */}
 
         <div className="flex flex-col gap-12 lg:gap-16">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
             {/* Left Side: About Me */}
             <div className="flex flex-col gap-6 text-base/relaxed h-full justify-center">
               <motion.div
@@ -146,9 +147,9 @@ const AboutSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-              className="flex justify-center items-center w-full"
+              className="flex justify-center lg:justify-end items-center w-full"
             >
-              <div className="relative group w-[280px] sm:w-[320px] aspect-[3/4] my-4">
+              <div className="relative group w-[280px] sm:w-[320px] aspect-[3/4] my-4 lg:mr-5">
                 {/* Background offset card */}
                 <div className="absolute inset-0 bg-indigo-950 rounded-[20px] translate-x-5 translate-y-5 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3" />
                 

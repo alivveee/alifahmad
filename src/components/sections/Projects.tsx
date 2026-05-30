@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   const project = i18n.language.startsWith('id') ? project_id : project_en;
 
   return (
-    <section id="projects" className="py-14 bg-white text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="projects" data-bg-color="#ffffff" className="py-14 bg-transparent text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div className="flex flex-col items-center">
         <div className="max-container padding-container w-full">
           <motion.h2

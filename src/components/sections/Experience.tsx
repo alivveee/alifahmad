@@ -22,7 +22,7 @@ const ExperienceSection = () => {
   };
 
   return (
-    <section id="portfolio" className="py-14 bg-zinc-950 text-white scroll-mt-20 md:scroll-mt-24">
+    <section id="portfolio" data-bg-color="#09090b" className="py-14 bg-transparent text-white scroll-mt-20 md:scroll-mt-24">
       <div className="padding-container max-container">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}

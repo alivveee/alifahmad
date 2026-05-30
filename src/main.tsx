@@ -7,6 +7,7 @@ import ProgressBar from "./components/ProgressBar.tsx";
 import SmoothScrolling from "./components/SmoothScrolling.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import Footer from "./components/Footer.tsx";
+import ScrollBackground from "./components/ScrollBackground.tsx";
 import { BrowserRouter } from "react-router-dom";
 import "./i18n";
 
@@ -14,6 +15,7 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <BrowserRouter>
       <SmoothScrolling>
+        <ScrollBackground />
         <ScrollToTop />
         <ProgressBar />
         <Navbar />

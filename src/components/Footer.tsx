@@ -5,7 +5,7 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer className="w-full bg-zinc-950 text-white pt-16 pb-8 border-t border-zinc-900">
+    <footer data-bg-color="#09090b" className="w-full bg-transparent text-white pt-16 pb-8 border-t border-zinc-900">
       <div className="max-container padding-container">
         <div className="flex flex-col justify-between items-start mb-12">
           <div className="max-w-4xl">

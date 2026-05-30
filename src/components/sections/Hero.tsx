@@ -22,9 +22,9 @@ const HeroSection = () => {
     1500,
   ];
   return (
-    <section className="relative w-full min-h-screen lg:h-screen flex items-center overflow-hidden">
+    <section id="hero" data-bg-color="#09090b" className="relative w-full min-h-screen lg:h-screen flex items-center overflow-hidden">
       {/* Interactive LightRays Background */}
-      <div className="absolute inset-0 w-full h-full -z-10 bg-zinc-950">
+      <div className="absolute inset-0 w-full h-full -z-10 bg-transparent">
         <LightRays
           raysOrigin="top-center"
           raysColor="#6366f1"
