@@ -185,8 +185,8 @@ const AboutSection = () => {
                           key={skill}
                           className={`px-3 py-1.5 rounded-lg text-xs md:text-sm shadow-sm transition-colors border ${
                             isHighlighted 
-                              ? "bg-violet-600 text-white border-violet-600 font-semibold shadow-violet-600/20" 
-                              : "bg-violet-50 text-violet-700 border-violet-100/60 font-medium shadow-violet-500/5"
+                              ? "bg-indigo-600 text-white border-indigo-600 font-semibold shadow-indigo-600/20" 
+                              : "bg-indigo-50 text-indigo-700 border-indigo-100/60 font-medium shadow-indigo-500/5"
                           }`}
                         >
                           {skill}

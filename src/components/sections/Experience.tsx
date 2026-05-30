@@ -44,13 +44,13 @@ const ExperienceSection = () => {
               viewport={{ once: true, amount: 0.2 }}
               transition={{ duration: 0.4, delay: index * 0.1 }}
               whileHover={{ y: -4 }}
-              className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-sm rounded-xl p-5 border border-zinc-700/50 hover:border-violet-500/50 shadow-xl transition-colors flex flex-col gap-3 cursor-pointer group/card"
+              className="bg-gradient-to-br from-zinc-800/80 to-zinc-900/80 backdrop-blur-sm rounded-xl p-5 border border-zinc-700/50 hover:border-indigo-500/50 shadow-xl transition-colors flex flex-col gap-3 cursor-pointer group/card"
             >
               {/* Card Header: Icon + Title + Badge + Period */}
               <div className="flex items-start justify-between gap-2">
                 <div className="flex items-center gap-2.5 flex-wrap flex-1 min-w-0">
                   {/* Icon */}
-                  <div className="w-8 h-8 shrink-0 bg-gradient-to-br from-violet-500 to-violet-700 rounded-lg flex items-center justify-center shadow-md shadow-violet-500/30">
+                  <div className="w-8 h-8 shrink-0 bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-lg flex items-center justify-center shadow-md shadow-indigo-500/30">
                     {getIcon(exp.type)}
                   </div>
                   {/* Title + Badge */}
@@ -59,7 +59,7 @@ const ExperienceSection = () => {
                       {exp.title}
                     </h3>
                     {exp.subtitle && (
-                      <span className="text-[10px] text-violet-300 font-medium bg-violet-500/10 px-2 py-0.5 rounded border border-violet-500/20 shrink-0">
+                      <span className="text-[10px] text-indigo-300 font-medium bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 shrink-0">
                         {exp.subtitle}
                       </span>
                     )}
@@ -105,7 +105,7 @@ const ExperienceSection = () => {
 
               {/* Company Link */}
               <div
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-violet-500/10 text-xs font-semibold text-violet-300 border border-violet-500/20 shadow-sm shadow-violet-500/5 w-fit"
+                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-lg bg-indigo-500/10 text-xs font-semibold text-indigo-300 border border-indigo-500/20 shadow-sm shadow-indigo-500/5 w-fit"
               >
                 {exp.company.text}
               </div>
@@ -118,7 +118,7 @@ const ExperienceSection = () => {
                 <p className="line-clamp-2">{exp.companyProfile}</p>
               </div>
               
-              <div className="mt-auto pt-2 flex items-center gap-1 text-violet-400 text-xs font-semibold group-hover/card:text-violet-300 transition-colors">
+              <div className="mt-auto pt-2 flex items-center gap-1 text-indigo-400 text-xs font-semibold group-hover/card:text-indigo-300 transition-colors">
                 {t('projects.see_project', 'Lihat Detail')} 
                 <svg className="w-3 h-3 transform group-hover/card:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />

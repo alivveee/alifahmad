@@ -91,7 +91,7 @@ export default function PortfolioDetail() {
       <div className="min-h-screen flex items-center justify-center bg-zinc-950 text-white">
         <div className="text-center">
           <h1 className="text-3xl font-bold mb-4">Portfolio Not Found</h1>
-          <button onClick={() => navigate("/")} className="text-violet-400 hover:underline">
+          <button onClick={() => navigate("/")} className="text-indigo-400 hover:underline">
             &larr; Back to Home
           </button>
         </div>
@@ -106,9 +106,9 @@ export default function PortfolioDetail() {
       <div className="max-w-6xl mx-auto">
         {/* Breadcrumbs */}
         <nav className="flex text-sm text-zinc-500 mb-8 items-center gap-2">
-          <Link to="/" className="hover:text-violet-400 transition-colors">Home</Link>
+          <Link to="/" className="hover:text-indigo-400 transition-colors">Home</Link>
           <span>/</span>
-          <Link to="/#portfolio" className="hover:text-violet-400 transition-colors">Portfolio</Link>
+          <Link to="/#portfolio" className="hover:text-indigo-400 transition-colors">Portfolio</Link>
           <span>/</span>
           <span className="text-zinc-300 font-medium">{exp.title}</span>
         </nav>
@@ -123,7 +123,7 @@ export default function PortfolioDetail() {
                   <img src={exp.company.logo} alt={exp.company.text} className="max-w-full max-h-full object-contain" />
                 </div>
               ) : (
-                <div className="w-16 h-16 rounded-xl bg-violet-600 shrink-0 flex items-center justify-center text-white font-bold text-2xl">
+                <div className="w-16 h-16 rounded-xl bg-indigo-600 shrink-0 flex items-center justify-center text-white font-bold text-2xl">
                   {exp.company.text.charAt(0)}
                 </div>
               )}
@@ -133,7 +133,7 @@ export default function PortfolioDetail() {
                   href={exp.company.href} 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-lg text-violet-400 hover:text-violet-300 font-medium transition-colors"
+                  className="text-lg text-indigo-400 hover:text-indigo-300 font-medium transition-colors"
                 >
                   {exp.company.text}
                 </a>
@@ -154,7 +154,7 @@ export default function PortfolioDetail() {
               <div className="space-y-4">
                 {exp.description.map((list, idx) => (
                   <div key={idx} className="flex gap-3 items-start bg-zinc-900/30 p-4 rounded-xl border border-zinc-800/50">
-                    <span className="text-violet-500 mt-1 shrink-0">
+                    <span className="text-indigo-500 mt-1 shrink-0">
                       <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                       </svg>
@@ -168,7 +168,7 @@ export default function PortfolioDetail() {
                             key={i}
                             href={segment.href}
                             target="_blank"
-                            className="text-violet-400 hover:text-violet-300 underline decoration-violet-400/30 hover:decoration-violet-300 underline-offset-2 transition-colors font-medium"
+                            className="text-indigo-400 hover:text-indigo-300 underline decoration-indigo-400/30 hover:decoration-indigo-300 underline-offset-2 transition-colors font-medium"
                           >
                             {segment.text}
                           </a>
@@ -189,7 +189,7 @@ export default function PortfolioDetail() {
                 {exp.subtitle && (
                   <div>
                     <h3 className="text-xs text-zinc-500 font-bold uppercase tracking-wider mb-1">Status</h3>
-                    <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-violet-500/10 text-violet-400 border border-violet-500/20">
+                    <div className="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium bg-indigo-500/10 text-indigo-400 border border-indigo-500/20">
                       {exp.subtitle}
                     </div>
                   </div>
@@ -223,7 +223,7 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to WhatsApp"
                   >
                     <FaWhatsapp className="w-5 h-5" />
@@ -237,7 +237,7 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to X"
                   >
                     <FaXTwitter className="w-5 h-5" />
@@ -249,7 +249,7 @@ export default function PortfolioDetail() {
                     target="_blank"
                     rel="noopener noreferrer"
                     onClick={handleSocialShare}
-                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-violet-500 hover:text-violet-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
+                    className="p-2.5 bg-zinc-900 border border-zinc-800 hover:border-indigo-500 hover:text-indigo-400 text-zinc-400 rounded-xl transition-all duration-200 hover:scale-105"
                     title="Share to LinkedIn"
                   >
                     <FaLinkedinIn className="w-5 h-5" />
@@ -305,7 +305,7 @@ export default function PortfolioDetail() {
                     className="w-full h-full object-cover" 
                   />
                   <div className="absolute inset-0 bg-black/75 flex flex-col items-center justify-center transition-colors group-hover:bg-black/70">
-                    <span className="text-violet-400 text-lg md:text-xl font-bold tracking-wide">
+                    <span className="text-indigo-400 text-lg md:text-xl font-bold tracking-wide">
                       +{exp.galleryImages.length - 7} See More
                     </span>
                   </div>
@@ -354,7 +354,7 @@ export default function PortfolioDetail() {
               {/* Utilities */}
               <div className="flex items-center gap-3">
                 <button 
-                  className={`p-2 border rounded-lg transition-colors ${isGridMode ? 'bg-violet-600 border-violet-500 text-white' : 'bg-zinc-900 border-zinc-800 hover:bg-zinc-800 text-white'}`}
+                  className={`p-2 border rounded-lg transition-colors ${isGridMode ? 'bg-indigo-600 border-indigo-500 text-white' : 'bg-zinc-900 border-zinc-800 hover:bg-zinc-800 text-white'}`}
                   title="Toggle Grid View"
                   onClick={() => setIsGridMode(!isGridMode)}
                 >
@@ -387,7 +387,7 @@ export default function PortfolioDetail() {
                     <motion.div 
                       key={idx}
                       whileHover={{ scale: 1.02 }}
-                      className={`rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900 border ${selectedIndex === idx ? 'border-violet-500 ring-2 ring-violet-500/50' : 'border-zinc-800'}`}
+                      className={`rounded-xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-zinc-900 border ${selectedIndex === idx ? 'border-indigo-500 ring-2 ring-indigo-500/50' : 'border-zinc-800'}`}
                       onClick={() => {
                         setSelectedIndex(idx);
                         setIsGridMode(false);

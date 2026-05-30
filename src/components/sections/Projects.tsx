@@ -101,7 +101,7 @@ function ProjectItem({
               }`}
             >
               {title}{" "}
-              <span className="text-sm md:text-base text-violet-500 font-normal">
+              <span className="text-sm md:text-base text-indigo-600 font-normal">
                 ({year})
               </span>
             </motion.h2>
@@ -133,7 +133,7 @@ function ProjectItem({
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
                   whileHover={{ scale: 1.1 }}
-                  className="bg-violet-50 text-violet-700 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-violet-100/60 shadow-sm"
+                  className="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-indigo-100/60 shadow-sm"
                 >
                   {tech}
                 </motion.span>
@@ -142,7 +142,7 @@ function ProjectItem({
           </div>
 
           <button
-            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-4 bg-violet-700 hover:bg-violet-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
+            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-4 bg-indigo-700 hover:bg-indigo-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
               isEven ? "lg:self-start" : "lg:self-end"
             }`}
             aria-label={`See project ${title}`}

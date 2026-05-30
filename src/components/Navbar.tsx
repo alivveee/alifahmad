@@ -78,7 +78,7 @@ const Navbar = () => {
           <div className="flex items-center gap-3 md:gap-4">
             <div className="relative flex items-center bg-zinc-950/20 backdrop-blur-sm rounded-lg p-1 border border-zinc-800/40 shadow-inner select-none">
               <div
-                className="absolute top-1 bottom-1 left-1 w-10 bg-violet-600/90 rounded-md transition-transform duration-300 ease-out z-0 shadow-md shadow-violet-500/30"
+                className="absolute top-1 bottom-1 left-1 w-10 bg-indigo-600/90 rounded-md transition-transform duration-300 ease-out z-0 shadow-md shadow-indigo-500/30"
                 style={{
                   transform: `translateX(${i18n.language.startsWith("id") ? "40px" : "0px"})`,
                 }}
@@ -114,7 +114,7 @@ const Navbar = () => {
             ${isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"}`}
           >
             <ul className="flex flex-col items-center gap-5 text-white">
-              <li className="text-xl font-bold mb-2 text-violet-400">
+              <li className="text-xl font-bold mb-2 text-indigo-400">
                 {t("navbar.menu")}
               </li>
               {menuItems.map((item) => (
@@ -125,7 +125,7 @@ const Navbar = () => {
                       setOpen(false);
                       handleNavClick(e, item.href);
                     }}
-                    className="text-lg font-medium hover:text-violet-400 transition-colors"
+                    className="text-lg font-medium hover:text-indigo-400 transition-colors"
                   >
                     {t(`navbar.${item.key}`)}
                   </a>
@@ -171,7 +171,7 @@ const DesktopMenu = ({
         <a
           href={item.href}
           onClick={(e) => onNavClick(e, item.href)}
-          className="text-sm md:text-base font-medium transition-colors cursor-pointer text-zinc-100 hover:text-violet-300"
+          className="text-sm md:text-base font-medium transition-colors cursor-pointer text-zinc-100 hover:text-indigo-300"
         >
           {t(`navbar.${item.key}`)}
         </a>
