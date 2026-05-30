@@ -2,6 +2,7 @@ import { useLenis } from "@studio-freight/react-lenis";
 import { cubicBezier, motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 import { IoChevronDownSharp } from "react-icons/io5";
+import { FiArrowUpRight } from "react-icons/fi";
 import { TypeAnimation } from "react-type-animation";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
@@ -67,9 +68,9 @@ const HeroSection = () => {
               href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center bg-indigo-600 hover:bg-indigo-500 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium"
+              className="flex items-center gap-1.5 bg-indigo-600 hover:bg-indigo-500 transition-all duration-300 text-white px-4 py-2 rounded font-medium"
             >
-              {t("hero.see_cv")}
+              {t("hero.see_cv")} <FiArrowUpRight className="w-4 h-4" />
             </a>
             <a
               href="#portfolio"
@@ -83,9 +84,9 @@ const HeroSection = () => {
                   });
                 }
               }}
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 text-white px-6 py-3 rounded-lg font-medium"
+              className="flex items-center gap-1.5 bg-white/10 hover:bg-white/20 backdrop-blur-md border border-white/20 transition-all duration-300 text-white px-4 py-2 rounded font-medium"
             >
-              {t("hero.portfolio")} <FaArrowDown />
+              {t("hero.portfolio")} <FaArrowDown className="w-4 h-4" />
             </a>
           </div>
         </div>

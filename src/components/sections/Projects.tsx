@@ -9,7 +9,7 @@ const ProjectsSection = () => {
   const project = i18n.language.startsWith('id') ? project_id : project_en;
 
   return (
-    <section id="projects" data-bg-color="#ffffff" className="py-14 bg-transparent text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
+    <section id="projects" data-bg-color="#09090b" className="py-14 bg-transparent text-zinc-100 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
       <div className="flex flex-col items-center">
         <div className="max-container padding-container w-full">
           <motion.h2
@@ -17,7 +17,7 @@ const ProjectsSection = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-zinc-900 text-center lg:text-left"
+            className="text-4xl md:text-5xl font-bold text-white text-center lg:text-left"
           >
             {t('projects.title')}
           </motion.h2>
@@ -40,7 +40,7 @@ const ProjectsSection = () => {
           whileInView={{ scaleX: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8, delay: 0.2 }}
-          className="divider w-full h-[0.5px] bg-zinc-200 mt-10 origin-left"
+          className="divider w-full h-[0.5px] bg-zinc-800/80 mt-10 origin-left"
         />
       </div>
     </section>
@@ -77,7 +77,7 @@ function ProjectItem({
         whileInView={{ scaleX: 1 }}
         viewport={{ once: true, amount: 0.8 }}
         transition={{ duration: 0.6 }}
-        className="divider w-full h-[0.5px] bg-zinc-200 my-6 sm:my-8 origin-left"
+        className="divider w-full h-[0.5px] bg-zinc-800/80 my-6 sm:my-8 origin-left"
       />
       {}
       <div className="flex flex-col lg:flex-row lg:items-center max-container padding-container w-full rounded gap-4 lg:gap-8">
@@ -96,12 +96,12 @@ function ProjectItem({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.3 }}
-              className={`text-3xl md:text-4xl font-bold text-zinc-900 ${
+              className={`text-3xl md:text-4xl font-bold text-white ${
                 isEven ? "lg:text-left" : "lg:text-right"
               }`}
             >
               {title}{" "}
-              <span className="text-sm md:text-base text-indigo-600 font-normal">
+              <span className="text-sm md:text-base text-indigo-400 font-normal">
                 ({year})
               </span>
             </motion.h2>
@@ -111,7 +111,7 @@ function ProjectItem({
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.4 }}
-              className={`text-sm md:text-base leading-relaxed text-zinc-600 text-justify`}
+              className={`text-sm md:text-base leading-relaxed text-zinc-400 text-justify`}
             >
               {description}
             </motion.p>
@@ -133,7 +133,7 @@ function ProjectItem({
                   viewport={{ once: true }}
                   transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
                   whileHover={{ scale: 1.1 }}
-                  className="bg-indigo-50 text-indigo-700 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-indigo-100/60 shadow-sm"
+                  className="bg-indigo-950/40 text-indigo-400 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-indigo-900/30 shadow-sm"
                 >
                   {tech}
                 </motion.span>

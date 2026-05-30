@@ -5,14 +5,14 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer data-bg-color="#09090b" className="w-full bg-transparent text-white pt-16 pb-8 border-t border-zinc-900">
+    <footer data-bg-color="#ffffff" className="w-full bg-transparent text-zinc-900 pt-16 pb-8 border-t border-zinc-200">
       <div className="max-container padding-container">
         <div className="flex flex-col justify-between items-start mb-12">
           <div className="max-w-4xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+            <h2 className="text-3xl md:text-4xl font-bold text-zinc-900 mb-4">
               {t('footer.title')}
             </h2>
-            <p className="text-zinc-400 text-base md:text-lg mb-8 max-w-3xl">
+            <p className="text-zinc-600 text-base md:text-lg mb-8 max-w-3xl">
               {t('footer.desc')}
             </p>
 
@@ -23,7 +23,7 @@ const Footer = () => {
                   href={social.href}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex items-center gap-1 hover:text-zinc-300 transition-colors"
+                  className="flex items-center gap-1 text-zinc-700 hover:text-indigo-600 font-medium transition-colors"
                 >
                   {social.name} <FiArrowUpRight className="w-4 h-4" />
                 </a>
@@ -32,19 +32,19 @@ const Footer = () => {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-4">
+        <div className="pt-8 border-t border-zinc-200 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-6">
             <a
               href="/CV_Alif Ahmad Mukhtar Darma Hidayat_Frontend Engineer.pdf"
               target="_blank"
               rel="noopener noreferrer"
-              className="hover:text-zinc-300 transition-colors font-medium"
+              className="flex items-center gap-1 text-zinc-700 hover:text-indigo-600 transition-colors font-medium"
             >
-              {t('footer.resume')}
+              {t('footer.resume')} <FiArrowUpRight className="w-4 h-4" />
             </a>
           </div>
 
-          <small className="text-zinc-400">
+          <small className="text-zinc-500">
             &copy; 2026 Alif Ahmad, Indonesia
           </small>
         </div>
