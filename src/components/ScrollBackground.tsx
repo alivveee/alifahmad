@@ -16,28 +16,42 @@ const ScrollBackground = () => {
       // Check if we are scrolled to the bottom (within a 50px threshold)
       const isAtBottom = clientHeight + scrollTop >= scrollHeight - 50;
 
+      let activeElement: Element | null = null;
+
       if (isAtBottom) {
-        const lastEl = elements[elements.length - 1];
-        const color = lastEl.getAttribute("data-bg-color");
+        activeElement = elements[elements.length - 1];
+      } else {
+        const centerY = clientHeight / 2;
+        for (const el of elements) {
+          const rect = el.getBoundingClientRect();
+          if (rect.top <= centerY && rect.bottom >= centerY) {
+            activeElement = el;
+            break;
+          }
+        }
+      }
+
+      if (activeElement) {
+        const color = activeElement.getAttribute("data-bg-color");
         if (color) {
           setBgColor(color);
-          return;
         }
       }
 
-      const centerY = clientHeight / 2;
-
-      for (const el of elements) {
-        const rect = el.getBoundingClientRect();
-        // Check if the element occupies the vertical center of the screen
-        if (rect.top <= centerY && rect.bottom >= centerY) {
-          const color = el.getAttribute("data-bg-color");
-          if (color) {
-            setBgColor(color);
-          }
-          break;
+      // Apply blur to inactive sections
+      elements.forEach((el) => {
+        if (!el.classList.contains("transition-all")) {
+          el.classList.add("transition-all", "duration-700", "ease-in-out");
         }
-      }
+
+        if (el === activeElement) {
+          el.classList.remove("blur-sm", "opacity-40", "scale-[0.98]");
+          el.classList.add("opacity-100", "scale-100");
+        } else {
+          el.classList.add("blur-sm", "opacity-40", "scale-[0.98]");
+          el.classList.remove("opacity-100", "scale-100");
+        }
+      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
