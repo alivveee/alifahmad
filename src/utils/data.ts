@@ -501,7 +501,7 @@ export const project: {
 }[] = [
   {
     title: "Deep Sea Portfolio",
-    year: "2026",
+    year: "2025",
     description:
       "A modern, highly immersive personal portfolio website featuring a 'Deep Sea Expedition' theme. Built with React, TypeScript, and Vite, it leverages smooth animations, glassmorphism design, and global atmospheric effects to create a premium user experience.",
     stack: [
@@ -532,7 +532,7 @@ export const project: {
   },
   {
     title: "Distributor Management System",
-    year: "2024",
+    year: "2025",
     description:
       "Nusantara Network Route Planner is a web and mobile-based information system designed to optimize distribution routes and field task management for PT Nusantara Network. Built with ReactJS, React Native, and Google Distance Matrix API, it uses a Genetic Algorithm to calculate the most efficient delivery routes. The system enables real-time employee tracking, customer data management, and automated route planning, significantly improving operational efficiency compared to manual methods.",
     stack: [
@@ -545,6 +545,24 @@ export const project: {
     ],
     imageUrl: "projects/nusantara-net.png",
     projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
+  },
+  {
+    title: "Dekoor",
+    year: "2024",
+    description:
+      "Dekoor is a modern e-commerce platform designed for discovering and purchasing premium furniture. It features a curated catalog of furniture sets, best sellers, and an elegant UI to provide a seamless shopping experience.",
+    stack: ["Next.js", "TypeScript", "TailwindCSS"],
+    imageUrl: "projects/dekoor.png",
+    projectUrl: "https://github.com/alivveee/dekoor",
+  },
+  {
+    title: "Notes App",
+    year: "2024",
+    description:
+      "A full-featured notes application built with React and Vite. It allows users to create, read, update, and delete notes, featuring a responsive design and REST API integration for data persistence.",
+    stack: ["React", "JavaScript", "Vite", "CSS"],
+    imageUrl: "projects/notes-app.png",
+    projectUrl: "https://github.com/alivveee/Notes-App",
   },
 ];
 
@@ -602,5 +620,23 @@ export const project_id: {
     ],
     imageUrl: "projects/nusantara-net.png",
     projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
+  },
+  {
+    title: "Dekoor",
+    year: "2024",
+    description:
+      "Dekoor adalah platform e-commerce modern yang dirancang untuk menemukan dan membeli furnitur premium. Platform ini memiliki katalog furnitur pilihan, produk terlaris, dan antarmuka elegan untuk memberikan pengalaman berbelanja yang mulus.",
+    stack: ["Next.js", "TypeScript", "TailwindCSS"],
+    imageUrl: "projects/dekoor.png",
+    projectUrl: "https://github.com/alivveee/dekoor",
+  },
+  {
+    title: "Notes App",
+    year: "2024",
+    description:
+      "Aplikasi catatan berfitur lengkap yang dibangun dengan React dan Vite. Aplikasi ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus catatan, dilengkapi desain responsif dan integrasi REST API untuk penyimpanan data.",
+    stack: ["React", "JavaScript", "Vite", "CSS"],
+    imageUrl: "projects/notes-app.png",
+    projectUrl: "https://github.com/alivveee/Notes-App",
   },
 ];

@@ -177,9 +177,9 @@ function ProjectArtifact({
       <div className="absolute inset-0 bg-gradient-to-b from-[#01030b]/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-700" />
 
       {/* ── Glass Panel (Hover reveals details) ── */}
-      <div className="absolute inset-0 p-8 flex flex-col justify-end">
+      <div className="absolute inset-x-0 bottom-0 p-8">
         {/* Content wrapper with transform to animate up on hover */}
-        <div className="relative transform translate-y-24 group-hover:translate-y-0 transition-transform duration-700 ease-[0.22,1,0.36,1] flex flex-col gap-6">
+        <div className="relative transform group-hover:-translate-y-[220px] transition-transform duration-700 ease-[0.22,1,0.36,1]">
           
           {/* Always visible: Title & Year */}
           <div className="flex flex-col gap-1">
@@ -195,7 +195,7 @@ function ProjectArtifact({
           </div>
 
           {/* Revealed on hover: Description & Stack */}
-          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex flex-col gap-6">
+          <div className="absolute top-full left-0 w-full pt-6 opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex flex-col gap-6 pointer-events-none group-hover:pointer-events-auto">
             <p className="text-sm lg:text-base text-ocean-text/70 line-clamp-3 font-light leading-relaxed">
               {description}
             </p>
