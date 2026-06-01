@@ -4,7 +4,7 @@ import { useTranslation } from "react-i18next";
 const Footer = () => {
   const { t } = useTranslation();
   return (
-    <footer data-bg-color="#010208" className="relative w-full bg-transparent text-white pt-32 pb-12 overflow-hidden border-t border-white/[0.03]">
+    <footer data-bg-color="#010208" className="relative z-10 w-full bg-transparent text-white pt-32 pb-12 overflow-hidden border-t border-white/[0.03]">
       <div className="relative z-10 max-container padding-container flex flex-col items-center">
         {/* End of Journey Marker */}
         <div className="flex flex-col items-center gap-8 mb-24">

@@ -120,7 +120,7 @@ export default function PortfolioDetail() {
   return (
     <div className="relative min-h-screen bg-abyss text-ocean-text py-24 px-6 md:px-12 lg:px-24 overflow-hidden">
       {/* ══════ BACKGROUND: THE DEEP SEA ══════ */}
-      <div className="fixed inset-0 z-0 bg-gradient-to-b from-deep-ocean to-abyss opacity-100" />
+      <div className="fixed inset-0 z-0 bg-gradient-to-b from-deep-ocean to-abyss opacity-100 pointer-events-none" />
       <div className="fixed inset-0 z-0 bg-[radial-gradient(ellipse_at_top_right,_rgba(91,91,247,0.05)_0%,_transparent_60%)] pointer-events-none" />
       <DeepSeaParticles count={25} className="opacity-20 fixed inset-0 z-0" />
 
