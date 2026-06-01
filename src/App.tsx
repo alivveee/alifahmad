@@ -7,27 +7,31 @@ import ProjectDetail from "./pages/ProjectDetail";
 import PortfolioDetail from "./pages/PortfolioDetail";
 import DepthIndicator from "./components/ui/DepthIndicator";
 import GlobalAtmosphere from "./components/GlobalAtmosphere";
+import DeepSeaCursor from "./components/ui/DeepSeaCursor";
 
 function App() {
   return (
-    <Routes>
-      <Route
-        path="/"
-        element={
-          <div id="home">
-            <GlobalAtmosphere />
-            <DepthIndicator />
-            <HeroSection />
-            <AboutSection />
-            <ExperienceSection />
-            <ProjectsSection />
-          </div>
-        }
-      />
+    <>
+      <DeepSeaCursor />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <div id="home">
+              <GlobalAtmosphere />
+              <DepthIndicator />
+              <HeroSection />
+              <AboutSection />
+              <ExperienceSection />
+              <ProjectsSection />
+            </div>
+          }
+        />
 
-      <Route path="/project/:id" element={<ProjectDetail />} />
-      <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
-    </Routes>
+        <Route path="/project/:id" element={<ProjectDetail />} />
+        <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
+      </Routes>
+    </>
   );
 }
 

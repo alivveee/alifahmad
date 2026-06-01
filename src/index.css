@@ -151,12 +151,17 @@
 @layer base {
   body {
     font-family: "Poppins", sans-serif;
+    cursor: none;
   }
   button:hover {
-    cursor: pointer;
+    cursor: none;
   }
   a:hover {
-    cursor: pointer;
+    cursor: none;
+  }
+  
+  a, button, [role="button"], .cursor-pointer {
+    cursor: none !important;
   }
 
   html.lenis,
