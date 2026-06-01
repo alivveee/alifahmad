@@ -65,7 +65,7 @@ const ExperienceSection = () => {
         </motion.div>
 
         {/* ══════ VERTICAL TIMELINE ══════ */}
-        <div ref={containerRef} className="relative max-w-4xl mx-auto">
+        <div ref={containerRef} className="relative max-w-5xl lg:max-w-6xl mx-auto">
           {/* Background Track Line */}
           <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
           
@@ -117,11 +117,45 @@ const ExperienceSection = () => {
                     onClick={() => navigate(`/portfolio/${exp.slug}`)}
                     className="w-full md:w-1/2 pl-16 md:pl-0 cursor-pointer"
                   >
-                    <div className="relative p-6 md:p-8 bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-xl border border-white/5 hover:border-glow-blue/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(91,91,247,0.15)] group/card">
+                    <div className="relative p-8 md:p-10 lg:p-12 min-h-[280px] lg:min-h-[340px] bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-xl border border-white/5 hover:border-glow-blue/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(91,91,247,0.2)] group/card flex flex-col justify-center">
                       {/* Inner subtle glow */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-glow-blue/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
+                      <div className="absolute inset-0 bg-gradient-to-br from-glow-blue/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
 
-                      <div className="relative z-10 flex flex-col gap-4">
+                      {/* Visual Artifact Preview on Hover (Scattered Collage) */}
+                      {exp.galleryImages && exp.galleryImages.length > 0 && (
+                        <div className="absolute inset-0 z-0 opacity-0 group-hover/card:opacity-100 transition-all duration-700 pointer-events-none overflow-hidden rounded-2xl">
+                          
+                          
+                          {/* Image Container */}
+                          <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[75%] h-[90%] lg:w-[70%] lg:h-[85%] flex items-center justify-center perspective-[1000px]">
+                            {exp.galleryImages.slice(0, 3).reverse().map((img, idx) => {
+                              const total = Math.min(exp.galleryImages!.length, 3);
+                              const i = total - 1 - idx; // 0 is top, 1 is middle, 2 is bottom
+                              
+                              return (
+                                <img 
+                                  key={i}
+                                  src={img} 
+                                  alt={`preview-${i}`}
+                                  className={`absolute w-full h-full object-cover rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 ease-[0.22,1,0.36,1]
+                                    ${
+                                      i === 2 ? "z-10 group-hover/card:translate-x-12 group-hover/card:translate-y-8 group-hover/card:rotate-[15deg] group-hover/card:scale-90 opacity-10 mix-blend-luminosity delay-200" :
+                                      i === 1 ? "z-20 group-hover/card:translate-x-4 group-hover/card:translate-y-0 group-hover/card:rotate-[5deg] group-hover/card:scale-95 opacity-30 mix-blend-luminosity delay-100" :
+                                      "z-30 group-hover/card:-translate-x-6 group-hover/card:-translate-y-6 group-hover/card:-rotate-[4deg] group-hover/card:scale-100 opacity-60 mix-blend-normal delay-0"
+                                    } 
+                                    translate-y-32 translate-x-32 rotate-[35deg] scale-125
+                                  `}
+                                />
+                              );
+                            })}
+                          </div>
+
+                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] from-30% via-[#020617]/90 to-transparent z-40" />
+                        <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/50 via-transparent to-[#020617]/80 z-40" />
+                      </div>
+                    )}
+
+                    <div className="relative z-10 flex flex-col gap-4 lg:gap-5 md:max-w-[90%]">
                         <div className="flex items-center justify-between gap-4">
                           <div className="flex items-center gap-3">
                             <div className="w-10 h-10 shrink-0 bg-white/[0.03] border border-white/10 rounded-xl flex items-center justify-center shadow-inner group-hover/card:border-glow-blue/50 transition-colors duration-300">
