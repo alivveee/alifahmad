@@ -1,18 +1,23 @@
-import { motion } from "framer-motion";
-import { FaArrowRight } from "react-icons/fa";
+import { motion, useScroll } from "framer-motion";
+import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { project as project_en, project_id } from "../../utils/data";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 
+import { useRef } from "react";
+
 const ProjectsSection = () => {
   const { t, i18n } = useTranslation();
   const project = i18n.language.startsWith("id") ? project_id : project_en;
+  
+  const carouselRef = useRef<HTMLDivElement>(null);
+  const { scrollXProgress } = useScroll({ container: carouselRef });
 
   return (
     <section
       id="projects"
       data-bg-color="#020617"
-      className="relative py-24 bg-transparent w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
+      className="relative py-32 bg-transparent w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
     >
       {/* ══════ BACKGROUND: THE ABYSS ══════ */}
       
@@ -22,47 +27,105 @@ const ProjectsSection = () => {
       {/* Subtle bottom glow to indicate discoveries */}
       <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 z-0 bg-gradient-to-t from-bioluminescent-purple/5 to-transparent blur-[120px] pointer-events-none" />
 
-      <div className="relative z-10 flex flex-col items-center">
-        <div className="max-container padding-container w-full mb-16">
+      <div className="relative z-10 flex flex-col items-center w-full">
+        <div className="max-container padding-container w-full mb-16 md:mb-24">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6, ease: "easeOut" }}
-            className="flex flex-col items-center md:items-start"
+            className="flex flex-col items-center md:items-start w-full"
           >
-            <div className="flex items-center gap-4 mb-4">
-              <div className="w-12 h-px bg-glow-blue/40" />
-              <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
-                {t("projects.title")}
-              </h2>
-              <div className="md:hidden w-12 h-px bg-glow-blue/40" />
+            <div className="flex flex-col md:flex-row md:items-end justify-between w-full">
+              <div className="flex flex-col items-center md:items-start">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-px bg-glow-blue/40" />
+                  <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
+                    {t("projects.title")}
+                  </h2>
+                  <div className="md:hidden w-12 h-px bg-glow-blue/40" />
+                </div>
+                <h3 className="text-4xl md:text-5xl lg:text-6xl font-bold text-ocean-text text-center md:text-left tracking-tight">
+                  Underwater Artifacts
+                </h3>
+                <p className="mt-6 text-ocean-text/50 font-light text-base md:text-lg text-center md:text-left max-w-2xl leading-relaxed">
+                  Hover over these discoveries to reveal their hidden details and technologies. Scroll horizontally to explore the depths.
+                </p>
+              </div>
+              
+              {/* Navigation Arrows for Desktop */}
+              <div className="hidden md:flex items-center gap-4 mt-8 md:mt-0 pb-2">
+                <button 
+                  onClick={() => carouselRef.current?.scrollBy({ left: -window.innerWidth * 0.5, behavior: "smooth" })}
+                  className="p-4 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-glow-blue/50 transition-all duration-300 group shadow-lg"
+                  aria-label="Scroll Left"
+                >
+                  <FaArrowLeft className="w-5 h-5 text-ocean-text/70 group-hover:text-glow-blue transition-colors" />
+                </button>
+                <button 
+                  onClick={() => carouselRef.current?.scrollBy({ left: window.innerWidth * 0.5, behavior: "smooth" })}
+                  className="p-4 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-glow-blue/50 transition-all duration-300 group shadow-lg"
+                  aria-label="Scroll Right"
+                >
+                  <FaArrowRight className="w-5 h-5 text-ocean-text/70 group-hover:text-glow-blue transition-colors" />
+                </button>
+              </div>
             </div>
-            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ocean-text text-center md:text-left">
-              Underwater Artifacts
-            </h3>
-            <p className="mt-4 text-ocean-text/50 font-light text-sm md:text-base text-center md:text-left max-w-xl">
-              Hover over these discoveries to reveal their hidden details and technologies.
-            </p>
           </motion.div>
         </div>
 
-        {/* ══════ PROJECT ARTIFACTS GRID ══════ */}
-        <div className="max-container padding-container w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
-          {project.map((proj, index) => (
-            <ProjectArtifact
-              key={index}
-              index={index}
-              title={proj.title}
-              year={proj.year}
-              description={proj.description}
-              stack={proj.stack}
-              imageUrl={proj.imageUrl}
-              projectUrl={proj.projectUrl}
-              t={t}
-            />
-          ))}
+        {/* ══════ PREMIUM SHOWCASE CAROUSEL ══════ */}
+        <div className="w-full relative">
+          {/* Edge Fade Masks for Premium Feel */}
+          <div className="absolute top-0 bottom-0 left-0 w-12 md:w-48 bg-gradient-to-r from-abyss to-transparent z-20 pointer-events-none" />
+          <div className="absolute top-0 bottom-0 right-0 w-12 md:w-48 bg-gradient-to-l from-abyss to-transparent z-20 pointer-events-none" />
+
+          {/* Scroll Container */}
+          <div 
+            ref={carouselRef}
+            className="flex gap-6 md:gap-10 overflow-x-auto snap-x snap-mandatory pb-12 pt-4 scrollbar-hide items-center"
+          >
+            {/* Start Spacer to allow centering of first item */}
+            <div className="w-[5vw] md:w-[15vw] lg:w-[20vw] shrink-0" />
+
+            {project.map((proj, index) => (
+              <div 
+                key={index} 
+                className="w-[85vw] sm:w-[70vw] md:w-[50vw] lg:w-[480px] xl:w-[600px] shrink-0 snap-center"
+              >
+                <ProjectArtifact
+                  index={index}
+                  title={proj.title}
+                  year={proj.year}
+                  description={proj.description}
+                  stack={proj.stack}
+                  imageUrl={proj.imageUrl}
+                  projectUrl={proj.projectUrl}
+                  t={t}
+                />
+              </div>
+            ))}
+
+            {/* End Spacer to allow centering of last item */}
+            <div className="w-[5vw] md:w-[15vw] lg:w-[20vw] shrink-0" />
+          </div>
         </div>
+
+        {/* ══════ CAROUSEL PROGRESS INDICATOR ══════ */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 1, delay: 0.5 }}
+          className="mt-8 md:mt-12 w-full max-w-xs md:max-w-md px-8"
+        >
+          <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden relative">
+            <motion.div 
+              className="absolute top-0 left-0 bottom-0 bg-glow-blue rounded-full shadow-[0_0_10px_rgba(124,140,255,0.8)]"
+              style={{ scaleX: scrollXProgress, transformOrigin: "0% 50%" }}
+            />
+          </div>
+        </motion.div>
       </div>
     </section>
   );

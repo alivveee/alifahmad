@@ -23,10 +23,6 @@
   --color-ocean-text: #D9E7FF;
 }
 
-/* ═══════════════════════════════════════════════════════════════
-   DEEP SEA HERO — Ocean Depth Effects
-   ═══════════════════════════════════════════════════════════════ */
-
 @layer components {
   .water-caustics {
     position: absolute;
@@ -140,6 +136,15 @@
 
   .scroll-bob {
     animation: gentle-bob 2.5s ease-in-out infinite;
+  }
+
+  /* Hide scrollbar for carousel but allow scrolling */
+  .scrollbar-hide {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
   }
 }
 

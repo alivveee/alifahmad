@@ -70,9 +70,9 @@ const Navbar = () => {
       />
       <nav
         aria-label="Main navigation"
-        className="fixed left-0 right-0 z-50 transition-all duration-500 ease-out top-4 px-4 md:px-8"
+        className="fixed left-0 right-0 z-50 transition-all duration-500 ease-out top-4 px-4 md:px-8 pointer-events-none"
       >
-        <div className="mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out max-w-3xl bg-white/[0.02] rounded-2xl border border-white/5 shadow-xl shadow-black/50 py-2 px-5 hover:bg-white/[0.04] hover:border-white/10">
+        <div className="mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out max-w-3xl bg-white/[0.02] rounded-2xl border border-white/5 shadow-xl shadow-black/50 py-2 px-5 hover:bg-white/[0.04] hover:border-white/10 pointer-events-auto">
           <Logo onNavClick={handleNavClick} />
           <DesktopMenu t={t} onNavClick={handleNavClick} />
           <div className="flex items-center gap-3 md:gap-4">
@@ -108,7 +108,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Menu */}
-        <div className="absolute left-0 right-0 mx-auto transition-all duration-500 ease-out overflow-hidden z-40 top-[75px] max-w-3xl px-4 md:px-8">
+        <div className="absolute left-0 right-0 mx-auto transition-all duration-500 ease-out overflow-hidden z-40 top-[75px] max-w-3xl px-4 md:px-8 pointer-events-auto">
           <div
             className={`w-full backdrop-blur-lg bg-abyss/95 transition-all duration-500 ease-out rounded-2xl border border-white/5 shadow-xl
             ${isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"}`}

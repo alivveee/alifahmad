@@ -500,6 +500,21 @@ export const project: {
   projectUrl: string;
 }[] = [
   {
+    title: "Deep Sea Portfolio",
+    year: "2026",
+    description:
+      "A modern, highly immersive personal portfolio website featuring a 'Deep Sea Expedition' theme. Built with React, TypeScript, and Vite, it leverages smooth animations, glassmorphism design, and global atmospheric effects to create a premium user experience.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
+    imageUrl: "projects/portfolio-alifahmad.png",
+    projectUrl: "https://github.com/alivveee/alifahmad-porto",
+  },
+  {
     title: "PAUD Connect",
     year: "2025",
     description:
@@ -541,6 +556,21 @@ export const project_id: {
   imageUrl: string;
   projectUrl: string;
 }[] = [
+  {
+    title: "Deep Sea Portfolio",
+    year: "2026",
+    description:
+      "Situs web portofolio pribadi modern dan sangat imersif dengan tema 'Deep Sea Expedition'. Dibangun menggunakan React, TypeScript, dan Vite, proyek ini memanfaatkan animasi yang mulus, desain glassmorphism, dan efek atmosfer global untuk menciptakan pengalaman pengguna yang premium.",
+    stack: [
+      "React",
+      "TypeScript",
+      "Vite",
+      "TailwindCSS",
+      "Framer Motion",
+    ],
+    imageUrl: "projects/portfolio-alifahmad.png",
+    projectUrl: "https://github.com/alivveee/alifahmad-porto",
+  },
   {
     title: "PAUD Connect",
     year: "2025",

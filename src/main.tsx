@@ -3,7 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./index.css";
 import App from "./App.tsx";
 import Navbar from "./components/Navbar.tsx";
-import ProgressBar from "./components/ProgressBar.tsx";
+import ProgressBar from "./components/ui/ProgressBar.tsx";
 import SmoothScrolling from "./components/SmoothScrolling.tsx";
 import ScrollToTop from "./components/ScrollToTop.tsx";
 import Footer from "./components/Footer.tsx";
