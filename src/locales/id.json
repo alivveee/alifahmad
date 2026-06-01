@@ -6,32 +6,21 @@
     "projects": "Proyek"
   },
   "hero": {
-    "hello": "Halo, Saya",
-    "a": "Seorang",
-    "roles": {
-      "0": "Frontend Engineer",
-      "1": "Web Developer",
-      "2": "Developer Fullstack-Capable",
-      "3": "Mobile Developer"
-    },
-    "description_1": "Bersemangat dalam merancang aplikasi web yang luar biasa dan berpusat pada pengguna, saya mengkhususkan diri dalam membangun antarmuka pengguna yang sangat responsif dan dapat diakses. Sebagai seorang ",
-    "description_bold": "frontend engineer",
-    "description_2": ", saya terus mengeksplorasi teknologi modern dan selalu siap berkolaborasi dalam membangun produk digital yang andal dan berdampak.",
-    "see_cv": "Lihat CV Saya",
+    "eyebrow": "Menyelami Kedalaman Digital",
+    "headline": "Frontend Engineer",
+    "subheadline": "dengan Kemampuan Full-Stack",
+    "description": "Membangun aplikasi web, sistem bisnis, dan solusi berbantuan AI yang terukur menggunakan React, Next.js, TypeScript, dan praktik pengembangan modern.",
+    "see_cv": "Lihat Resume",
     "projects": "Proyek",
-    "portfolio": "Portofolio",
+    "portfolio": "Eksplorasi Karya Saya",
     "scroll_down": "Gulir ke Bawah"
   },
   "about": {
     "title": "Tentang Saya",
-    "p1_1": "Saya seorang",
-    "p1_bold1": "Frontend Engineer",
-    "p1_2": "dengan",
-    "p1_bold2": "1+ tahun pengalaman profesional",
-    "p1_3": "membangun aplikasi web yang terukur dan responsif menggunakan",
-    "p1_bold3": "React.js, Next.js, TypeScript",
-    "p1_4": ", dan teknologi frontend modern.",
-    "p2": "Saya memiliki rekam jejak yang terbukti dalam menghadirkan dasbor kompleks, platform marketplace, aplikasi seluler, profil perusahaan, dan banyak lagi di lingkungan startup yang serba cepat. Saya sangat terampil dalam berkolaborasi dengan tim lintas fungsi untuk menghadirkan aplikasi yang siap produksi dan menerjemahkan desain UI/UX menjadi antarmuka yang bersih, dapat digunakan kembali, dan responsif.",
+    "headline": "Frontend Engineer dengan Kemampuan Full-Stack",
+    "p1": "Saya seorang Frontend Engineer yang berfokus pada membangun aplikasi web, sistem bisnis, dan produk digital modern yang terukur.",
+    "p2": "Keahlian utama saya adalah menciptakan pengalaman pengguna yang responsif, dapat diakses, dan intuitif menggunakan React, Next.js, TypeScript, dan teknologi frontend modern. Di luar frontend, saya juga bekerja lintas stack, mengintegrasikan API, basis data, dan proses bisnis untuk memberikan solusi lengkap.",
+    "p3": "Saya senang mengubah kebutuhan yang kompleks menjadi aplikasi yang siap produksi dan mudah dipelihara yang memberikan nilai nyata.",
     "lets_connect": "Mari terhubung atau sekadar menyapa",
     "skills": "Keahlian"
   },

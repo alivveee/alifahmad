@@ -3,7 +3,6 @@ import { cubicBezier, motion } from "framer-motion";
 import { FaArrowDown } from "react-icons/fa";
 import { IoChevronDownSharp } from "react-icons/io5";
 import { FiArrowUpRight } from "react-icons/fi";
-import { TypeAnimation } from "react-type-animation";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 
@@ -30,18 +29,7 @@ const fadeUp = {
 
 const HeroSection = () => {
   const lenis = useLenis();
-  const { t, i18n } = useTranslation();
-
-  const roles = [
-    t("hero.roles.0"),
-    1500,
-    t("hero.roles.1"),
-    1500,
-    t("hero.roles.2"),
-    1500,
-    t("hero.roles.3"),
-    1500,
-  ];
+  const { t } = useTranslation();
 
   return (
     <section
@@ -57,46 +45,33 @@ const HeroSection = () => {
         animate="visible"
       >
         <div className="flex flex-col justify-center items-center text-center w-full max-w-5xl mx-auto">
+          {/* ── Eyebrow ── */}
+          <motion.div
+            className="text-sm md:text-base tracking-[0.3em] uppercase text-ocean-text/60 font-medium mb-6"
+            variants={fadeUp}
+          >
+            {t("hero.eyebrow")}
+          </motion.div>
+
           {/* ── Main Headline ── */}
           <motion.h1
-            className="text-4xl md:text-5xl lg:text-6xl 2xl:text-7xl font-bold leading-tight text-ocean-text"
+            className="text-3xl md:text-4xl lg:text-5xl 2xl:text-6xl font-bold tracking-tight text-ocean-text mb-8"
             variants={fadeUp}
           >
-            {t("hero.hello")}{" "}
-            <span className="bio-gradient-text">Alif Ahmad Mukhtar Darma Hidayat</span>
+            {t("hero.headline")} <span className="font-light text-ocean-text/50">{t("hero.subheadline")}</span>
           </motion.h1>
-
-          {/* ── Typing Role ── */}
-          <motion.h2
-            className="text-xl md:text-2xl lg:text-3xl text-ocean-text/50 mt-4 font-light"
-            variants={fadeUp}
-          >
-            <span>{t("hero.a")} </span>
-            <span className="font-semibold text-ocean-text/90">
-              <TypeAnimation
-                key={i18n.language}
-                sequence={roles}
-                wrapper="span"
-                repeat={Infinity}
-                cursor={true}
-                style={{ display: "inline-block" }}
-              />
-            </span>
-          </motion.h2>
 
           {/* ── Description ── */}
           <motion.p
-            className="mt-8 text-sm/relaxed md:text-base/relaxed text-ocean-text/40 max-w-2xl leading-relaxed"
+            className="text-base/relaxed md:text-lg/relaxed text-ocean-text/40 max-w-xl mx-auto leading-relaxed mb-12"
             variants={fadeUp}
           >
-            {t("hero.description_1")}
-            <b className="text-ocean-text/70">{t("hero.description_bold")}</b>
-            {t("hero.description_2")}
+            {t("hero.description")}
           </motion.p>
 
           {/* ── CTA Buttons ── */}
           <motion.div
-            className="flex gap-4 mt-10 justify-center"
+            className="flex gap-4 justify-center"
             variants={fadeUp}
           >
             {/* Primary CTA */}

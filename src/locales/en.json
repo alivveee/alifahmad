@@ -6,32 +6,21 @@
     "projects": "Projects"
   },
   "hero": {
-    "hello": "Hello, I'm",
-    "a": "A",
-    "roles": {
-      "0": "Frontend Engineer",
-      "1": "Web Developer",
-      "2": "Fullstack-Capable Developer",
-      "3": "Mobile Developer"
-    },
-    "description_1": "Passionate about crafting exceptional, user-centric web applications, I specialize in building highly responsive and accessible user interfaces. As a ",
-    "description_bold": "frontend engineer",
-    "description_2": ", I constantly explore modern technologies and am always ready to collaborate on building reliable and impactful digital products.",
-    "see_cv": "See My CV",
+    "eyebrow": "Diving Into Digital Depths",
+    "headline": "Frontend Engineer",
+    "subheadline": "with Full-Stack Capabilities",
+    "description": "Building scalable web applications, business systems, and AI-assisted solutions with React, Next.js, TypeScript, and modern development practices.",
+    "see_cv": "View Resume",
     "projects": "Projects",
-    "portfolio": "Portfolio",
+    "portfolio": "Dive Into My Work",
     "scroll_down": "Scroll Down"
   },
   "about": {
     "title": "About Me",
-    "p1_1": "I'm a",
-    "p1_bold1": "Frontend Engineer",
-    "p1_2": "with",
-    "p1_bold2": "1+ year of professional experience",
-    "p1_3": "building scalable and responsive web applications using",
-    "p1_bold3": "React.js, Next.js, TypeScript",
-    "p1_4": ", and modern frontend technologies.",
-    "p2": "I have a proven track record of delivering complex dashboards, marketplace platforms, mobile apps, company profiles, and many more in fast-paced startup environments. I am highly skilled in collaborating with cross-functional teams to deliver production-ready applications and translating UI/UX designs into clean, reusable, and responsive interfaces.",
+    "headline": "Frontend Engineer with Full-Stack Capabilities",
+    "p1": "I'm a Frontend Engineer focused on building scalable web applications, business systems, and modern digital products.",
+    "p2": "My primary expertise is creating responsive, accessible, and intuitive user experiences using React, Next.js, TypeScript, and modern frontend technologies. Beyond the frontend, I also work across the stack, integrating APIs, databases, and business processes to deliver complete solutions.",
+    "p3": "I enjoy transforming complex requirements into maintainable, production-ready applications that create real value.",
     "lets_connect": "Let's connect or just say Hi",
     "skills": "Skills"
   },

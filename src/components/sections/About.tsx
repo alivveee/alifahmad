@@ -125,22 +125,18 @@ const AboutSection = () => {
                   </h2>
                 </div>
                 
-                <div className="flex flex-col gap-6 text-ocean-text/60 text-lg leading-relaxed font-light">
+                <div className="flex flex-col gap-6 text-ocean-text/60 text-base md:text-lg leading-relaxed font-light">
+                  <h3 className="text-2xl md:text-3xl text-ocean-text font-semibold tracking-tight">
+                    {t('about.headline')}
+                  </h3>
                   <p>
-                    {t('about.p1_1')}{" "}
-                    <strong className="text-ocean-text font-medium">{t('about.p1_bold1')}</strong>{" "}
-                    {t('about.p1_2')}{" "}
-                    <strong className="text-ocean-text font-medium">
-                      {t('about.p1_bold2')}
-                    </strong>{" "}
-                    {t('about.p1_3')}{" "}
-                    <strong className="text-ocean-text font-medium">
-                      {t('about.p1_bold3')}
-                    </strong>
-                    {t('about.p1_4')}
+                    {t('about.p1')}
                   </p>
                   <p>
                     {t('about.p2')}
+                  </p>
+                  <p>
+                    {t('about.p3')}
                   </p>
                 </div>
               </motion.div>
@@ -190,15 +186,12 @@ const AboutSection = () => {
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="flex justify-center lg:justify-end items-center w-full"
             >
-              <div className="relative group w-[280px] sm:w-[320px] aspect-[3/4] my-4">
-                {/* Glowing border effect */}
-                <div className="absolute -inset-0.5 bg-gradient-to-b from-glow-blue/30 to-bioluminescent-purple/10 rounded-[24px] blur opacity-50 group-hover:opacity-100 transition duration-500" />
-                
-                {/* Background offset card (glassy) */}
-                <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[20px] translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
+              <div className="relative group w-[280px] sm:w-[320px] lg:w-[360px] aspect-square my-4 rounded-full p-3 md:p-4 bg-gradient-to-br from-slate-800/80 to-[#020617] shadow-[0_0_40px_rgba(0,0,0,0.5),inset_0_0_20px_rgba(0,0,0,0.8)] border border-slate-700/50">
+                {/* Glowing edge effect inside the window */}
+                <div className="absolute inset-3 md:inset-4 rounded-full border border-glow-blue/20 shadow-[inset_0_0_30px_rgba(124,140,255,0.15)] z-10 pointer-events-none transition duration-500 group-hover:border-glow-blue/50 group-hover:shadow-[inset_0_0_50px_rgba(124,140,255,0.3)]" />
                 
                 {/* Image container */}
-                <div className="relative w-full h-full rounded-[20px] overflow-hidden border border-white/10 bg-abyss/50 backdrop-blur-sm">
+                <div className="relative w-full h-full rounded-full overflow-hidden bg-abyss/50 backdrop-blur-sm">
                   <motion.img
                     src="/alif-ahmad-photo.jpg"
                     alt="Alif Ahmad Mukhtar Darma Hidayat photo"
