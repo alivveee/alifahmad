@@ -3,14 +3,14 @@ import { motion } from "framer-motion";
 import { useLocation } from "react-router-dom";
 
 const ScrollBackground = () => {
-  const [bgColor, setBgColor] = useState("#09090b"); // Default to zinc-950
+  const [bgColor, setBgColor] = useState("#020617"); // Default to zinc-950
   const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const elements = Array.from(document.querySelectorAll("[data-bg-color]"));
       if (elements.length === 0) {
-        setBgColor("#09090b");
+        setBgColor("#020617");
         return;
       }
 

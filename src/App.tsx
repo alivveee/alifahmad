@@ -5,6 +5,8 @@ import HeroSection from "./components/sections/Hero";
 import ProjectsSection from "./components/sections/Projects";
 import ProjectDetail from "./pages/ProjectDetail";
 import PortfolioDetail from "./pages/PortfolioDetail";
+import DepthIndicator from "./components/ui/DepthIndicator";
+import GlobalAtmosphere from "./components/GlobalAtmosphere";
 
 function App() {
   return (
@@ -13,7 +15,8 @@ function App() {
         path="/"
         element={
           <div id="home">
-            {/* <BlobCursor /> */}
+            <GlobalAtmosphere />
+            <DepthIndicator />
             <HeroSection />
             <AboutSection />
             <ExperienceSection />

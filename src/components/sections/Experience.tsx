@@ -1,128 +1,182 @@
-import { motion } from "framer-motion";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { useRef } from "react";
 import { IoSchool } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
-import { experiences as experiences_en, experiences_id, type Experience } from "../../utils/data";
+import {
+  experiences as experiences_en,
+  experiences_id,
+  type Experience,
+} from "../../utils/data";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+
+const depthMarkers = ["10m", "50m", "100m", "250m", "500m", "1000m", "Abyss"];
 
 const ExperienceSection = () => {
   const { t, i18n } = useTranslation();
   const navigate = useNavigate();
-  const experiences = i18n.language.startsWith('id') ? experiences_id : experiences_en;
+  const experiences = i18n.language.startsWith("id")
+    ? experiences_id
+    : experiences_en;
+
+  const containerRef = useRef<HTMLDivElement>(null);
+  const { scrollYProgress } = useScroll({
+    target: containerRef,
+    offset: ["start center", "end center"],
+  });
+
+  const lineHeight = useTransform(scrollYProgress, [0, 1], [0, 1]);
 
   const getIcon = (iconType: Experience["type"]) => {
     switch (iconType) {
       case "work":
-        return <MdWork className="w-4 h-4 text-white" />;
+        return <MdWork className="w-4 h-4 text-glow-blue" />;
       case "education":
-        return <IoSchool className="w-4 h-4 text-white" />;
+        return <IoSchool className="w-4 h-4 text-bioluminescent-purple" />;
       default:
-        return <MdWork className="w-4 h-4 text-white" />;
+        return <MdWork className="w-4 h-4 text-glow-blue" />;
     }
   };
 
   return (
-    <section id="portfolio" data-bg-color="#09090b" className="py-14 bg-transparent text-white scroll-mt-20 md:scroll-mt-24">
-      <div className="padding-container max-container">
-        <motion.h2
+    <section
+      id="portfolio"
+      data-bg-color="#020617"
+      className="relative py-24 bg-transparent text-ocean-text w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
+    >
+      <div className="relative z-10 max-container padding-container">
+        <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="text-4xl md:text-5xl font-bold mb-8 text-center md:text-left"
+          transition={{ duration: 0.6, ease: "easeOut" }}
+          className="flex flex-col items-center mb-20"
         >
-          {t('experience.title')}
-        </motion.h2>
+          <div className="flex items-center gap-4 mb-4">
+            <div className="w-12 h-px bg-glow-blue/40" />
+            <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
+              {t("experience.title")}
+            </h2>
+            <div className="w-12 h-px bg-glow-blue/40" />
+          </div>
+          <p className="text-ocean-text/50 text-center max-w-lg font-light text-sm md:text-base">
+            Descending into the depths of my professional journey.
+          </p>
+        </motion.div>
 
-        <div className="flex flex-col gap-3">
-          {experiences.map((exp, index) => (
-            <motion.div
-              key={exp.id}
-              onClick={() => navigate(`/portfolio/${exp.slug}`)}
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, amount: 0.2 }}
-              transition={{ duration: 0.4, delay: index * 0.1 }}
-              className={`py-5 flex flex-col gap-3 cursor-pointer group/card transition-colors hover:bg-white/[0.02] -mx-4 px-4 rounded-xl ${
-                index !== experiences.length - 1 ? "border-b border-zinc-800/80" : ""
-              }`}
-            >
-              {/* Item Header: Icon + Title + Badge + Period */}
-              <div className="flex items-start justify-between gap-2">
-                <div className="flex items-center gap-3 flex-wrap flex-1 min-w-0">
-                  {/* Icon */}
-                  <div className="w-10 h-10 shrink-0 bg-zinc-900 border border-zinc-800 rounded-lg flex items-center justify-center text-zinc-400 group-hover/card:text-indigo-400 group-hover/card:border-indigo-500/30 transition-colors">
-                    {getIcon(exp.type)}
-                  </div>
-                  {/* Title + Badge */}
-                  <div className="flex flex-col gap-1 min-w-0">
-                    <div className="flex items-center gap-2 flex-wrap">
-                      <h3 className="text-lg md:text-xl font-bold text-zinc-100 leading-tight group-hover/card:text-indigo-400 transition-colors">
-                        {exp.title}
-                      </h3>
-                      {exp.subtitle && (
-                        <span className="text-[10px] text-indigo-300 font-medium bg-indigo-500/10 px-2 py-0.5 rounded border border-indigo-500/20 shrink-0">
-                          {exp.subtitle}
-                        </span>
-                      )}
-                    </div>
-                    {/* Company */}
-                    <div className="text-sm font-medium text-zinc-400">
-                      {exp.company.text}
-                    </div>
-                  </div>
-                </div>
- 
-                {/* Period */}
-                <div className="flex items-center gap-1.5 text-xs font-medium text-zinc-500 shrink-0 pt-1">
-                  <svg
-                    className="w-3.5 h-3.5"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                    />
-                  </svg>
-                  <span className="hidden sm:inline">{exp.period}</span>
-                </div>
-              </div>
- 
-              {/* Period (Mobile fallback) */}
-              <div className="flex sm:hidden items-center gap-1.5 text-xs font-medium text-zinc-500">
-                <svg
-                  className="w-3.5 h-3.5"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
+        {/* ══════ VERTICAL TIMELINE ══════ */}
+        <div ref={containerRef} className="relative max-w-4xl mx-auto">
+          {/* Background Track Line */}
+          <div className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-px bg-white/5 -translate-x-1/2" />
+          
+          {/* Glowing Progress Line */}
+          <motion.div
+            className="absolute left-[24px] md:left-1/2 top-0 bottom-0 w-[2px] bg-gradient-to-b from-glow-blue via-bioluminescent-purple to-transparent -translate-x-1/2 origin-top shadow-[0_0_15px_rgba(124,140,255,0.6)]"
+            style={{ scaleY: lineHeight }}
+          />
+
+          <div className="flex flex-col gap-12 md:gap-20">
+            {experiences.map((exp, index) => {
+              const isEven = index % 2 === 0;
+              const depth = depthMarkers[Math.min(index, depthMarkers.length - 1)];
+
+              return (
+                <div
+                  key={exp.id}
+                  className={`relative flex flex-col md:flex-row items-start md:items-center ${
+                    isEven ? "md:flex-row" : "md:flex-row-reverse"
+                  } gap-8 md:gap-12 group`}
                 >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                  />
-                </svg>
-                {exp.period}
-              </div>
- 
-              {/* Description */}
-              <div className="text-zinc-400 text-sm md:text-base flex-1 leading-relaxed mt-1 md:pl-13">
-                <p className="line-clamp-2">{exp.companyProfile}</p>
-              </div>
-              
-              <div className="pt-1 flex items-center gap-1 text-indigo-400 text-sm font-semibold group-hover/card:text-indigo-300 transition-colors md:pl-13">
-                {t('projects.see_project', 'Lihat Detail')} 
-                <svg className="w-4 h-4 transform group-hover/card:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                </svg>
-              </div>
-            </motion.div>
-          ))}
+                  {/* Glowing Checkpoint & Depth Marker */}
+                  <div className="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center z-10">
+                    <div className="relative flex items-center justify-center w-4 h-4">
+                      {/* Depth Text */}
+                      <span className={`absolute top-1/2 -translate-y-1/2 text-[10px] font-mono tracking-widest text-glow-blue/60 transition-colors duration-300 group-hover:text-glow-blue ${
+                        isEven ? "left-8 md:right-8 md:left-auto" : "left-8"
+                      }`}>
+                        {depth}
+                      </span>
+                      
+                      {/* Dot */}
+                      <div className="w-3 h-3 rounded-full bg-abyss border-2 border-glow-blue/50 group-hover:border-glow-blue group-hover:bg-glow-blue/20 transition-all duration-300 z-10" />
+                      
+                      {/* Pulse effect */}
+                      <div className="absolute inset-0 rounded-full bg-glow-blue/30 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                    </div>
+                  </div>
+
+                  {/* Empty space for alternating layout on desktop */}
+                  <div className="hidden md:block w-1/2" />
+
+                  {/* Card Content */}
+                  <motion.div
+                    initial={{ opacity: 0, x: isEven ? 30 : -30, filter: "blur(5px)" }}
+                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    viewport={{ once: true, amount: 0.2 }}
+                    transition={{ duration: 0.6, ease: "easeOut" }}
+                    onClick={() => navigate(`/portfolio/${exp.slug}`)}
+                    className="w-full md:w-1/2 pl-16 md:pl-0 cursor-pointer"
+                  >
+                    <div className="relative p-6 md:p-8 bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-xl border border-white/5 hover:border-glow-blue/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-[0_0_30px_rgba(91,91,247,0.15)] group/card">
+                      {/* Inner subtle glow */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-glow-blue/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none" />
+
+                      <div className="relative z-10 flex flex-col gap-4">
+                        <div className="flex items-center justify-between gap-4">
+                          <div className="flex items-center gap-3">
+                            <div className="w-10 h-10 shrink-0 bg-white/[0.03] border border-white/10 rounded-xl flex items-center justify-center shadow-inner group-hover/card:border-glow-blue/50 transition-colors duration-300">
+                              {getIcon(exp.type)}
+                            </div>
+                            <div className="flex flex-col">
+                              <h3 className="text-lg md:text-xl font-bold text-ocean-text group-hover/card:text-glow-blue transition-colors duration-300">
+                                {exp.title}
+                              </h3>
+                              <span className="text-sm text-ocean-text/50 font-medium">
+                                {exp.company.text}
+                              </span>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div className="flex items-center gap-3 flex-wrap">
+                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[11px] font-mono tracking-wider text-ocean-text/40">
+                            {exp.period}
+                          </div>
+                          {exp.subtitle && (
+                            <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-bioluminescent-purple/10 border border-bioluminescent-purple/20 text-[11px] font-medium tracking-wide text-bioluminescent-purple">
+                              {exp.subtitle}
+                            </div>
+                          )}
+                        </div>
+
+                        <p className="text-sm md:text-base leading-relaxed text-ocean-text/60 line-clamp-2 mt-2 font-light">
+                          {exp.companyProfile}
+                        </p>
+
+                        <div className="flex items-center gap-2 mt-2 text-xs font-semibold tracking-wider uppercase text-glow-blue/70 group-hover/card:text-glow-blue transition-colors duration-300">
+                          {t("projects.see_project", "View Details")}
+                          <svg
+                            className="w-4 h-4 transform group-hover/card:translate-x-1 transition-transform duration-300"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                          >
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                          </svg>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                </div>
+              );
+            })}
+          </div>
+          
+          {/* End of Descent Marker */}
+          <div className="relative mt-20 flex justify-center">
+             <div className="w-16 h-px bg-gradient-to-r from-transparent via-bioluminescent-purple/50 to-transparent" />
+             <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-2 h-2 rounded-full bg-bioluminescent-purple shadow-[0_0_10px_rgba(91,91,247,0.8)]" />
+          </div>
         </div>
       </div>
     </section>

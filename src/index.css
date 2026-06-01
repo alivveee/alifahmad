@@ -10,6 +10,137 @@
   --radius-2xl: 0.5rem;
   --radius-3xl: 0.5rem;
   --radius-4xl: 0.5rem;
+
+  /* Custom Color Palette */
+  --color-abyss: #020617;
+  --color-deep-ocean: #071426;
+  --color-ocean: #0A1B34;
+  --color-medium-depth: #12254A;
+
+  --color-bioluminescent-purple: #5B5BF7;
+  --color-glow-blue: #7C8CFF;
+
+  --color-ocean-text: #D9E7FF;
+}
+
+/* ═══════════════════════════════════════════════════════════════
+   DEEP SEA HERO — Ocean Depth Effects
+   ═══════════════════════════════════════════════════════════════ */
+
+@layer components {
+  .water-caustics {
+    position: absolute;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 600px 200px at 30% 10%, rgba(124, 140, 255, 0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 500px 300px at 70% 5%, rgba(91, 91, 247, 0.04) 0%, transparent 60%),
+      radial-gradient(ellipse 800px 150px at 50% 15%, rgba(124, 140, 255, 0.03) 0%, transparent 80%);
+    animation: caustics-drift 12s ease-in-out infinite alternate;
+    pointer-events: none;
+  }
+
+  @keyframes caustics-drift {
+    0% {
+      background-position: 0% 0%, 100% 0%, 50% 0%;
+      opacity: 0.6;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      background-position: 100% 5%, 0% 3%, 50% 8%;
+      opacity: 0.7;
+    }
+  }
+
+  /* Depth Fog — Bottom fade */
+  .depth-fog {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 40%;
+    background: linear-gradient(to top, #020617 0%, rgba(2, 6, 23, 0.6) 40%, transparent 100%);
+    pointer-events: none;
+    z-index: 4;
+  }
+
+  /* Top Surface Light */
+  .surface-light {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 220px;
+    background: linear-gradient(to bottom,
+      rgba(124, 140, 255, 0.08) 0%,
+      rgba(91, 91, 247, 0.03) 40%,
+      transparent 100%
+    );
+    pointer-events: none;
+    z-index: 2;
+  }
+
+  /* Bioluminescent Gradient Text */
+  .bio-gradient-text {
+    background: linear-gradient(135deg, #5B5BF7 0%, #7C8CFF 50%, #5B5BF7 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: bio-shimmer 4s ease-in-out infinite;
+  }
+
+  @keyframes bio-shimmer {
+    0%, 100% {
+      background-position: 0% center;
+    }
+    50% {
+      background-position: 200% center;
+    }
+  }
+
+  /* Bioluminescent Glow Ring (for buttons/elements) */
+  .bio-glow {
+    box-shadow:
+      0 0 20px rgba(91, 91, 247, 0.15),
+      0 0 60px rgba(91, 91, 247, 0.05);
+  }
+
+  .bio-glow-strong {
+    box-shadow:
+      0 0 20px rgba(91, 91, 247, 0.3),
+      0 0 60px rgba(91, 91, 247, 0.1),
+      inset 0 0 20px rgba(91, 91, 247, 0.05);
+  }
+
+  /* Depth indicator pulse */
+  @keyframes depth-pulse {
+    0%, 100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+
+  .depth-dot-active {
+    animation: depth-pulse 2s ease-in-out infinite;
+  }
+
+  /* Scroll indicator bob */
+  @keyframes gentle-bob {
+    0%, 100% {
+      transform: translateY(0);
+    }
+    50% {
+      transform: translateY(6px);
+    }
+  }
+
+  .scroll-bob {
+    animation: gentle-bob 2.5s ease-in-out infinite;
+  }
 }
 
 @layer base {

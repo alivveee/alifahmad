@@ -6,42 +6,63 @@ import type { TFunction } from "i18next";
 
 const ProjectsSection = () => {
   const { t, i18n } = useTranslation();
-  const project = i18n.language.startsWith('id') ? project_id : project_en;
+  const project = i18n.language.startsWith("id") ? project_id : project_en;
 
   return (
-    <section id="projects" data-bg-color="#09090b" className="py-14 bg-transparent text-zinc-100 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24">
-      <div className="flex flex-col items-center">
-        <div className="max-container padding-container w-full">
-          <motion.h2
+    <section
+      id="projects"
+      data-bg-color="#020617"
+      className="relative py-24 bg-transparent w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
+    >
+      {/* ══════ BACKGROUND: THE ABYSS ══════ */}
+      
+      {/* Deepest Ocean Gradient */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-b from-abyss to-black opacity-100" />
+      
+      {/* Subtle bottom glow to indicate discoveries */}
+      <div className="absolute bottom-0 left-1/2 -translate-x-1/2 w-3/4 h-1/2 z-0 bg-gradient-to-t from-bioluminescent-purple/5 to-transparent blur-[120px] pointer-events-none" />
+
+      <div className="relative z-10 flex flex-col items-center">
+        <div className="max-container padding-container w-full mb-16">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="text-4xl md:text-5xl font-bold text-white text-center lg:text-left"
+            transition={{ duration: 0.6, ease: "easeOut" }}
+            className="flex flex-col items-center md:items-start"
           >
-            {t('projects.title')}
-          </motion.h2>
+            <div className="flex items-center gap-4 mb-4">
+              <div className="w-12 h-px bg-glow-blue/40" />
+              <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
+                {t("projects.title")}
+              </h2>
+              <div className="md:hidden w-12 h-px bg-glow-blue/40" />
+            </div>
+            <h3 className="text-3xl md:text-4xl lg:text-5xl font-bold text-ocean-text text-center md:text-left">
+              Underwater Artifacts
+            </h3>
+            <p className="mt-4 text-ocean-text/50 font-light text-sm md:text-base text-center md:text-left max-w-xl">
+              Hover over these discoveries to reveal their hidden details and technologies.
+            </p>
+          </motion.div>
         </div>
-        {project.map((proj, index) => (
-          <ProjectItem
-            key={index}
-            index={index}
-            title={proj.title}
-            year={proj.year}
-            description={proj.description}
-            stack={proj.stack}
-            imageUrl={proj.imageUrl}
-            projectUrl={proj.projectUrl}
-            t={t}
-          />
-        ))}
-        <motion.div
-          initial={{ scaleX: 0 }}
-          whileInView={{ scaleX: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-          className="divider w-full h-[0.5px] bg-zinc-800/80 mt-10 origin-left"
-        />
+
+        {/* ══════ PROJECT ARTIFACTS GRID ══════ */}
+        <div className="max-container padding-container w-full grid grid-cols-1 md:grid-cols-2 gap-8 lg:gap-12">
+          {project.map((proj, index) => (
+            <ProjectArtifact
+              key={index}
+              index={index}
+              title={proj.title}
+              year={proj.year}
+              description={proj.description}
+              stack={proj.stack}
+              imageUrl={proj.imageUrl}
+              projectUrl={proj.projectUrl}
+              t={t}
+            />
+          ))}
+        </div>
       </div>
     </section>
   );
@@ -49,7 +70,7 @@ const ProjectsSection = () => {
 
 export default ProjectsSection;
 
-function ProjectItem({
+function ProjectArtifact({
   title,
   year,
   description,
@@ -68,125 +89,76 @@ function ProjectItem({
   index: number;
   t: TFunction;
 }) {
-  const isEven = index % 2 === 0;
-
   return (
-    <>
-      <motion.div
-        initial={{ scaleX: 0 }}
-        whileInView={{ scaleX: 1 }}
-        viewport={{ once: true, amount: 0.8 }}
-        transition={{ duration: 0.6 }}
-        className="divider w-full h-[0.5px] bg-zinc-800/80 my-6 sm:my-8 origin-left"
-      />
-      {}
-      <div className="flex flex-col lg:flex-row lg:items-center max-container padding-container w-full rounded gap-4 lg:gap-8">
-        <motion.div
-          initial={{ opacity: 0, x: isEven ? -50 : 50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.2 }}
-          className={`flex flex-col justify-between w-full lg:w-1/2 ${
-            isEven ? "lg:order-1" : "lg:order-last"
-          }`}
-        >
-          <div className="flex flex-col gap-3 lg:gap-4">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.3 }}
-              className={`text-3xl md:text-4xl font-bold text-white ${
-                isEven ? "lg:text-left" : "lg:text-right"
-              }`}
-            >
-              {title}{" "}
-              <span className="text-sm md:text-base text-indigo-400 font-normal">
-                ({year})
-              </span>
-            </motion.h2>
+    <motion.div
+      initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
+      whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
+      whileHover={{ y: -12 }}
+      className="group relative w-full h-[400px] lg:h-[480px] rounded-3xl overflow-hidden bg-abyss border border-white/5 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(91,91,247,0.15)] hover:border-glow-blue/30 transition-[border-color,box-shadow] duration-500"
+      onClick={() => window.open(projectUrl, "_blank")}
+    >
+      {/* ── Artifact Image ── */}
+      <div className="absolute inset-0 w-full h-full">
+        <img
+          src={imageUrl}
+          alt={title}
+          loading="lazy"
+          className="w-full h-full object-cover opacity-50 mix-blend-luminosity scale-105 group-hover:scale-100 group-hover:mix-blend-normal group-hover:opacity-80 transition-all duration-1000 ease-out"
+        />
+      </div>
 
-            <motion.p
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className={`text-sm md:text-base leading-relaxed text-zinc-400 text-justify`}
-            >
-              {description}
-            </motion.p>
+      {/* ── Depth Shadows (Gradient overlays) ── */}
+      <div className="absolute inset-0 bg-gradient-to-t from-[#01030b] via-[#01030b]/80 to-transparent opacity-90 group-hover:opacity-60 transition-opacity duration-700" />
+      <div className="absolute inset-0 bg-gradient-to-b from-[#01030b]/40 to-transparent opacity-100 group-hover:opacity-0 transition-opacity duration-700" />
 
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.5 }}
-              className={`flex flex-wrap gap-2 ${
-                isEven ? "lg:justify-start" : "lg:justify-end"
-              }`}
-            >
-              {stack.map((tech, idx) => (
-                <motion.span
-                  key={tech}
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  whileInView={{ opacity: 1, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.3, delay: 0.5 + idx * 0.05 }}
-                  whileHover={{ scale: 1.1 }}
-                  className="bg-indigo-950/40 text-indigo-400 px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium border border-indigo-900/30 shadow-sm"
-                >
-                  {tech}
-                </motion.span>
-              ))}
-            </motion.div>
+      {/* ── Glass Panel (Hover reveals details) ── */}
+      <div className="absolute inset-0 p-8 flex flex-col justify-end">
+        {/* Content wrapper with transform to animate up on hover */}
+        <div className="relative transform translate-y-24 group-hover:translate-y-0 transition-transform duration-700 ease-[0.22,1,0.36,1] flex flex-col gap-6">
+          
+          {/* Always visible: Title & Year */}
+          <div className="flex flex-col gap-1">
+            <div className="flex items-center gap-3">
+              <h3 className="text-2xl lg:text-3xl font-bold text-ocean-text group-hover:text-glow-blue transition-colors duration-500">
+                {title}
+              </h3>
+              <div className="h-px flex-1 bg-white/10 group-hover:bg-glow-blue/20 transition-colors duration-500" />
+            </div>
+            <p className="text-sm text-ocean-text/40 font-mono tracking-widest uppercase">
+              {year}
+            </p>
           </div>
 
-          <button
-            className={`group flex items-center w-fit pr-4 whitespace-nowrap mt-6 bg-indigo-700 hover:bg-indigo-600 text-white pl-2 py-2 rounded overflow-hidden transition-all duration-300 ${
-              isEven ? "lg:self-start" : "lg:self-end"
-            }`}
-            aria-label={`See project ${title}`}
-            onClick={() => window.open(projectUrl, "_blank")}
-          >
-            {/* Panah kiri (muncul saat hover) */}
-            <span className="-translate-x-7 transition-all duration-300 group-hover:translate-x-0">
-              <FaArrowRight />
-            </span>
-            {/* Teks */}
-            <span className="-translate-x-2 transition-all duration-300 group-hover:translate-x-2">
-              {t('projects.see_project')}
-            </span>
-            {/* Panah kanan (hilang saat hover) */}
-            <span className="transition-all duration-300 group-hover:translate-x-100">
-              <FaArrowRight />
-            </span>
-          </button>
-        </motion.div>
-
-        {/* Image Section */}
-        <motion.div
-          initial={{ opacity: 0, x: isEven ? 50 : -50 }}
-          whileInView={{ opacity: 1, x: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.7, delay: 0.3 }}
-          className={`w-full lg:w-1/2 aspect-video ${
-            isEven ? "lg:order-last" : "lg:order-1"
-          }`}
-        >
-          <motion.div
-            whileHover={{ scale: 1.05 }}
-            transition={{ duration: 0.3 }}
-            className="w-full h-full rounded-xl overflow-hidden shadow-2xl"
-          >
-            <img
-              src={imageUrl}
-              alt={`${title} project screenshot`}
-              loading="lazy"
-              className="w-full h-full object-cover"
-            />
-          </motion.div>
-        </motion.div>
+          {/* Revealed on hover: Description & Stack */}
+          <div className="opacity-0 group-hover:opacity-100 transition-opacity duration-500 delay-100 flex flex-col gap-6">
+            <p className="text-sm lg:text-base text-ocean-text/70 line-clamp-3 font-light leading-relaxed">
+              {description}
+            </p>
+            
+            <div className="flex flex-wrap gap-2">
+              {stack.map((tech) => (
+                <span
+                  key={tech}
+                  className="px-3 py-1.5 bg-white/[0.03] backdrop-blur-md border border-white/10 rounded-lg text-xs text-ocean-text/60 font-medium"
+                >
+                  {tech}
+                </span>
+              ))}
+            </div>
+            
+            <div className="flex items-center gap-2 mt-2 text-xs font-semibold tracking-[0.2em] uppercase text-glow-blue group-hover:text-white transition-colors duration-300">
+              {t("projects.see_project")}
+              <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </div>
+        </div>
       </div>
-    </>
+      
+      {/* Subtle corner accent lines */}
+      <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 m-6" />
+      <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 m-6" />
+    </motion.div>
   );
 }

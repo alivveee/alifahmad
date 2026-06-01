@@ -61,7 +61,7 @@ const Navbar = () => {
     <>
       {/* Backdrop Overlay for Mobile Menu */}
       <div
-        className={`fixed inset-0 bg-zinc-950/60 backdrop-blur-md z-40 transition-all duration-500 ease-out md:hidden ${
+        className={`fixed inset-0 bg-abyss/80 backdrop-blur-md z-40 transition-all duration-500 ease-out md:hidden ${
           isOpen
             ? "opacity-100 pointer-events-auto"
             : "opacity-0 pointer-events-none"
@@ -72,26 +72,26 @@ const Navbar = () => {
         aria-label="Main navigation"
         className="fixed left-0 right-0 z-50 transition-all duration-500 ease-out top-4 px-4 md:px-8"
       >
-        <div className="mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out max-w-3xl bg-zinc-950/70 rounded-2xl border border-zinc-800/40 shadow-xl shadow-black/40 py-2 px-5">
+        <div className="mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out max-w-3xl bg-white/[0.02] rounded-2xl border border-white/5 shadow-xl shadow-black/50 py-2 px-5 hover:bg-white/[0.04] hover:border-white/10">
           <Logo onNavClick={handleNavClick} />
           <DesktopMenu t={t} onNavClick={handleNavClick} />
           <div className="flex items-center gap-3 md:gap-4">
-            <div className="relative flex items-center bg-zinc-950/20 backdrop-blur-sm rounded-lg p-1 border border-zinc-800/40 shadow-inner select-none">
+            <div className="relative flex items-center bg-black/40 backdrop-blur-sm rounded-lg p-1 border border-white/5 shadow-inner select-none">
               <div
-                className="absolute top-1 bottom-1 left-1 w-10 bg-indigo-600/90 rounded-md transition-transform duration-300 ease-out z-0 shadow-md shadow-indigo-500/30"
+                className="absolute top-1 bottom-1 left-1 w-10 bg-white/[0.08] border border-white/10 rounded-md transition-transform duration-300 ease-out z-0 shadow-sm"
                 style={{
                   transform: `translateX(${i18n.language.startsWith("id") ? "40px" : "0px"})`,
                 }}
               />
               <button
                 onClick={() => i18n.changeLanguage("en")}
-                className={`relative z-10 w-10 h-6 text-xs font-bold transition-colors duration-300 rounded-md cursor-pointer flex items-center justify-center ${!i18n.language.startsWith("id") ? "text-white" : "text-zinc-400 hover:text-zinc-200"}`}
+                className={`relative z-10 w-10 h-6 text-xs font-bold transition-colors duration-300 rounded-md cursor-pointer flex items-center justify-center ${!i18n.language.startsWith("id") ? "text-white" : "text-ocean-text/50 hover:text-ocean-text"}`}
               >
                 EN
               </button>
               <button
                 onClick={() => i18n.changeLanguage("id")}
-                className={`relative z-10 w-10 h-6 text-xs font-bold transition-colors duration-300 rounded-md cursor-pointer flex items-center justify-center ${i18n.language.startsWith("id") ? "text-white" : "text-zinc-400 hover:text-zinc-200"}`}
+                className={`relative z-10 w-10 h-6 text-xs font-bold transition-colors duration-300 rounded-md cursor-pointer flex items-center justify-center ${i18n.language.startsWith("id") ? "text-white" : "text-ocean-text/50 hover:text-ocean-text"}`}
               >
                 ID
               </button>
@@ -110,11 +110,11 @@ const Navbar = () => {
         {/* Mobile Menu */}
         <div className="absolute left-0 right-0 mx-auto transition-all duration-500 ease-out overflow-hidden z-40 top-[75px] max-w-3xl px-4 md:px-8">
           <div
-            className={`w-full backdrop-blur-lg bg-zinc-900/95 transition-all duration-500 ease-out rounded-2xl border border-zinc-700/50 shadow-xl
+            className={`w-full backdrop-blur-lg bg-abyss/95 transition-all duration-500 ease-out rounded-2xl border border-white/5 shadow-xl
             ${isOpen ? "max-h-[400px] opacity-100 py-6" : "max-h-0 opacity-0 py-0"}`}
           >
-            <ul className="flex flex-col items-center gap-5 text-white">
-              <li className="text-xl font-bold mb-2 text-indigo-400">
+            <ul className="flex flex-col items-center gap-5 text-ocean-text">
+              <li className="text-xl font-bold mb-2 text-glow-blue">
                 {t("navbar.menu")}
               </li>
               {menuItems.map((item) => (
@@ -125,7 +125,7 @@ const Navbar = () => {
                       setOpen(false);
                       handleNavClick(e, item.href);
                     }}
-                    className="text-lg font-medium hover:text-indigo-400 transition-colors"
+                    className="text-lg font-medium hover:text-glow-blue transition-colors"
                   >
                     {t(`navbar.${item.key}`)}
                   </a>
@@ -171,7 +171,7 @@ const DesktopMenu = ({
         <a
           href={item.href}
           onClick={(e) => onNavClick(e, item.href)}
-          className="text-sm md:text-base font-medium transition-colors cursor-pointer text-zinc-100 hover:text-indigo-300"
+          className="text-sm md:text-base font-medium transition-colors cursor-pointer text-ocean-text/80 hover:text-glow-blue"
         >
           {t(`navbar.${item.key}`)}
         </a>

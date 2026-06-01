@@ -1,23 +1,31 @@
 import { socials } from "../../utils/data";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
-import { useState } from "react";
+import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
+import { FiMail } from "react-icons/fi";
 
-const skillCategories = [
+const oceanZones = [
   {
-    category: "Frontend",
+    name: "Surface Layer",
+    depth: "Frontend & UI",
+    color: "text-glow-blue",
+    border: "border-glow-blue/30",
+    bg: "bg-glow-blue/5",
+    iconColor: "bg-glow-blue",
+    skills: ["JavaScript", "Vite", "Tailwind CSS", "Shadcn UI", "Chakra UI", "Material UI", "Figma"],
+  },
+  {
+    name: "Coral Zone",
+    depth: "React Ecosystem",
+    color: "text-bioluminescent-purple",
+    border: "border-bioluminescent-purple/30",
+    bg: "bg-bioluminescent-purple/5",
+    iconColor: "bg-bioluminescent-purple",
     skills: [
       "React",
       "Next.js",
       "TypeScript",
-      "JavaScript",
       "React Native",
-      "Vite",
-    ],
-  },
-  {
-    category: "State & Data",
-    skills: [
       "Zustand",
       "Redux Toolkit",
       "TanStack Query",
@@ -28,64 +36,105 @@ const skillCategories = [
     ],
   },
   {
-    category: "Styling & UI",
-    skills: ["Tailwind CSS", "Shadcn UI", "Chakra UI", "Material UI"],
-  },
-  {
-    category: "Tools",
-    skills: ["Git", "GitHub", "GitLab", "Figma", "VS Code", "Cursor"],
-  },
-  {
-    category: "Backend",
+    name: "Deep Current",
+    depth: "Backend & Database",
+    color: "text-ocean-text/90",
+    border: "border-ocean-text/20",
+    bg: "bg-white/[0.02]",
+    iconColor: "bg-ocean-text/70",
     skills: ["Supabase", "MongoDB", "SQL", "Express.js", "Laravel"],
   },
   {
-    category: "CI/CD",
-    skills: ["Vercel", "GitHub Actions"],
+    name: "Abyss Tools",
+    depth: "DevOps & Performance",
+    color: "text-ocean-text/50",
+    border: "border-white/5",
+    bg: "bg-black/40",
+    iconColor: "bg-ocean-text/30",
+    skills: [
+      "Git",
+      "GitHub",
+      "GitLab",
+      "VS Code",
+      "Cursor",
+      "Vercel",
+      "GitHub Actions",
+      "Lighthouse",
+      "Web Vitals",
+      "SEO Optimization",
+    ],
   },
-  {
-    category: "Performance",
-    skills: ["Lighthouse", "Web Vitals", "SEO Optimization"],
-  },
+];
+
+const highlightedSkills = [
+  "React",
+  "Next.js",
+  "TypeScript",
+  "React Native",
+  "Redux Toolkit",
+  "TanStack Query",
+  "Tailwind CSS",
+  "Git",
+  "Express.js",
+  "SQL",
+  "GitHub Actions",
+  "SEO Optimization",
 ];
 
 const AboutSection = () => {
   const { t } = useTranslation();
-  const [activeTab, setActiveTab] = useState(skillCategories[0].category);
+  // No longer need activeTab state
+
+  const getSocialIcon = (name: string) => {
+    const iconClass = "w-5 h-5 md:w-6 md:h-6 text-ocean-text/60 group-hover:text-glow-blue group-hover:scale-110 transition-all duration-300";
+    switch (name.toLowerCase()) {
+      case "instagram":
+        return <FaInstagram className={iconClass} />;
+      case "linkedin":
+        return <FaLinkedin className={iconClass} />;
+      case "github":
+        return <FaGithub className={iconClass} />;
+      case "email":
+        return <FiMail className={iconClass} />;
+      default:
+        return null;
+    }
+  };
+
   return (
     <section
       id="about"
-      data-bg-color="#ffffff"
-      className="pt-20 pb-0 bg-transparent text-zinc-900 w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
+      data-bg-color="#071426"
+      className="relative pt-24 pb-20 bg-transparent text-ocean-text w-full overflow-hidden scroll-mt-20 md:scroll-mt-24"
     >
-      <div className="max-container padding-container">
-        {/* <div className="flex justify-center mb-16">
-          <div className="w-[4px] h-16 bg-violet-600 rounded-full"></div>
-        </div> */}
-
-        <div className="flex flex-col gap-12 lg:gap-16">
-          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-8 lg:gap-16 items-center">
+      <div className="relative z-10 max-container padding-container">
+        <div className="flex flex-col gap-16 lg:gap-24">
+          <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-12 lg:gap-20 items-center">
             {/* Left Side: About Me */}
             <div className="flex flex-col gap-6 text-base/relaxed h-full justify-center">
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 whileInView={{ opacity: 1, x: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
+                transition={{ duration: 0.6, ease: "easeOut" }}
               >
-                <h2 className="text-4xl md:text-5xl font-bold mb-6 text-center lg:text-left text-zinc-900">
-                  {t('about.title')}
-                </h2>
-                <div className="flex flex-col gap-4 text-zinc-600 text-center lg:text-left">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-px bg-glow-blue/40" />
+                  <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
+                    {t('about.title')}
+                  </h2>
+                </div>
+                
+                <div className="flex flex-col gap-6 text-ocean-text/60 text-lg leading-relaxed font-light">
                   <p>
                     {t('about.p1_1')}{" "}
-                    <strong className="text-zinc-900">{t('about.p1_bold1')}</strong>{" "}
+                    <strong className="text-ocean-text font-medium">{t('about.p1_bold1')}</strong>{" "}
                     {t('about.p1_2')}{" "}
-                    <strong className="text-zinc-900">
+                    <strong className="text-ocean-text font-medium">
                       {t('about.p1_bold2')}
                     </strong>{" "}
                     {t('about.p1_3')}{" "}
-                    <strong className="text-zinc-900">
+                    <strong className="text-ocean-text font-medium">
                       {t('about.p1_bold3')}
                     </strong>
                     {t('about.p1_4')}
@@ -100,10 +149,10 @@ const AboutSection = () => {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: 0.3 }}
-                className="flex flex-col items-center lg:items-start"
+                transition={{ duration: 0.6, delay: 0.2, ease: "easeOut" }}
+                className="flex flex-col items-start mt-4"
               >
-                <h3 className="mt-2 mb-4 text-xl font-bold text-zinc-900 flex items-center gap-2">
+                <h3 className="mb-4 text-sm tracking-wider uppercase text-ocean-text/40 font-medium flex items-center gap-2">
                   {t('about.lets_connect')}
                   <motion.span
                     animate={{ rotate: [0, 20, -10, 20, 0] }}
@@ -112,7 +161,7 @@ const AboutSection = () => {
                       repeat: Infinity,
                       repeatDelay: 1,
                     }}
-                    className="inline-block text-xl ml-1"
+                    className="inline-block text-base ml-1"
                   >
                     👋
                   </motion.span>
@@ -124,17 +173,9 @@ const AboutSection = () => {
                       href={social.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="p-3 bg-zinc-50 hover:bg-zinc-100 border border-zinc-200/80 hover:border-zinc-300 rounded-xl transition-colors flex items-center justify-center shadow-sm"
+                      className="p-3 bg-white/[0.02] hover:bg-white/[0.05] border border-white/10 hover:border-glow-blue/30 rounded-xl transition-all duration-300 flex items-center justify-center shadow-lg hover:shadow-glow-blue/20 group"
                     >
-                      <img
-                        src={social.image}
-                        alt={social.name}
-                        className={`w-5 h-5 md:w-6 md:h-6 object-contain ${
-                          social.name === "Github" || social.name === "Email"
-                            ? "filter invert opacity-80"
-                            : ""
-                        }`}
-                      />
+                      {getSocialIcon(social.name)}
                     </a>
                   ))}
                 </div>
@@ -143,25 +184,29 @@ const AboutSection = () => {
 
             {/* Right Side: Photo */}
             <motion.div
-              initial={{ opacity: 0, x: 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, scale: 0.95, filter: "blur(10px)" }}
+              whileInView={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
               viewport={{ once: true, amount: 0.1 }}
               transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
               className="flex justify-center lg:justify-end items-center w-full"
             >
-              <div className="relative group w-[280px] sm:w-[320px] aspect-[3/4] my-4 lg:mr-5">
-                {/* Background offset card */}
-                <div className="absolute inset-0 bg-indigo-950 rounded-[20px] translate-x-5 translate-y-5 transition-transform duration-300 group-hover:translate-x-3 group-hover:translate-y-3" />
+              <div className="relative group w-[280px] sm:w-[320px] aspect-[3/4] my-4">
+                {/* Glowing border effect */}
+                <div className="absolute -inset-0.5 bg-gradient-to-b from-glow-blue/30 to-bioluminescent-purple/10 rounded-[24px] blur opacity-50 group-hover:opacity-100 transition duration-500" />
+                
+                {/* Background offset card (glassy) */}
+                <div className="absolute inset-0 bg-white/5 backdrop-blur-xl border border-white/10 rounded-[20px] translate-x-4 translate-y-4 transition-transform duration-500 group-hover:translate-x-2 group-hover:translate-y-2" />
                 
                 {/* Image container */}
-                <div className="relative w-full h-full rounded-[20px] overflow-hidden shadow-xl border border-zinc-200/50">
+                <div className="relative w-full h-full rounded-[20px] overflow-hidden border border-white/10 bg-abyss/50 backdrop-blur-sm">
                   <motion.img
                     src="/alif-ahmad-photo.jpg"
                     alt="Alif Ahmad Mukhtar Darma Hidayat photo"
                     loading="lazy"
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-500"
+                    className="w-full h-full object-cover mix-blend-luminosity opacity-80 group-hover:mix-blend-normal group-hover:opacity-100 transition-all duration-700 scale-105 group-hover:scale-100"
                   />
-                  <div className="absolute inset-0 bg-indigo-950/40 mix-blend-color group-hover:opacity-0 transition-opacity duration-500 pointer-events-none" />
+                  {/* Subtle deep blue tint overlay */}
+                  <div className="absolute inset-0 bg-deep-ocean/30 mix-blend-overlay pointer-events-none" />
                 </div>
               </div>
             </motion.div>
@@ -169,72 +214,66 @@ const AboutSection = () => {
 
           {/* Full Width: Skills & Tech Card */}
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.3, ease: "easeOut" }}
             className="flex flex-col w-full"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-left text-zinc-900">
-              {t('about.skills')}
-            </h2>
-            <div className="w-full bg-white/40 backdrop-blur-md rounded-2xl border border-zinc-200/50 overflow-hidden shadow-sm mb-12 lg:mb-16">
-              {/* Tabs Header */}
-              <div className="flex overflow-x-auto md:justify-center border-b border-zinc-200/50 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
-                {skillCategories.map((item) => (
-                  <button
-                    key={item.category}
-                    onClick={() => setActiveTab(item.category)}
-                    className={`px-5 md:px-6 py-4 text-sm md:text-base font-semibold whitespace-nowrap transition-colors relative ${
-                      activeTab === item.category
-                        ? "text-indigo-700"
-                        : "text-zinc-500 hover:text-zinc-700 hover:bg-zinc-200/20"
-                    }`}
-                  >
-                    {item.category}
-                    {activeTab === item.category && (
-                      <motion.div
-                        layoutId="activeTab"
-                        className="absolute bottom-0 left-0 right-0 h-[2px] bg-indigo-600"
-                      />
-                    )}
-                  </button>
-                ))}
-              </div>
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-px bg-bioluminescent-purple/40" />
+              <h2 className="text-sm tracking-[0.2em] uppercase text-bioluminescent-purple/80 font-medium">
+                Ocean Technology Stack
+              </h2>
+            </div>
+            
+            <div className="w-full flex flex-col gap-4 relative">
+              {/* Vertical connecting line */}
+              <div className="absolute left-[19px] md:left-[27px] top-8 bottom-8 w-px bg-gradient-to-b from-glow-blue/50 via-bioluminescent-purple/30 to-black/50 z-0" />
 
-              {/* Tabs Content */}
-              <div className="p-5 md:p-8 min-h-[160px] flex items-center justify-center w-full">
+              {oceanZones.map((zone, index) => (
                 <motion.div
-                  key={activeTab}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex flex-wrap gap-3 justify-center"
+                  key={zone.name}
+                  initial={{ opacity: 0, x: -20 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  whileHover={{ scale: 1.01, transition: { duration: 0.2 } }}
+                  viewport={{ once: true, amount: 0.2 }}
+                  transition={{ duration: 0.5, delay: index * 0.15 }}
+                  className={`relative z-10 flex flex-col md:flex-row gap-4 md:gap-8 p-6 md:p-8 rounded-2xl border backdrop-blur-md transition-colors duration-300 ${zone.bg} ${zone.border}`}
                 >
-                  {skillCategories
-                    .find((c) => c.category === activeTab)
-                    ?.skills.map((skill) => {
-                      const isHighlighted = [
-                        "React", "Next.js", "TypeScript", "React Native", "Redux Toolkit",
-                        "TanStack Query", "Tailwind CSS", "Git", "Express.js",
-                        "SQL", "GitHub Actions", "SEO Optimization"
-                      ].includes(skill);
-                      
+                  {/* Depth Marker / Icon */}
+                  <div className="flex items-center md:items-start gap-4 md:w-48 shrink-0">
+                    <div className={`w-3 h-3 rounded-full mt-1.5 shadow-[0_0_10px_rgba(255,255,255,0.1)] ${zone.iconColor}`} />
+                    <div className="flex flex-col">
+                      <h3 className={`text-base md:text-lg font-semibold tracking-wide ${zone.color}`}>
+                        {zone.name}
+                      </h3>
+                      <span className="text-xs font-mono tracking-widest uppercase text-ocean-text/30 mt-1">
+                        {zone.depth}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Skills Grid */}
+                  <div className="flex flex-wrap gap-2.5 md:gap-3 items-center">
+                    {zone.skills.map((skill) => {
+                      const isHighlighted = highlightedSkills.includes(skill);
                       return (
                         <span
                           key={skill}
-                          className={`px-4 py-2 rounded-xl text-sm shadow-sm transition-colors border ${
-                            isHighlighted 
-                              ? "bg-indigo-700 text-white border-indigo-600 font-semibold shadow-indigo-600/20" 
-                              : "bg-indigo-50/60 backdrop-blur-sm text-indigo-700 border-indigo-100/60 font-medium shadow-indigo-500/5"
+                          className={`px-3 py-1.5 rounded-lg text-xs md:text-sm font-medium tracking-wide border transition-all duration-300 shadow-sm ${
+                            isHighlighted
+                              ? "bg-glow-blue/10 text-glow-blue border-glow-blue/30 shadow-[0_0_15px_rgba(124,140,255,0.15)]"
+                              : "bg-white/[0.03] text-ocean-text/70 border-white/5 hover:border-white/20 hover:bg-white/[0.06] hover:text-ocean-text"
                           }`}
                         >
                           {skill}
                         </span>
                       );
                     })}
+                  </div>
                 </motion.div>
-              </div>
+              ))}
             </div>
           </motion.div>
         </div>
