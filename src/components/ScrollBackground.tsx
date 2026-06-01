@@ -1,13 +1,18 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import { useLocation } from "react-router-dom";
 
 const ScrollBackground = () => {
   const [bgColor, setBgColor] = useState("#09090b"); // Default to zinc-950
+  const { pathname } = useLocation();
 
   useEffect(() => {
     const handleScroll = () => {
       const elements = Array.from(document.querySelectorAll("[data-bg-color]"));
-      if (elements.length === 0) return;
+      if (elements.length === 0) {
+        setBgColor("#09090b");
+        return;
+      }
 
       const scrollTop = window.scrollY || document.documentElement.scrollTop;
       const scrollHeight = document.documentElement.scrollHeight;
@@ -36,6 +41,8 @@ const ScrollBackground = () => {
         if (color) {
           setBgColor(color);
         }
+      } else {
+        setBgColor("#09090b");
       }
 
       // Apply blur to inactive sections
@@ -55,15 +62,19 @@ const ScrollBackground = () => {
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    // Also trigger on resize and initially
     window.addEventListener("resize", handleScroll);
-    handleScroll();
+    
+    // Use a small timeout to let the DOM update after navigation
+    const timer = setTimeout(() => {
+      handleScroll();
+    }, 50);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
       window.removeEventListener("resize", handleScroll);
+      clearTimeout(timer);
     };
-  }, []);
+  }, [pathname]);
 
   return (
     <motion.div
