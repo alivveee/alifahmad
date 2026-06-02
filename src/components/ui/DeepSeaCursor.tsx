@@ -7,10 +7,36 @@ const DeepSeaCursor = () => {
 
   const [isHovering, setIsHovering] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
+  const [isTouchDevice, setIsTouchDevice] = useState(false);
 
   // Smooth springs for fluid, trailing movement of the outer ring
   const smoothX = useSpring(mouseX, { stiffness: 220, damping: 28, mass: 0.6 });
   const smoothY = useSpring(mouseY, { stiffness: 220, damping: 28, mass: 0.6 });
+
+  useEffect(() => {
+    // Check if device is touch-based (no fine pointer)
+    const mediaQuery = window.matchMedia("(pointer: fine)");
+    setIsTouchDevice(!mediaQuery.matches);
+
+    const handleMediaChange = (e: MediaQueryListEvent) => {
+      setIsTouchDevice(!e.matches);
+    };
+    
+    // Fallback for older browsers
+    if (mediaQuery.addEventListener) {
+      mediaQuery.addEventListener("change", handleMediaChange);
+    } else {
+      mediaQuery.addListener(handleMediaChange);
+    }
+
+    return () => {
+      if (mediaQuery.removeEventListener) {
+        mediaQuery.removeEventListener("change", handleMediaChange);
+      } else {
+        mediaQuery.removeListener(handleMediaChange);
+      }
+    };
+  }, []);
 
   useEffect(() => {
     let hoverTimeout: number;
@@ -55,7 +81,7 @@ const DeepSeaCursor = () => {
     };
   }, [mouseX, mouseY, isVisible]);
 
-  if (!isVisible) return null;
+  if (isTouchDevice || !isVisible) return null;
 
   return (
     <>
@@ -80,7 +106,6 @@ const DeepSeaCursor = () => {
           }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
           className="rounded-full border border-solid shadow-[0_0_20px_rgba(91,91,247,0.2)] flex items-center justify-center relative pointer-events-none"
-          style={{ pointerEvents: "none" }}
         />
 
         {/* Sonar pulses container (Fades in/out smoothly to prevent flickering/popping) */}
@@ -88,7 +113,6 @@ const DeepSeaCursor = () => {
           animate={{ opacity: isHovering ? 1 : 0 }}
           transition={{ duration: 0.3 }}
           className="absolute inset-0 flex items-center justify-center pointer-events-none"
-          style={{ pointerEvents: "none" }}
         >
           <motion.div
             animate={{
@@ -100,8 +124,8 @@ const DeepSeaCursor = () => {
               repeat: Infinity,
               ease: "easeOut",
             }}
-            className="absolute w-12 h-12 rounded-full border border-[#7C8CFF] shadow-[0_0_25px_rgba(124,140,255,0.4)] pointer-events-none"
-            style={{ pointerEvents: "none" }}
+            className="absolute w-12 h-12 rounded-full border border-[#7C8CFF]/50 pointer-events-none"
+            style={{ willChange: "transform, opacity" }}
           />
         </motion.div>
       </motion.div>
@@ -117,10 +141,8 @@ const DeepSeaCursor = () => {
           pointerEvents: "none",
         }}
       >
-        {/* Core glow */}
         <div 
-          className="absolute inset-[-4px] rounded-full bg-[#7C8CFF] opacity-80 blur-[2px] animate-pulse pointer-events-none" 
-          style={{ pointerEvents: "none" }}
+          className="absolute inset-[-4px] rounded-full bg-[#7C8CFF] opacity-80 blur-[2px] pointer-events-none" 
         />
       </motion.div>
     </>

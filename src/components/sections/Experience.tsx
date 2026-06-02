@@ -101,7 +101,7 @@ const ExperienceSection = () => {
                       <div className="w-3 h-3 rounded-full bg-abyss border-2 border-glow-blue/50 group-hover:border-glow-blue group-hover:bg-glow-blue/20 transition-all duration-300 z-10" />
                       
                       {/* Pulse effect */}
-                      <div className="absolute inset-0 rounded-full bg-glow-blue/30 animate-ping opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                      <div className="absolute inset-0 rounded-full bg-glow-blue/30 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300" />
                     </div>
                   </div>
 
@@ -110,8 +110,8 @@ const ExperienceSection = () => {
 
                   {/* Card Content */}
                   <motion.div
-                    initial={{ opacity: 0, x: isEven ? 30 : -30, filter: "blur(5px)" }}
-                    whileInView={{ opacity: 1, x: 0, filter: "blur(0px)" }}
+                    initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true, amount: 0.2 }}
                     transition={{ duration: 0.6, ease: "easeOut" }}
                     onClick={() => navigate(`/portfolio/${exp.slug}`)}
@@ -137,11 +137,11 @@ const ExperienceSection = () => {
                                   key={i}
                                   src={img} 
                                   alt={`preview-${i}`}
-                                  className={`absolute w-full h-full object-cover rounded-xl border border-white/10 shadow-2xl transition-all duration-1000 ease-[0.22,1,0.36,1]
+                                  className={`absolute w-full h-full object-cover rounded-xl border border-white/10 shadow-2xl transition-transform duration-1000 ease-[0.22,1,0.36,1] will-change-transform
                                     ${
-                                      i === 2 ? "z-10 group-hover/card:translate-x-12 group-hover/card:translate-y-8 group-hover/card:rotate-[15deg] group-hover/card:scale-90 opacity-10 mix-blend-luminosity delay-200" :
-                                      i === 1 ? "z-20 group-hover/card:translate-x-4 group-hover/card:translate-y-0 group-hover/card:rotate-[5deg] group-hover/card:scale-95 opacity-30 mix-blend-luminosity delay-100" :
-                                      "z-30 group-hover/card:-translate-x-6 group-hover/card:-translate-y-6 group-hover/card:-rotate-[4deg] group-hover/card:scale-100 opacity-60 mix-blend-normal delay-0"
+                                      i === 2 ? "z-10 group-hover/card:translate-x-12 group-hover/card:translate-y-8 group-hover/card:rotate-[15deg] group-hover/card:scale-90 opacity-20 delay-200" :
+                                      i === 1 ? "z-20 group-hover/card:translate-x-4 group-hover/card:translate-y-0 group-hover/card:rotate-[5deg] group-hover/card:scale-95 opacity-40 delay-100" :
+                                      "z-30 group-hover/card:-translate-x-6 group-hover/card:-translate-y-6 group-hover/card:-rotate-[4deg] group-hover/card:scale-100 opacity-70 delay-0"
                                     } 
                                     translate-y-32 translate-x-32 rotate-[35deg] scale-125
                                   `}

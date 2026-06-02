@@ -24,30 +24,7 @@
 }
 
 @layer components {
-  .water-caustics {
-    position: absolute;
-    inset: 0;
-    background:
-      radial-gradient(ellipse 600px 200px at 30% 10%, rgba(124, 140, 255, 0.06) 0%, transparent 70%),
-      radial-gradient(ellipse 500px 300px at 70% 5%, rgba(91, 91, 247, 0.04) 0%, transparent 60%),
-      radial-gradient(ellipse 800px 150px at 50% 15%, rgba(124, 140, 255, 0.03) 0%, transparent 80%);
-    animation: caustics-drift 12s ease-in-out infinite alternate;
-    pointer-events: none;
-  }
 
-  @keyframes caustics-drift {
-    0% {
-      background-position: 0% 0%, 100% 0%, 50% 0%;
-      opacity: 0.6;
-    }
-    50% {
-      opacity: 1;
-    }
-    100% {
-      background-position: 100% 5%, 0% 3%, 50% 8%;
-      opacity: 0.7;
-    }
-  }
 
   /* Depth Fog — Bottom fade */
   .depth-fog {
@@ -151,17 +128,6 @@
 @layer base {
   body {
     font-family: "Poppins", sans-serif;
-    cursor: none;
-  }
-  button:hover {
-    cursor: none;
-  }
-  a:hover {
-    cursor: none;
-  }
-  
-  a, button, [role="button"], .cursor-pointer {
-    cursor: none !important;
   }
 
   html.lenis,

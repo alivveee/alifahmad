@@ -7,7 +7,19 @@ const ScrollBackground = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
+    let ticking = false;
+
     const handleScroll = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          updateBackground();
+          ticking = false;
+        });
+        ticking = true;
+      }
+    };
+
+    const updateBackground = () => {
       const elements = Array.from(document.querySelectorAll("[data-bg-color]"));
       if (elements.length === 0) {
         setBgColor("#020617");
@@ -18,7 +30,6 @@ const ScrollBackground = () => {
       const scrollHeight = document.documentElement.scrollHeight;
       const clientHeight = window.innerHeight || document.documentElement.clientHeight;
       
-      // Check if we are scrolled to the bottom (within a 50px threshold)
       const isAtBottom = clientHeight + scrollTop >= scrollHeight - 50;
 
       let activeElement: Element | null = null;
@@ -44,34 +55,18 @@ const ScrollBackground = () => {
       } else {
         setBgColor("#09090b");
       }
-
-      // Apply blur to inactive sections
-      elements.forEach((el) => {
-        if (!el.classList.contains("transition-all")) {
-          el.classList.add("transition-all", "duration-700", "ease-in-out");
-        }
-
-        if (el === activeElement) {
-          el.classList.remove("blur-sm", "opacity-40", "scale-[0.98]");
-          el.classList.add("opacity-100", "scale-100");
-        } else {
-          el.classList.add("blur-sm", "opacity-40", "scale-[0.98]");
-          el.classList.remove("opacity-100", "scale-100");
-        }
-      });
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("resize", handleScroll);
+    window.addEventListener("resize", updateBackground);
     
-    // Use a small timeout to let the DOM update after navigation
     const timer = setTimeout(() => {
-      handleScroll();
+      updateBackground();
     }, 50);
 
     return () => {
       window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("resize", handleScroll);
+      window.removeEventListener("resize", updateBackground);
       clearTimeout(timer);
     };
   }, [pathname]);

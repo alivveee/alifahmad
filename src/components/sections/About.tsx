@@ -154,7 +154,7 @@ const AboutSection = () => {
                     animate={{ rotate: [0, 20, -10, 20, 0] }}
                     transition={{
                       duration: 1.5,
-                      repeat: Infinity,
+                      repeat: 2,
                       repeatDelay: 1,
                     }}
                     className="inline-block text-base ml-1"

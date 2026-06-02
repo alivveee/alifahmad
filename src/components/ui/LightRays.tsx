@@ -101,6 +101,7 @@ const LightRays: React.FC<LightRaysProps> = ({
   const rendererRef = useRef<Renderer | null>(null);
   const mouseRef = useRef({ x: 0.5, y: 0.5 });
   const smoothMouseRef = useRef({ x: 0.5, y: 0.5 });
+  const mouseLastInteractionTimeRef = useRef<number>(performance.now());
   const animationIdRef = useRef<number | null>(null);
   const meshRef = useRef<Mesh | null>(null);
   const cleanupFunctionRef = useRef<(() => void) | null>(null);
@@ -144,7 +145,7 @@ const LightRays: React.FC<LightRaysProps> = ({
       if (!containerRef.current) return;
 
       const renderer = new Renderer({
-        dpr: Math.min(window.devicePixelRatio, 2),
+        dpr: Math.min(window.devicePixelRatio, 1.0),
         alpha: true
       });
       rendererRef.current = renderer;
@@ -293,7 +294,7 @@ void main() {
       const updatePlacement = () => {
         if (!containerRef.current || !renderer) return;
 
-        renderer.dpr = Math.min(window.devicePixelRatio, 2);
+        renderer.dpr = Math.min(window.devicePixelRatio, 1.0);
 
         const { clientWidth: wCSS, clientHeight: hCSS } = containerRef.current;
         renderer.setSize(wCSS, hCSS);
@@ -309,10 +310,22 @@ void main() {
         uniforms.rayDir.value = dir;
       };
 
+      let lastTime = 0;
+
       const loop = (t: number) => {
         if (!rendererRef.current || !uniformsRef.current || !meshRef.current) {
           return;
         }
+
+        const isIdle = performance.now() - mouseLastInteractionTimeRef.current > 3000;
+        const fpsTarget = isIdle ? 5 : 15;
+        const frameInterval = 1000 / fpsTarget;
+
+        if (t - lastTime < frameInterval) {
+          animationIdRef.current = requestAnimationFrame(loop);
+          return;
+        }
+        lastTime = t;
 
         uniforms.iTime.value = t * 0.001;
 
@@ -430,6 +443,7 @@ void main() {
 
   useEffect(() => {
     const handleMouseMove = (e: MouseEvent) => {
+      mouseLastInteractionTimeRef.current = performance.now();
       if (!containerRef.current || !rendererRef.current) return;
       const rect = containerRef.current.getBoundingClientRect();
       const x = (e.clientX - rect.left) / rect.width;

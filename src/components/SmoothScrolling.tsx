@@ -6,7 +6,7 @@ interface SmoothScrollingProps {
 
 function SmoothScrolling({ children }: SmoothScrollingProps) {
   const options = {
-    lerp: 0.05,
+    lerp: 0.1,
     wheelMultiplier: 0.7,
     smoothTouch: true,
   };

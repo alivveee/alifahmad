@@ -1,15 +1,15 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
-import AboutSection from "./components/sections/About";
-import ExperienceSection from "./components/sections/Experience";
 import HeroSection from "./components/sections/Hero";
-import ProjectsSection from "./components/sections/Projects";
-import ProjectDetail from "./pages/ProjectDetail";
-import PortfolioDetail from "./pages/PortfolioDetail";
 import DepthIndicator from "./components/ui/DepthIndicator";
 import GlobalAtmosphere from "./components/GlobalAtmosphere";
-import DeepSeaCursor from "./components/ui/DeepSeaCursor";
 import SplashScreen from "./components/ui/SplashScreen";
+
+const AboutSection = lazy(() => import("./components/sections/About"));
+const ExperienceSection = lazy(() => import("./components/sections/Experience"));
+const ProjectsSection = lazy(() => import("./components/sections/Projects"));
+const ProjectDetail = lazy(() => import("./pages/ProjectDetail"));
+const PortfolioDetail = lazy(() => import("./pages/PortfolioDetail"));
 
 function App() {
   const [showSplash, setShowSplash] = useState(true);
@@ -24,7 +24,7 @@ function App() {
 
   return (
     <>
-      <DeepSeaCursor />
+      {/* <DeepSeaCursor /> */}
       {showSplash && location.pathname === "/" ? (
         <SplashScreen onComplete={() => setShowSplash(false)} />
       ) : null}
@@ -38,15 +38,31 @@ function App() {
                 <GlobalAtmosphere />
                 <DepthIndicator />
                 <HeroSection />
-                <AboutSection />
-                <ExperienceSection />
-                <ProjectsSection />
+                <Suspense fallback={<div className="min-h-screen" />}>
+                  <AboutSection />
+                  <ExperienceSection />
+                  <ProjectsSection />
+                </Suspense>
               </div>
             }
           />
 
-          <Route path="/project/:id" element={<ProjectDetail />} />
-          <Route path="/portfolio/:slug" element={<PortfolioDetail />} />
+          <Route 
+            path="/project/:id" 
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-abyss" />}>
+                <ProjectDetail />
+              </Suspense>
+            } 
+          />
+          <Route 
+            path="/portfolio/:slug" 
+            element={
+              <Suspense fallback={<div className="min-h-screen bg-abyss" />}>
+                <PortfolioDetail />
+              </Suspense>
+            } 
+          />
         </Routes>
       </div>
     </>
