@@ -174,7 +174,7 @@ const ExperienceSection = () => {
 
                         <div className="flex items-center gap-3 flex-wrap">
                           <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[11px] font-mono tracking-wider text-ocean-text/40">
-                            {exp.period}
+                            {exp.year || exp.period}
                           </div>
                           {exp.subtitle && (
                             <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-bioluminescent-purple/10 border border-bioluminescent-purple/20 text-[11px] font-medium tracking-wide text-bioluminescent-purple">

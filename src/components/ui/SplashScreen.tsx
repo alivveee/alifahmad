@@ -154,9 +154,8 @@ const SplashScreen: React.FC<SplashScreenProps> = ({ onComplete }) => {
                       className="absolute top-0 left-0 h-full rounded-full"
                       style={{
                         width: `${progress}%`,
-                        background:
-                          "linear-gradient(90deg, #5B5BF7, #7C8CFF)",
-                        boxShadow: "0 0 8px rgba(91, 91, 247, 0.4)",
+                        backgroundColor: "#7C8CFF",
+                        boxShadow: "0 0 8px rgba(124, 140, 255, 0.5)",
                       }}
                     />
                   </div>

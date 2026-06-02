@@ -123,24 +123,59 @@ export interface Experience {
   galleryImages?: string[];
 }
 
-export const experiences: Experience[] = [
+export interface LocalizedField<T> {
+  en: T;
+  id: T;
+}
+
+interface RawExperience {
+  id: number;
+  slug: string;
+  type: string;
+  title: string;
+  subtitle: LocalizedField<string>;
+  company: { text: string; href: string; logo?: string };
+  companyProfile?: LocalizedField<string>;
+  shortDescription?: LocalizedField<string>;
+  description: LocalizedField<(string | { text: string; href: string })[][]>;
+  period: LocalizedField<string>;
+  status?: LocalizedField<string>;
+  category?: LocalizedField<string>;
+  year?: string;
+  galleryImages?: string[];
+}
+
+const experiencesData: RawExperience[] = [
   {
     id: 3,
     slug: "pt-node-solusi-teknologi",
     type: "work",
     title: "Frontend Engineer",
-    subtitle: "Contract",
+    subtitle: {
+      en: "Contract",
+      id: "Kontrak",
+    },
     company: {
       text: "PT Node Solusi Teknologi",
       href: "https://nodewave.id",
       logo: "https://nodewave.id/favicon.ico",
     },
-    companyProfile:
-      "PT Node Solusi Teknologi is a technology company specializing in delivering modern and scalable web solutions, including RMS, DMS, and Backoffice platforms.",
-    shortDescription:
-      "Developed and maintained multiple web-based systems including RMS, DMS, Backoffice, and Company Profile platforms.",
-    status: "Ongoing",
-    category: "Web Development",
+    companyProfile: {
+      en: "Nodewave (PT. Node Solusi Teknologi) is a Jakarta-based technology company focusing on software development, ERP systems, and Artificial Intelligence (AI) integration to help digitalize businesses.",
+      id: "Nodewave (PT. Node Solusi Teknologi) adalah perusahaan teknologi asal Jakarta yang berfokus pada pengembangan perangkat lunak, sistem ERP, dan integrasi Kecerdasan Buatan (AI) untuk membantu digitalisasi bisnis.",
+    },
+    shortDescription: {
+      en: "Developed and maintained multiple web-based systems including RMS, DMS, Backoffice, and Company Profile platforms.",
+      id: "Mengembangkan dan memelihara berbagai sistem berbasis web termasuk platform RMS, DMS, Backoffice, dan Profil Perusahaan.",
+    },
+    status: {
+      en: "Ongoing",
+      id: "Sedang Berjalan",
+    },
+    category: {
+      en: "Web Development",
+      id: "Web Development",
+    },
     year: "2025 - 2026",
     galleryImages: [
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779803804/e9cbe70a-a527-4e68-9710-a1daac7d789c.png",
@@ -157,300 +192,263 @@ export const experiences: Experience[] = [
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779805263/6adf6ca1-ccc8-4826-af74-58ed63900529.png",
       "https://res.cloudinary.com/dkapna2l6/image/upload/v1779805270/fe8d2e48-8578-42dc-ba07-b2c8dd90615e.png",
     ],
-    description: [
-      [
-        "Developed and maintained multiple web-based systems including RMS, DMS, Backoffice, and Company Profile platforms.",
+    description: {
+      en: [
+        [
+          "Developed and maintained multiple web-based systems including RMS, DMS, Backoffice, and Company Profile platforms.",
+        ],
+        [
+          "Built scalable and responsive user interfaces using React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, and React Query.",
+        ],
+        [
+          "Collaborated closely with Product Managers, Backend Engineers, and QA teams to deliver production-ready features and improve system reliability.",
+        ],
+        [
+          "Optimized performance, SEO, and continuous bug fixing to ensure system stability and a better user experience.",
+        ],
       ],
-      [
-        "Built scalable and responsive user interfaces using React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, and React Query.",
+      id: [
+        [
+          "Mengembangkan dan memelihara berbagai sistem berbasis web termasuk platform RMS, DMS, Backoffice, dan Profil Perusahaan.",
+        ],
+        [
+          "Membangun antarmuka pengguna yang dapat diskalakan dan responsif menggunakan React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, dan React Query.",
+        ],
+        [
+          "Berkolaborasi erat dengan Product Manager, Backend Engineer, dan tim QA untuk menghadirkan fitur siap produksi dan meningkatkan keandalan sistem.",
+        ],
+        [
+          "Mengoptimalkan performa, SEO, dan terus-menerus memperbaiki bug untuk memastikan stabilitas sistem dan pengalaman pengguna yang lebih baik.",
+        ],
       ],
-      [
-        "Collaborated closely with Product Managers, Backend Engineers, and QA teams to deliver production-ready features and improve system reliability.",
-      ],
-      [
-        "Optimized performance, SEO, and continuous bug fixing to ensure system stability and a better user experience.",
-      ],
-    ],
-    period: "November 2025 - May 2026",
+    },
+    period: {
+      en: "November 2025 - May 2026",
+      id: "November 2025 - Mei 2026",
+    },
   },
   {
     id: 4,
     slug: "pt-azlogistik-dot-com",
     type: "work",
     title: "Frontend Programmer",
-    subtitle: "Project-based",
+    subtitle: {
+      en: "Project-based",
+      id: "Berbasis Proyek",
+    },
     company: {
       text: "PT AZlogistik Dot Com",
       href: "https://muatmuat.com/",
       logo: "https://muatmuat.com/favicon.ico",
     },
-    companyProfile:
-      "PT AZlogistik Dot Com provides comprehensive logistics marketplace solutions to connect shippers and transporters.",
-    shortDescription:
-      "Built and maintained a marketplace web app with React, Next.js, Zustand, React Hook Form, and Tailwind CSS.",
-    status: "Completed",
-    category: "Web App",
+    companyProfile: {
+      en: "PT AZlogistik Dot Com provides comprehensive logistics marketplace solutions to connect shippers and transporters.",
+      id: "PT AZlogistik Dot Com menyediakan solusi marketplace logistik komprehensif untuk menghubungkan pengirim dan pengangkut.",
+    },
+    shortDescription: {
+      en: "Built and maintained a marketplace web app with React, Next.js, Zustand, React Hook Form, and Tailwind CSS.",
+      id: "Membangun dan memelihara aplikasi web marketplace dengan React, Next.js, Zustand, React Hook Form, dan Tailwind CSS.",
+    },
+    status: {
+      en: "Completed",
+      id: "Selesai",
+    },
+    category: {
+      en: "Web App",
+      id: "Web App",
+    },
     year: "2025",
     galleryImages: [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4bffa41?q=80&w=800&auto=format&fit=crop",
+      "https://res.cloudinary.com/dkapna2l6/image/upload/v1780383924/8b10abd4-0dc6-4fac-8dc0-fb9a5529c6a2.png",
+      "https://res.cloudinary.com/dkapna2l6/image/upload/v1780384211/a0a65bff-ebfa-4d95-a10f-58ef229311bc.png",
+      "https://res.cloudinary.com/dkapna2l6/image/upload/v1780383831/dbb54962-54ad-41e8-a842-e958e0af7b01.png",
     ],
-    description: [
-      [
-        "Built and maintained a marketplace web app with React, Next.js, Zustand, React Hook Form, and Tailwind CSS.",
+    description: {
+      en: [
+        [
+          "Built and maintained a marketplace web app with React, Next.js, Zustand, React Hook Form, and Tailwind CSS.",
+        ],
+        [
+          "Translated Figma designs into responsive, pixel-perfect interfaces across devices.",
+        ],
+        ["Integrated APIs to support core website functionality."],
       ],
-      [
-        "Translated Figma designs into responsive, pixel-perfect interfaces across devices.",
+      id: [
+        [
+          "Membangun dan memelihara aplikasi web marketplace dengan React, Next.js, Zustand, React Hook Form, dan Tailwind CSS.",
+        ],
+        [
+          "Menerjemahkan desain Figma ke antarmuka responsif dan pixel-perfect di berbagai perangkat.",
+        ],
+        ["Mengintegrasikan API untuk mendukung fungsionalitas utama situs web."],
       ],
-      ["Integrated APIs to support core website functionality."],
-    ],
-    period: "November 2025",
+    },
+    period: {
+      en: "November 2025",
+      id: "November 2025",
+    },
   },
   {
     id: 1,
     slug: "pt-aksamedia",
     type: "internship",
     title: "Frontend Developer",
-    subtitle: "Internship",
+    subtitle: {
+      en: "Internship",
+      id: "Magang",
+    },
     company: {
       text: "PT Aksamedia Mulia Digital",
       href: "https://aksamedia.co.id/",
       logo: "https://aksamedia.co.id/logo-aksa.svg",
     },
-    companyProfile:
-      "Aksamedia is an IT consultant focusing on providing modern software solutions for business and education sectors.",
-    shortDescription:
-      "Developed and maintained the SchoolMate LMS using React.js, TypeScript and Chakra UI.",
-    status: "Completed",
-    category: "LMS Development",
+    companyProfile: {
+      en: "Aksamedia is an IT consultant focusing on providing modern software solutions for business and education sectors.",
+      id: "PT Aksamedia adalah konsultan IT yang berfokus pada penyediaan solusi perangkat lunak modern untuk sektor bisnis dan pendidikan.",
+    },
+    shortDescription: {
+      en: "Developed and maintained the SchoolMate LMS using React.js, TypeScript and Chakra UI.",
+      id: "Mengembangkan dan memelihara SchoolMate LMS menggunakan React.js, TypeScript dan Chakra UI.",
+    },
+    status: {
+      en: "Completed",
+      id: "Selesai",
+    },
+    category: {
+      en: "LMS Development",
+      id: "LMS Development",
+    },
     year: "2024",
     galleryImages: [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
+      "/portfolio/schoolmate.png",
+      "https://compro.aksamedia.co.id/storage/case-studies/669de497ce254-jasa-buat-website.jpg",
     ],
-    description: [
-      [
-        "Developed and maintained the ",
-        {
-          text: "SchoolMate LMS",
-          href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
-        },
-        " using React.js, TypeScript and Chakra UI.",
+    description: {
+      en: [
+        [
+          "Developed and maintained the ",
+          {
+            text: "SchoolMate LMS",
+            href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
+          },
+          " using React.js, TypeScript and Chakra UI.",
+        ],
+        [
+          "Contributing to the development of a design system used by the front-end team, including implementing new components and updating existing ones.",
+        ],
+        [
+          "Colaborating with the back-end team to manage data through APIs and worked closely with the design team to ensure accurate implementation of UI designs",
+        ],
+        [
+          "Actively engaged in debugging and resolving issues to ensure optimal performance.",
+        ],
       ],
-      [
-        "Contributing to the development of a design system used by the front-end team, including implementing new components and updating existing ones.",
+      id: [
+        [
+          "Mengembangkan dan memelihara ",
+          {
+            text: "SchoolMate LMS",
+            href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
+          },
+          " menggunakan React.js, TypeScript dan Chakra UI.",
+        ],
+        [
+          "Berkontribusi pada pengembangan sistem desain yang digunakan oleh tim front-end, termasuk mengimplementasikan komponen baru dan memperbarui yang sudah ada.",
+        ],
+        [
+          "Berkolaborasi dengan tim back-end untuk mengelola data melalui API dan bekerja erat dengan tim desain untuk memastikan implementasi desain UI yang akurat",
+        ],
+        [
+          "Terlibat aktif dalam debugging dan penyelesaian masalah untuk memastikan performa yang optimal.",
+        ],
       ],
-      [
-        "Colaborating with the back-end team to manage data through APIs and worked closely with the design team to ensure accurate implementation of UI designs",
-      ],
-      [
-        "Actively engaged in debugging and resolving issues to ensure optimal performance.",
-      ],
-    ],
-    period: "February 2024 - July 2024",
+    },
+    period: {
+      en: "February 2024 - July 2024",
+      id: "Februari 2024 - Juli 2024",
+    },
   },
   {
     id: 2,
     slug: "idcamp-indosat",
     type: "education",
     title: "React App Developer",
-    subtitle: "Scholarship",
+    subtitle: {
+      en: "Scholarship",
+      id: "Beasiswa",
+    },
     company: {
       text: "IDCamp | Indosat",
-      href: "https://drive.google.com/file/d/1Yf1-tiLYKMTAysNX3lB-InJ1BnpedWk1/view?usp=sharing",
+      href: "https://idcamp.ioh.co.id/",
       logo: "https://dicoding-web-img.sgp1.cdn.digitaloceanspaces.com/original/commons/dicoding-logo-full.png",
     },
-    companyProfile:
-      "IDCamp is a scholarship program by Indosat Ooredoo Hutchison in partnership with Dicoding Indonesia, aimed at nurturing digital talents.",
-    shortDescription:
-      "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
-    status: "Completed",
-    category: "Education",
+    companyProfile: {
+      en: "IDCamp is a scholarship program by Indosat Ooredoo Hutchison in partnership with Dicoding Indonesia, aimed at nurturing digital talents.",
+      id: "IDCamp adalah program beasiswa dari Indosat Ooredoo Hutchison yang bekerja sama dengan Dicoding Indonesia untuk membina talenta digital.",
+    },
+    shortDescription: {
+      en: "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+      id: "Menguasai dasar-dasar React dan mengembangkan aplikasi catatan dengan operasi CRUD lengkap dan integrasi REST API.",
+    },
+    status: {
+      en: "Completed",
+      id: "Selesai",
+    },
+    category: {
+      en: "Education",
+      id: "Edukasi",
+    },
     year: "2023 - 2024",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=800&auto=format&fit=crop",
-    ],
-    description: [
-      [
-        "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+    galleryImages: ["/portfolio/idcamp.png"],
+    description: {
+      en: [
+        [
+          "Mastered React fundamentals and developed a notes app with full CRUD and REST API integration.",
+        ],
+        [
+          "Curriculum by ",
+          {
+            text: "Dicoding Indonesia",
+            href: "https://www.dicoding.com/",
+          },
+        ],
       ],
-      [
-        "Curriculum by ",
-        {
-          text: "Dicoding Indonesia",
-          href: "https://www.dicoding.com/",
-        },
+      id: [
+        [
+          "Menguasai dasar-dasar React dan mengembangkan aplikasi catatan dengan operasi CRUD lengkap dan integrasi REST API.",
+        ],
+        [
+          "Kurikulum oleh ",
+          {
+            text: "Dicoding Indonesia",
+            href: "https://www.dicoding.com/",
+          },
+        ],
       ],
-    ],
-    period: "November 2023 - January 2024",
+    },
+    period: {
+      en: "November 2023 - January 2024",
+      id: "November 2023 - Januari 2024",
+    },
   },
 ];
 
-export const experiences_id: Experience[] = [
-  {
-    id: 3,
-    slug: "pt-node-solusi-teknologi",
-    type: "work",
-    title: "Frontend Engineer",
-    subtitle: "Kontrak",
-    company: {
-      text: "PT Node Solusi Teknologi",
-      href: "https://nodewave.id",
-      logo: "https://nodewave.id/favicon.ico",
-    },
-    companyProfile:
-      "PT Node Solusi Teknologi adalah perusahaan teknologi yang berfokus pada penyediaan solusi web modern dan scalable, termasuk platform RMS, DMS, dan Backoffice.",
-    shortDescription:
-      "Mengembangkan dan memelihara berbagai sistem berbasis web termasuk platform RMS, DMS, Backoffice, dan Profil Perusahaan.",
-    status: "Sedang Berjalan",
-    category: "Web Development",
-    year: "2025 - 2026",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1581291518633-83b4ebd1d83e?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1460925895917-afdab827c52f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1542744094-3a31f103e35f?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1508921912186-1d1a45ebb3c1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1551836022-d5d88e9218df?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531535934027-6b7f9b300db1?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1527689368864-3a821dbccc34?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1586717791821-3f44a563fa4c?q=80&w=800&auto=format&fit=crop",
-    ],
-    description: [
-      [
-        "Mengembangkan dan memelihara berbagai sistem berbasis web termasuk platform RMS, DMS, Backoffice, dan Profil Perusahaan.",
-      ],
-      [
-        "Membangun antarmuka pengguna yang dapat diskalakan dan responsif menggunakan React.js, Next.js, TypeScript, Tailwind CSS, Shadcn UI, Material UI, Redux Toolkit, Zustand, dan React Query.",
-      ],
-      [
-        "Berkolaborasi erat dengan Product Manager, Backend Engineer, dan tim QA untuk menghadirkan fitur siap produksi dan meningkatkan keandalan sistem.",
-      ],
-      [
-        "Mengoptimalkan performa, SEO, dan terus-menerus memperbaiki bug untuk memastikan stabilitas sistem dan pengalaman pengguna yang lebih baik.",
-      ],
-    ],
-    period: "November 2025 - Mei 2026",
-  },
-  {
-    id: 4,
-    slug: "pt-azlogistik-dot-com",
-    type: "work",
-    title: "Frontend Programmer",
-    subtitle: "Berbasis Proyek",
-    company: {
-      text: "PT AZlogistik Dot Com",
-      href: "https://muatmuat.com/",
-      logo: "https://muatmuat.com/favicon.ico",
-    },
-    companyProfile:
-      "PT AZlogistik Dot Com menyediakan solusi marketplace logistik komprehensif untuk menghubungkan pengirim dan pengangkut.",
-    shortDescription:
-      "Membangun dan memelihara aplikasi web marketplace dengan React, Next.js, Zustand, React Hook Form, dan Tailwind CSS.",
-    status: "Selesai",
-    category: "Web App",
-    year: "2025",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1504868584819-f8e8b4bffa41?q=80&w=800&auto=format&fit=crop",
-    ],
-    description: [
-      [
-        "Membangun dan memelihara aplikasi web marketplace dengan React, Next.js, Zustand, React Hook Form, dan Tailwind CSS.",
-      ],
-      [
-        "Menerjemahkan desain Figma ke antarmuka responsif dan pixel-perfect di berbagai perangkat.",
-      ],
-      ["Mengintegrasikan API untuk mendukung fungsionalitas utama situs web."],
-    ],
-    period: "November 2025",
-  },
-  {
-    id: 1,
-    slug: "pt-aksamedia",
-    type: "internship",
-    title: "Frontend Developer",
-    subtitle: "Magang",
-    company: {
-      text: "PT Aksamedia",
-      href: "https://aksamedia.co.id/",
-      logo: "https://aksamedia.co.id/favicon.ico",
-    },
-    companyProfile:
-      "PT Aksamedia adalah konsultan IT yang berfokus pada penyediaan solusi perangkat lunak modern untuk sektor bisnis dan pendidikan.",
-    shortDescription:
-      "Mengembangkan dan memelihara SchoolMate LMS menggunakan React.js, TypeScript dan Chakra UI.",
-    status: "Selesai",
-    category: "LMS Development",
-    year: "2024",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1522071820081-009f0129c71c?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1531482615713-2afd69097998?q=80&w=800&auto=format&fit=crop",
-    ],
-    description: [
-      [
-        "Mengembangkan dan memelihara ",
-        {
-          text: "SchoolMate LMS",
-          href: "https://aksamedia.co.id/projects/modern-lms-k-12-education-with-flexible-modules-aligned-to-merdeka-curriculum-serving-tens-of-thousands-students",
-        },
-        " menggunakan React.js, TypeScript dan Chakra UI.",
-      ],
-      [
-        "Berkontribusi pada pengembangan sistem desain yang digunakan oleh tim front-end, termasuk mengimplementasikan komponen baru dan memperbarui yang sudah ada.",
-      ],
-      [
-        "Berkolaborasi dengan tim back-end untuk mengelola data melalui API dan bekerja erat dengan tim desain untuk memastikan implementasi desain UI yang akurat",
-      ],
-      [
-        "Terlibat aktif dalam debugging dan penyelesaian masalah untuk memastikan performa yang optimal.",
-      ],
-    ],
-    period: "Februari 2024 - Juli 2024",
-  },
-  {
-    id: 2,
-    slug: "idcamp-indosat",
-    type: "education",
-    title: "React App Developer",
-    subtitle: "Beasiswa",
-    company: {
-      text: "IDCamp | Indosat",
-      href: "https://drive.google.com/file/d/1Yf1-tiLYKMTAysNX3lB-InJ1BnpedWk1/view?usp=sharing",
-      logo: "https://framerusercontent.com/images/4sJoG3Mm0HsSGtRjITfysiDqPY.png?scale-down-to=512&width=792&height=332",
-    },
-    companyProfile:
-      "IDCamp adalah program beasiswa dari Indosat Ooredoo Hutchison yang bekerja sama dengan Dicoding Indonesia untuk membina talenta digital.",
-    shortDescription:
-      "Menguasai dasar-dasar React dan mengembangkan aplikasi catatan dengan operasi CRUD lengkap dan integrasi REST API.",
-    status: "Selesai",
-    category: "Edukasi",
-    year: "2023 - 2024",
-    galleryImages: [
-      "https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=800&auto=format&fit=crop",
-      "https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=800&auto=format&fit=crop",
-    ],
-    description: [
-      [
-        "Menguasai dasar-dasar React dan mengembangkan aplikasi catatan dengan operasi CRUD lengkap dan integrasi REST API.",
-      ],
-      [
-        "Kurikulum oleh ",
-        {
-          text: "Dicoding Indonesia",
-          href: "https://www.dicoding.com/",
-        },
-      ],
-    ],
-    period: "November 2023 - Januari 2024",
-  },
-];
+const getExperiences = (lang: string): Experience[] => {
+  const isId = lang.startsWith("id");
+  return experiencesData.map((exp) => ({
+    ...exp,
+    subtitle: isId ? exp.subtitle.id : exp.subtitle.en,
+    companyProfile: exp.companyProfile ? (isId ? exp.companyProfile.id : exp.companyProfile.en) : undefined,
+    shortDescription: exp.shortDescription ? (isId ? exp.shortDescription.id : exp.shortDescription.en) : undefined,
+    description: isId ? exp.description.id : exp.description.en,
+    period: isId ? exp.period.id : exp.period.en,
+    status: exp.status ? (isId ? exp.status.id : exp.status.en) : undefined,
+    category: exp.category ? (isId ? exp.category.id : exp.category.en) : undefined,
+  }));
+};
+
+export const experiences: Experience[] = getExperiences("en");
+export const experiences_id: Experience[] = getExperiences("id");
 
 // Socials
 import Instagram from "../assets/socials/instagram-tile.svg";
@@ -491,34 +489,43 @@ export const socials: {
 ];
 
 // Projects
-export const project: {
+export interface Project {
   title: string;
   year: string;
   description: string;
   stack: string[];
   imageUrl: string;
   projectUrl: string;
-}[] = [
+}
+
+interface RawProject {
+  title: string;
+  year: string;
+  description: LocalizedField<string>;
+  stack: string[];
+  imageUrl: string;
+  projectUrl: string;
+}
+
+const projectsData: RawProject[] = [
   {
     title: "Deep Sea Portfolio",
     year: "2025",
-    description:
-      "A modern, highly immersive personal portfolio website featuring a 'Deep Sea Expedition' theme. Built with React, TypeScript, and Vite, it leverages smooth animations, glassmorphism design, and global atmospheric effects to create a premium user experience.",
-    stack: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "TailwindCSS",
-      "Framer Motion",
-    ],
+    description: {
+      en: "A modern, highly immersive personal portfolio website featuring a 'Deep Sea Expedition' theme. Built with React, TypeScript, and Vite, it leverages smooth animations, glassmorphism design, and global atmospheric effects to create a premium user experience.",
+      id: "Situs web portofolio pribadi modern dan sangat imersif dengan tema 'Deep Sea Expedition'. Dibangun menggunakan React, TypeScript, dan Vite, proyek ini memanfaatkan animasi yang mulus, desain glassmorphism, dan efek atmosfer global untuk menciptakan pengalaman pengguna yang premium.",
+    },
+    stack: ["React", "TypeScript", "Vite", "TailwindCSS", "Framer Motion"],
     imageUrl: "projects/portfolio-alifahmad.png",
     projectUrl: "https://github.com/alivveee/alifahmad-porto",
   },
   {
     title: "PAUD Connect",
     year: "2025",
-    description:
-      "PAUD Connect is a web-based information system developed for PAUD Mawar Tlogomas as part of a community service project at Universitas Brawijaya with my partner. It features an admin dashboard for managing student and alumni data, teacher accounts, an activity gallery, and school statistics.",
+    description: {
+      en: "PAUD Connect is a web-based information system developed for PAUD Mawar Tlogomas as part of a community service project at Universitas Brawijaya with my partner. It features an admin dashboard for managing student and alumni data, teacher accounts, an activity gallery, and school statistics.",
+      id: "PAUD Connect adalah sistem informasi berbasis web yang dikembangkan untuk PAUD Mawar Tlogomas sebagai bagian dari proyek pengabdian masyarakat di Universitas Brawijaya bersama rekan saya. Sistem ini dilengkapi dengan dasbor admin untuk mengelola data siswa dan alumni, akun guru, galeri aktivitas, dan statistik sekolah.",
+    },
     stack: [
       "Next.js",
       "TypeScript",
@@ -533,8 +540,10 @@ export const project: {
   {
     title: "Distributor Management System",
     year: "2025",
-    description:
-      "Nusantara Network Route Planner is a web and mobile-based information system designed to optimize distribution routes and field task management for PT Nusantara Network. Built with ReactJS, React Native, and Google Distance Matrix API, it uses a Genetic Algorithm to calculate the most efficient delivery routes. The system enables real-time employee tracking, customer data management, and automated route planning, significantly improving operational efficiency compared to manual methods.",
+    description: {
+      en: "Nusantara Network Route Planner is a web and mobile-based information system designed to optimize distribution routes and field task management for PT Nusantara Network. Built with ReactJS, React Native, and Google Distance Matrix API, it uses a Genetic Algorithm to calculate the most efficient delivery routes. The system enables real-time employee tracking, customer data management, and automated route planning, significantly improving operational efficiency compared to manual methods.",
+      id: "Nusantara Network Route Planner adalah sistem informasi berbasis web dan mobile yang dirancang untuk mengoptimalkan rute distribusi dan manajemen tugas lapangan untuk PT Nusantara Network. Dibangun menggunakan ReactJS, React Native, dan Google Distance Matrix API, sistem ini menggunakan Algoritma Genetika untuk menghitung rute pengiriman yang paling efisien. Sistem ini memungkinkan pelacakan karyawan secara real-time, manajemen data pelanggan, dan perencanaan rute otomatis, secara signifikan meningkatkan efisiensi operasional dibandingkan metode manual.",
+    },
     stack: [
       "Next.js",
       "React Native",
@@ -549,8 +558,10 @@ export const project: {
   {
     title: "Dekoor",
     year: "2024",
-    description:
-      "Dekoor is a modern e-commerce platform designed for discovering and purchasing premium furniture. It features a curated catalog of furniture sets, best sellers, and an elegant UI to provide a seamless shopping experience.",
+    description: {
+      en: "Dekoor is a modern e-commerce platform designed for discovering and purchasing premium furniture. It features a curated catalog of furniture sets, best sellers, and an elegant UI to provide a seamless shopping experience.",
+      id: "Dekoor adalah platform e-commerce modern yang dirancang untuk menemukan dan membeli furnitur premium. Platform ini memiliki katalog furnitur pilihan, produk terlaris, dan antarmuka elegan untuk memberikan pengalaman berbelanja yang mulus.",
+    },
     stack: ["Next.js", "TypeScript", "TailwindCSS"],
     imageUrl: "projects/dekoor.png",
     projectUrl: "https://github.com/alivveee/dekoor",
@@ -558,85 +569,23 @@ export const project: {
   {
     title: "Notes App",
     year: "2024",
-    description:
-      "A full-featured notes application built with React and Vite. It allows users to create, read, update, and delete notes, featuring a responsive design and REST API integration for data persistence.",
+    description: {
+      en: "A full-featured notes application built with React and Vite. It allows users to create, read, update, and delete notes, featuring a responsive design and REST API integration for data persistence.",
+      id: "Aplikasi catatan berfitur lengkap yang dibangun dengan React dan Vite. Aplikasi ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus catatan, dilengkapi desain responsif dan integrasi REST API untuk penyimpanan data.",
+    },
     stack: ["React", "JavaScript", "Vite", "CSS"],
     imageUrl: "projects/notes-app.png",
     projectUrl: "https://github.com/alivveee/Notes-App",
   },
 ];
 
-export const project_id: {
-  title: string;
-  year: string;
-  description: string;
-  stack: string[];
-  imageUrl: string;
-  projectUrl: string;
-}[] = [
-  {
-    title: "Deep Sea Portfolio",
-    year: "2026",
-    description:
-      "Situs web portofolio pribadi modern dan sangat imersif dengan tema 'Deep Sea Expedition'. Dibangun menggunakan React, TypeScript, dan Vite, proyek ini memanfaatkan animasi yang mulus, desain glassmorphism, dan efek atmosfer global untuk menciptakan pengalaman pengguna yang premium.",
-    stack: [
-      "React",
-      "TypeScript",
-      "Vite",
-      "TailwindCSS",
-      "Framer Motion",
-    ],
-    imageUrl: "projects/portfolio-alifahmad.png",
-    projectUrl: "https://github.com/alivveee/alifahmad-porto",
-  },
-  {
-    title: "PAUD Connect",
-    year: "2025",
-    description:
-      "PAUD Connect adalah sistem informasi berbasis web yang dikembangkan untuk PAUD Mawar Tlogomas sebagai bagian dari proyek pengabdian masyarakat di Universitas Brawijaya bersama rekan saya. Sistem ini dilengkapi dengan dasbor admin untuk mengelola data siswa dan alumni, akun guru, galeri aktivitas, dan statistik sekolah.",
-    stack: [
-      "Next.js",
-      "TypeScript",
-      "ChakraUI",
-      "TailwindCSS",
-      "MongoDB",
-      "Google Drive",
-    ],
-    imageUrl: "projects/paud-connect.png",
-    projectUrl: "https://paudmawar.vercel.app/",
-  },
-  {
-    title: "Distributor Management System",
-    year: "2024",
-    description:
-      "Nusantara Network Route Planner adalah sistem informasi berbasis web dan mobile yang dirancang untuk mengoptimalkan rute distribusi dan manajemen tugas lapangan untuk PT Nusantara Network. Dibangun menggunakan ReactJS, React Native, dan Google Distance Matrix API, sistem ini menggunakan Algoritma Genetika untuk menghitung rute pengiriman yang paling efisien. Sistem ini memungkinkan pelacakan karyawan secara real-time, manajemen data pelanggan, dan perencanaan rute otomatis, secara signifikan meningkatkan efisiensi operasional dibandingkan metode manual.",
-    stack: [
-      "Next.js",
-      "React Native",
-      "TypeScript",
-      "ShadcnUI",
-      "TailwindCSS",
-      "Supabase",
-    ],
-    imageUrl: "projects/nusantara-net.png",
-    projectUrl: "https://github.com/alivveee/nusantaranet-distributor-admin",
-  },
-  {
-    title: "Dekoor",
-    year: "2024",
-    description:
-      "Dekoor adalah platform e-commerce modern yang dirancang untuk menemukan dan membeli furnitur premium. Platform ini memiliki katalog furnitur pilihan, produk terlaris, dan antarmuka elegan untuk memberikan pengalaman berbelanja yang mulus.",
-    stack: ["Next.js", "TypeScript", "TailwindCSS"],
-    imageUrl: "projects/dekoor.png",
-    projectUrl: "https://github.com/alivveee/dekoor",
-  },
-  {
-    title: "Notes App",
-    year: "2024",
-    description:
-      "Aplikasi catatan berfitur lengkap yang dibangun dengan React dan Vite. Aplikasi ini memungkinkan pengguna untuk membuat, membaca, memperbarui, dan menghapus catatan, dilengkapi desain responsif dan integrasi REST API untuk penyimpanan data.",
-    stack: ["React", "JavaScript", "Vite", "CSS"],
-    imageUrl: "projects/notes-app.png",
-    projectUrl: "https://github.com/alivveee/Notes-App",
-  },
-];
+const getProjects = (lang: string): Project[] => {
+  const isId = lang.startsWith("id");
+  return projectsData.map((proj) => ({
+    ...proj,
+    description: isId ? proj.description.id : proj.description.en,
+  }));
+};
+
+export const project: Project[] = getProjects("en");
+export const project_id: Project[] = getProjects("id");
