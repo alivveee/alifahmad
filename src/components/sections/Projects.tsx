@@ -1,17 +1,108 @@
-import { motion, useScroll } from "framer-motion";
+import { motion } from "framer-motion";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
 import { project as project_en, project_id } from "../../utils/data";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
 
-import { useRef } from "react";
+import { useRef, useState } from "react";
 
 const ProjectsSection = () => {
   const { t, i18n } = useTranslation();
   const project = i18n.language.startsWith("id") ? project_id : project_en;
   
   const carouselRef = useRef<HTMLDivElement>(null);
-  const { scrollXProgress } = useScroll({ container: carouselRef });
+  
+  const [activeIndex, setActiveIndex] = useState(0);
+  const [isDragging, setIsDragging] = useState(false);
+  const [startX, setStartX] = useState(0);
+  const [scrollLeft, setScrollLeft] = useState(0);
+  const [dragAmount, setDragAmount] = useState(0);
+
+  const handleScroll = () => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const scrollCenter = container.scrollLeft + container.clientWidth / 2;
+    
+    let closestIndex = 0;
+    let closestDistance = Infinity;
+
+    Array.from(container.children).forEach((child, index) => {
+      if (index === 0 || index === container.children.length - 1) return;
+      
+      const htmlElement = child as HTMLElement;
+      const childCenter = htmlElement.offsetLeft + htmlElement.clientWidth / 2;
+      const distance = Math.abs(scrollCenter - childCenter);
+      
+      if (distance < closestDistance) {
+        closestDistance = distance;
+        closestIndex = index - 1;
+      }
+    });
+
+    if (closestIndex !== activeIndex) {
+      setActiveIndex(closestIndex);
+    }
+  };
+
+  const handleMouseDown = (e: React.MouseEvent) => {
+    if (!carouselRef.current) return;
+    setIsDragging(true);
+    setDragAmount(0);
+    setStartX(e.pageX - carouselRef.current.offsetLeft);
+    setScrollLeft(carouselRef.current.scrollLeft);
+  };
+
+  const scrollToProject = (index: number) => {
+    if (!carouselRef.current) return;
+    const container = carouselRef.current;
+    const child = container.children[index + 1] as HTMLElement;
+    if (child) {
+      container.scrollTo({
+        left: child.offsetLeft - container.clientWidth / 2 + child.clientWidth / 2,
+        behavior: "smooth"
+      });
+    }
+  };
+
+  const handleMouseLeave = () => {
+    if (isDragging) {
+      setIsDragging(false);
+      if (dragAmount > 5) scrollToProject(activeIndex);
+    }
+  };
+
+  const handleMouseUp = () => {
+    setIsDragging(false);
+    if (dragAmount > 5) {
+      scrollToProject(activeIndex);
+    }
+  };
+
+  const handleMouseMove = (e: React.MouseEvent) => {
+    if (!isDragging || !carouselRef.current) return;
+    e.preventDefault();
+    const x = e.pageX - carouselRef.current.offsetLeft;
+    const walk = (x - startX); // 1:1 tracking for seamless drag
+    setDragAmount(Math.abs(walk));
+    carouselRef.current.scrollLeft = scrollLeft - walk;
+  };
+
+  const handleClickCapture = (e: React.MouseEvent) => {
+    if (dragAmount > 5) {
+      e.stopPropagation();
+      e.preventDefault();
+    }
+  };
+
+  const scrollPrev = () => {
+    const newIndex = Math.max(0, activeIndex - 1);
+    scrollToProject(newIndex);
+  };
+
+  const scrollNext = () => {
+    const newIndex = Math.min(project.length - 1, activeIndex + 1);
+    scrollToProject(newIndex);
+  };
 
   return (
     <section
@@ -49,25 +140,35 @@ const ProjectsSection = () => {
                   Underwater Artifacts
                 </h3>
                 <p className="mt-6 text-ocean-text/50 font-light text-base md:text-lg text-center md:text-left max-w-2xl leading-relaxed">
-                  Hover over these discoveries to reveal their hidden details and technologies. Scroll horizontally to explore the depths.
+                  Hover over these discoveries to reveal their hidden details and technologies. Drag horizontally to explore the depths.
                 </p>
               </div>
               
               {/* Navigation Arrows for Desktop */}
               <div className="hidden md:flex items-center gap-4 mt-8 md:mt-0 pb-2">
                 <button 
-                  onClick={() => carouselRef.current?.scrollBy({ left: -window.innerWidth * 0.5, behavior: "smooth" })}
-                  className="p-4 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-glow-blue/50 transition-all duration-300 group shadow-lg"
+                  onClick={scrollPrev}
+                  disabled={activeIndex === 0}
+                  className={`p-4 rounded-full border transition-all duration-300 group shadow-lg ${
+                    activeIndex === 0 
+                      ? "bg-white/[0.01] border-white/5 opacity-50 cursor-not-allowed" 
+                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50"
+                  }`}
                   aria-label="Scroll Left"
                 >
-                  <FaArrowLeft className="w-5 h-5 text-ocean-text/70 group-hover:text-glow-blue transition-colors" />
+                  <FaArrowLeft className={`w-5 h-5 transition-colors ${activeIndex === 0 ? "text-ocean-text/30" : "text-ocean-text/70 group-hover:text-glow-blue"}`} />
                 </button>
                 <button 
-                  onClick={() => carouselRef.current?.scrollBy({ left: window.innerWidth * 0.5, behavior: "smooth" })}
-                  className="p-4 rounded-full bg-white/[0.03] hover:bg-white/[0.08] border border-white/10 hover:border-glow-blue/50 transition-all duration-300 group shadow-lg"
+                  onClick={scrollNext}
+                  disabled={activeIndex === project.length - 1}
+                  className={`p-4 rounded-full border transition-all duration-300 group shadow-lg ${
+                    activeIndex === project.length - 1 
+                      ? "bg-white/[0.01] border-white/5 opacity-50 cursor-not-allowed" 
+                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50"
+                  }`}
                   aria-label="Scroll Right"
                 >
-                  <FaArrowRight className="w-5 h-5 text-ocean-text/70 group-hover:text-glow-blue transition-colors" />
+                  <FaArrowRight className={`w-5 h-5 transition-colors ${activeIndex === project.length - 1 ? "text-ocean-text/30" : "text-ocean-text/70 group-hover:text-glow-blue"}`} />
                 </button>
               </div>
             </div>
@@ -83,7 +184,15 @@ const ProjectsSection = () => {
           {/* Scroll Container */}
           <div 
             ref={carouselRef}
-            className="flex gap-6 md:gap-10 overflow-x-auto snap-x snap-mandatory pb-12 pt-4 scrollbar-hide items-center"
+            onScroll={handleScroll}
+            onMouseDown={handleMouseDown}
+            onMouseLeave={handleMouseLeave}
+            onMouseUp={handleMouseUp}
+            onMouseMove={handleMouseMove}
+            onClickCapture={handleClickCapture}
+            className={`flex gap-6 md:gap-10 overflow-x-auto pb-12 pt-4 scrollbar-hide items-center ${
+              isDragging ? "cursor-grabbing snap-none" : "cursor-grab snap-x snap-mandatory"
+            }`}
           >
             {/* Start Spacer to allow centering of first item */}
             <div className="w-[5vw] md:w-[15vw] lg:w-[20vw] shrink-0" />
@@ -111,20 +220,26 @@ const ProjectsSection = () => {
           </div>
         </div>
 
-        {/* ══════ CAROUSEL PROGRESS INDICATOR ══════ */}
+        {/* ══════ DOT NAVIGATION ══════ */}
         <motion.div 
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-8 md:mt-12 w-full max-w-xs md:max-w-md px-8"
+          className="mt-6 md:mt-8 flex justify-center items-center gap-3 px-8"
         >
-          <div className="h-[2px] w-full bg-white/10 rounded-full overflow-hidden relative">
-            <motion.div 
-              className="absolute top-0 left-0 bottom-0 bg-glow-blue rounded-full shadow-[0_0_10px_rgba(124,140,255,0.8)]"
-              style={{ scaleX: scrollXProgress, transformOrigin: "0% 50%" }}
+          {project.map((_, index) => (
+            <button
+              key={index}
+              onClick={() => scrollToProject(index)}
+              className={`h-2.5 rounded-full cursor-pointer transition-all duration-300 ${
+                activeIndex === index
+                  ? "bg-white w-8"
+                  : "bg-white/20 w-2.5 hover:bg-white/40"
+              }`}
+              aria-label={`Go to project ${index + 1}`}
             />
-          </div>
+          ))}
         </motion.div>
       </div>
     </section>
