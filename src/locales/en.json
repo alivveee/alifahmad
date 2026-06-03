@@ -32,6 +32,21 @@
     "title": "Selected Projects",
     "see_project": "See More"
   },
+  "project_detail": {
+    "not_found": "Artifact Not Found",
+    "return": "Return to Surface",
+    "live_preview": "View Live Preview",
+    "source_code": "View Source Code",
+    "overview_title": "Expedition Overview",
+    "problem": "The Challenge",
+    "users": "Target Explorers",
+    "objectives": "Mission Objectives",
+    "gallery_title": "Expedition Records",
+    "stack_title": "Exploration Tools",
+    "features_title": "Discoveries",
+    "prev_project": "Previous Expedition",
+    "next_project": "Next Expedition"
+  },
   "stacks": {
     "title": "Skills & Technologies"
   },

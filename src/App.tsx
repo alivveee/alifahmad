@@ -48,7 +48,7 @@ function App() {
           />
 
           <Route 
-            path="/project/:id" 
+            path="/project/:slug" 
             element={
               <Suspense fallback={<div className="min-h-screen bg-abyss" />}>
                 <ProjectDetail />

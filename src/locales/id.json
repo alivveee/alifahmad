@@ -32,6 +32,21 @@
     "title": "Proyek Pilihan",
     "see_project": "Lihat Selengkapnya"
   },
+  "project_detail": {
+    "not_found": "Artefak Tidak Ditemukan",
+    "return": "Kembali ke Permukaan",
+    "live_preview": "Lihat Pratinjau",
+    "source_code": "Lihat Kode Sumber",
+    "overview_title": "Gambaran Ekspedisi",
+    "problem": "Tantangan",
+    "users": "Target Penjelajah",
+    "objectives": "Misi Objektif",
+    "gallery_title": "Rekaman Ekspedisi",
+    "stack_title": "Alat Eksplorasi",
+    "features_title": "Penemuan",
+    "prev_project": "Ekspedisi Sebelumnya",
+    "next_project": "Ekspedisi Selanjutnya"
+  },
   "stacks": {
     "title": "Keahlian & Teknologi"
   },

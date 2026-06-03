@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { FaArrowRight, FaArrowLeft } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { project as project_en, project_id } from "../../utils/data";
 import { useTranslation } from "react-i18next";
 import type { TFunction } from "i18next";
@@ -152,7 +153,7 @@ const ProjectsSection = () => {
                   className={`p-4 rounded-full border transition-all duration-300 group shadow-lg ${
                     activeIndex === 0 
                       ? "bg-white/[0.01] border-white/5 opacity-50 cursor-not-allowed" 
-                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50"
+                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50 cursor-pointer"
                   }`}
                   aria-label="Scroll Left"
                 >
@@ -164,7 +165,7 @@ const ProjectsSection = () => {
                   className={`p-4 rounded-full border transition-all duration-300 group shadow-lg ${
                     activeIndex === project.length - 1 
                       ? "bg-white/[0.01] border-white/5 opacity-50 cursor-not-allowed" 
-                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50"
+                      : "bg-white/[0.03] hover:bg-white/[0.08] border-white/10 hover:border-glow-blue/50 cursor-pointer"
                   }`}
                   aria-label="Scroll Right"
                 >
@@ -204,12 +205,12 @@ const ProjectsSection = () => {
               >
                 <ProjectArtifact
                   index={index}
+                  slug={proj.slug}
                   title={proj.title}
                   year={proj.year}
                   description={proj.description}
                   stack={proj.stack}
                   imageUrl={proj.imageUrl}
-                  projectUrl={proj.projectUrl}
                   t={t}
                 />
               </div>
@@ -254,7 +255,7 @@ function ProjectArtifact({
   description,
   stack,
   imageUrl,
-  projectUrl,
+  slug,
   index,
   t,
 }: {
@@ -263,11 +264,12 @@ function ProjectArtifact({
   description: string;
   stack: string[];
   imageUrl: string;
-  projectUrl: string;
+  slug: string;
   index: number;
   t: TFunction;
 }) {
   return (
+    <Link to={`/project/${slug}`}>
     <motion.div
       initial={{ opacity: 0, y: 40, filter: "blur(10px)" }}
       whileInView={{ opacity: 1, y: 0, filter: "blur(0px)" }}
@@ -275,7 +277,6 @@ function ProjectArtifact({
       transition={{ duration: 0.7, delay: index * 0.1, ease: [0.22, 1, 0.36, 1] }}
       whileHover={{ y: -12 }}
       className="group relative w-full h-[400px] lg:h-[480px] rounded-3xl overflow-hidden bg-abyss border border-white/5 cursor-pointer shadow-[0_10px_30px_rgba(0,0,0,0.5)] hover:shadow-[0_20px_50px_rgba(91,91,247,0.15)] hover:border-glow-blue/30 transition-[border-color,box-shadow] duration-500"
-      onClick={() => window.open(projectUrl, "_blank")}
     >
       {/* ── Artifact Image ── */}
       <div className="absolute inset-0 w-full h-full">
@@ -338,5 +339,6 @@ function ProjectArtifact({
       <div className="absolute top-0 left-0 w-8 h-8 border-t border-l border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 m-6" />
       <div className="absolute bottom-0 right-0 w-8 h-8 border-b border-r border-white/10 opacity-0 group-hover:opacity-100 transition-opacity duration-700 m-6" />
     </motion.div>
+    </Link>
   );
 }
