@@ -4,6 +4,7 @@ import type { TFunction } from "i18next";
 import { project as project_en, project_id } from "../utils/data";
 import type { Project } from "../utils/data";
 import { motion, AnimatePresence } from "framer-motion";
+import { createPortal } from "react-dom";
 import { useState, useEffect, useLayoutEffect } from "react";
 import { FiArrowUpRight, FiGithub, FiExternalLink } from "react-icons/fi";
 import { FaArrowLeft, FaArrowRight } from "react-icons/fa";
@@ -330,89 +331,31 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
       </div>
 
       {/* ══════ LIGHTBOX / PREVIEW GALLERY ══════ */}
-      <AnimatePresence>
-        {selectedImg !== null && proj.galleryImages && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[100] flex flex-col justify-between bg-abyss/95 p-6 backdrop-blur-2xl select-none"
-            data-lenis-prevent
-            onClick={() => {
-              setSelectedImg(null);
-              setIsGridMode(false);
-            }}
-          >
-            {/* Top Bar */}
-            <div
-              className="flex items-center justify-between w-full z-10"
-              onClick={(e) => e.stopPropagation()}
+      {createPortal(
+        <AnimatePresence>
+          {selectedImg !== null && proj.galleryImages && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-[100] flex flex-col justify-between bg-abyss/95 p-6 backdrop-blur-2xl select-none"
+              data-lenis-prevent
+              onClick={() => {
+                setSelectedImg(null);
+                setIsGridMode(false);
+              }}
             >
-              {/* Close Button */}
-              <button
-                className="flex items-center gap-2 px-4 py-2 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl text-sm font-semibold transition-colors cursor-pointer"
-                onClick={() => {
-                  setSelectedImg(null);
-                  setIsGridMode(false);
-                }}
+              {/* Top Bar */}
+              <div
+                className="flex items-center justify-between w-full z-10"
+                onClick={(e) => e.stopPropagation()}
               >
-                <svg
-                  className="w-5 h-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M6 18L18 6M6 6l12 12"
-                  />
-                </svg>
-                Close
-              </button>
-
-              {/* Progress Indicator */}
-              <div className="text-ocean-text/60 font-mono tracking-widest text-sm md:text-base">
-                {selectedImg + 1} / {proj.galleryImages.length}
-              </div>
-
-              {/* Utilities */}
-              <div className="flex items-center gap-3">
+                {/* Close Button */}
                 <button
-                  className={`p-2 border rounded-xl transition-colors cursor-pointer ${
-                    isGridMode
-                      ? "bg-glow-blue/20 border-glow-blue/50 text-glow-blue"
-                      : "bg-white/[0.03] border-white/10 hover:bg-white/10 text-white"
-                  }`}
-                  title="Toggle Grid View"
-                  onClick={() => setIsGridMode(!isGridMode)}
-                >
-                  <svg
-                    className="w-5 h-5"
-                    fill="none"
-                    viewBox="0 0 24 24"
-                    stroke="currentColor"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
-                    />
-                  </svg>
-                </button>
-                <button
-                  className="p-2 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl transition-colors cursor-pointer"
-                  title="Toggle Fullscreen"
+                  className="flex items-center gap-2 px-4 py-2 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl text-sm font-semibold transition-colors cursor-pointer"
                   onClick={() => {
-                    if (!document.fullscreenElement) {
-                      document.documentElement
-                        .requestFullscreen()
-                        .catch(() => {});
-                    } else {
-                      document.exitFullscreen().catch(() => {});
-                    }
+                    setSelectedImg(null);
+                    setIsGridMode(false);
                   }}
                 >
                   <svg
@@ -425,61 +368,30 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
                       strokeLinecap="round"
                       strokeLinejoin="round"
                       strokeWidth={2}
-                      d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
+                      d="M6 18L18 6M6 6l12 12"
                     />
                   </svg>
+                  Close
                 </button>
-              </div>
-            </div>
 
-            {isGridMode ? (
-              <div
-                className="flex-1 overflow-y-auto p-4 my-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
-                onClick={(e) => e.stopPropagation()}
-              >
-                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
-                  {proj.galleryImages.map((img, idx) => (
-                    <motion.div
-                      key={idx}
-                      whileHover={{ scale: 1.02 }}
-                      className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border ${
-                        selectedImg === idx
-                          ? "border-glow-blue ring-2 ring-glow-blue/50"
-                          : "border-white/5"
-                      }`}
-                      onClick={() => {
-                        setSelectedImg(idx);
-                        setIsGridMode(false);
-                      }}
-                    >
-                      <img
-                        src={img}
-                        alt={`Gallery ${idx + 1}`}
-                        className="w-full h-full object-cover hover:opacity-80 transition-opacity"
-                      />
-                    </motion.div>
-                  ))}
+                {/* Progress Indicator */}
+                <div className="text-ocean-text/60 font-mono tracking-widest text-sm md:text-base">
+                  {selectedImg + 1} / {proj.galleryImages.length}
                 </div>
-              </div>
-            ) : (
-              <>
-                {/* Middle: Arrow Left + Image + Arrow Right */}
-                <div
-                  className="relative flex-1 flex items-center justify-center my-6"
-                  onClick={(e) => e.stopPropagation()}
-                >
-                  {/* Prev Button */}
+
+                {/* Utilities */}
+                <div className="flex items-center gap-3">
                   <button
-                    className="absolute left-0 md:left-4 z-10 p-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-full transition-all backdrop-blur-md cursor-pointer"
-                    onClick={() =>
-                      setSelectedImg(
-                        (selectedImg - 1 + proj.galleryImages.length) %
-                          proj.galleryImages.length
-                      )
-                    }
+                    className={`p-2 border rounded-xl transition-colors cursor-pointer ${
+                      isGridMode
+                        ? "bg-glow-blue/20 border-glow-blue/50 text-glow-blue"
+                        : "bg-white/[0.03] border-white/10 hover:bg-white/10 text-white"
+                    }`}
+                    title="Toggle Grid View"
+                    onClick={() => setIsGridMode(!isGridMode)}
                   >
                     <svg
-                      className="w-6 h-6"
+                      className="w-5 h-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -488,34 +400,25 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M15 19l-7-7 7-7"
+                        d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"
                       />
                     </svg>
                   </button>
-
-                  {/* Active Image */}
-                  <motion.img
-                    key={selectedImg}
-                    initial={{ scale: 0.95, opacity: 0, filter: "blur(10px)" }}
-                    animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
-                    exit={{ scale: 0.95, opacity: 0 }}
-                    transition={{ duration: 0.4, ease: "easeOut" }}
-                    src={proj.galleryImages[selectedImg]}
-                    alt={`Preview ${selectedImg + 1}`}
-                    className="max-w-full max-h-[50vh] md:max-h-[62vh] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] object-contain border border-white/5"
-                  />
-
-                  {/* Next Button */}
                   <button
-                    className="absolute right-0 md:right-4 z-10 p-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-full transition-all backdrop-blur-md cursor-pointer"
-                    onClick={() =>
-                      setSelectedImg(
-                        (selectedImg + 1) % proj.galleryImages.length
-                      )
-                    }
+                    className="p-2 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-xl transition-colors cursor-pointer"
+                    title="Toggle Fullscreen"
+                    onClick={() => {
+                      if (!document.fullscreenElement) {
+                        document.documentElement
+                          .requestFullscreen()
+                          .catch(() => {});
+                      } else {
+                        document.exitFullscreen().catch(() => {});
+                      }
+                    }}
                   >
                     <svg
-                      className="w-6 h-6"
+                      className="w-5 h-5"
                       fill="none"
                       viewBox="0 0 24 24"
                       stroke="currentColor"
@@ -524,48 +427,149 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
                         strokeLinecap="round"
                         strokeLinejoin="round"
                         strokeWidth={2}
-                        d="M9 5l7 7-7 7"
+                        d="M4 8V4m0 0h4M4 4l5 5m11-5h-4m4 0v4m0-4l-5 5M4 16v4m0 0h4m-4 0l5-5m11 5l-5-5m5 5v-4m0 4h-4"
                       />
                     </svg>
                   </button>
                 </div>
+              </div>
 
-                {/* Bottom Metadata & Thumbnails */}
+              {isGridMode ? (
                 <div
-                  className="w-full text-center space-y-4"
+                  className="flex-1 overflow-y-auto p-4 my-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent"
                   onClick={(e) => e.stopPropagation()}
                 >
-                  <h3 className="text-white text-base md:text-lg font-semibold tracking-wide">
-                    {proj.title}
-                  </h3>
-
-                  {/* Thumbnails Row */}
-                  <div className="flex items-center justify-start md:justify-center gap-3 overflow-x-auto py-4 max-w-full mx-auto px-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                  <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-5xl mx-auto">
                     {proj.galleryImages.map((img, idx) => (
-                      <div
+                      <motion.div
                         key={idx}
-                        id={`thumb-${idx}`}
-                        className={`w-20 md:w-24 aspect-video rounded-xl overflow-hidden shrink-0 cursor-pointer transition-all duration-300 ${
+                        whileHover={{ scale: 1.02 }}
+                        className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border ${
                           selectedImg === idx
-                            ? "border-2 border-glow-blue opacity-100 scale-110 shadow-[0_0_15px_rgba(124,140,255,0.4)]"
-                            : "border border-white/5 opacity-40 hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                            ? "border-glow-blue ring-2 ring-glow-blue/50"
+                            : "border-white/5"
                         }`}
-                        onClick={() => setSelectedImg(idx)}
+                        onClick={() => {
+                          setSelectedImg(idx);
+                          setIsGridMode(false);
+                        }}
                       >
                         <img
                           src={img}
-                          alt={`Thumb ${idx + 1}`}
-                          className="w-full h-full object-cover"
+                          alt={`Gallery ${idx + 1}`}
+                          className="w-full h-full object-cover hover:opacity-80 transition-opacity"
                         />
-                      </div>
+                      </motion.div>
                     ))}
                   </div>
                 </div>
-              </>
-            )}
+              ) : (
+                <>
+                  {/* Middle: Arrow Left + Image + Arrow Right */}
+                  <div
+                    className="relative flex-1 flex items-center justify-center my-6"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    {/* Prev Button */}
+                    <button
+                      className="absolute left-0 md:left-4 z-10 p-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-full transition-all backdrop-blur-md cursor-pointer"
+                      onClick={() =>
+                        setSelectedImg(
+                          (selectedImg - 1 + proj.galleryImages.length) %
+                            proj.galleryImages.length
+                        )
+                      }
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M15 19l-7-7 7-7"
+                        />
+                      </svg>
+                    </button>
+
+                    {/* Active Image */}
+                    <motion.img
+                      key={selectedImg}
+                      initial={{ scale: 0.95, opacity: 0, filter: "blur(10px)" }}
+                      animate={{ scale: 1, opacity: 1, filter: "blur(0px)" }}
+                      exit={{ scale: 0.95, opacity: 0 }}
+                      transition={{ duration: 0.4, ease: "easeOut" }}
+                      src={proj.galleryImages[selectedImg]}
+                      alt={`Preview ${selectedImg + 1}`}
+                      className="max-w-full max-h-[50vh] md:max-h-[62vh] rounded-2xl shadow-[0_20px_50px_rgba(0,0,0,0.8)] object-contain border border-white/5"
+                    />
+
+                    {/* Next Button */}
+                    <button
+                      className="absolute right-0 md:right-4 z-10 p-3 bg-white/[0.03] border border-white/10 hover:bg-white/10 text-white rounded-full transition-all backdrop-blur-md cursor-pointer"
+                      onClick={() =>
+                        setSelectedImg(
+                          (selectedImg + 1) % proj.galleryImages.length
+                        )
+                      }
+                    >
+                      <svg
+                        className="w-6 h-6"
+                        fill="none"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                      >
+                        <path
+                          strokeLinecap="round"
+                          strokeLinejoin="round"
+                          strokeWidth={2}
+                          d="M9 5l7 7-7 7"
+                        />
+                      </svg>
+                    </button>
+                  </div>
+
+                  {/* Bottom Metadata & Thumbnails */}
+                  <div
+                    className="w-full text-center space-y-4"
+                    onClick={(e) => e.stopPropagation()}
+                  >
+                    <h3 className="text-white text-base md:text-lg font-semibold tracking-wide">
+                      {proj.title}
+                    </h3>
+
+                    {/* Thumbnails Row */}
+                    <div className="flex items-center justify-start md:justify-center gap-3 overflow-x-auto py-4 max-w-full mx-auto px-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent">
+                      {proj.galleryImages.map((img, idx) => (
+                        <div
+                          key={idx}
+                          id={`thumb-${idx}`}
+                          className={`w-20 md:w-24 aspect-video rounded-xl overflow-hidden shrink-0 cursor-pointer transition-all duration-300 ${
+                            selectedImg === idx
+                              ? "border-2 border-glow-blue opacity-100 scale-110 shadow-[0_0_15px_rgba(124,140,255,0.4)]"
+                              : "border border-white/5 opacity-40 hover:opacity-100 mix-blend-luminosity hover:mix-blend-normal"
+                          }`}
+                          onClick={() => setSelectedImg(idx)}
+                        >
+                          <img
+                            src={img}
+                            alt={`Thumb ${idx + 1}`}
+                            className="w-full h-full object-cover"
+                          />
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                </>
+              )}
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence>,
+      document.body
+    )}
     </section>
   );
 }
