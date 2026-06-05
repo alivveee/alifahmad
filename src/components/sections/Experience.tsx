@@ -1,5 +1,5 @@
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
+import { motion, useScroll, useTransform, useMotionValueEvent } from "framer-motion";
+import { useRef, useState } from "react";
 import { IoSchool } from "react-icons/io5";
 import { MdWork } from "react-icons/md";
 import {
@@ -9,8 +9,176 @@ import {
 } from "../../utils/data";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
+import type { NavigateFunction } from "react-router-dom";
+import type { TFunction } from "i18next";
 
 const depthMarkers = ["10m", "50m", "100m", "250m", "500m", "1000m", "Abyss"];
+
+interface ExperienceItemProps {
+  exp: Experience;
+  index: number;
+  depth: string;
+  isEven: boolean;
+  t: TFunction;
+  navigate: NavigateFunction;
+  getIcon: (iconType: Experience["type"]) => JSX.Element;
+}
+
+const ExperienceItem = ({ exp, depth, isEven, t, navigate, getIcon }: ExperienceItemProps) => {
+  const dotRef = useRef<HTMLDivElement>(null);
+  
+  const { scrollYProgress } = useScroll({
+    target: dotRef,
+    offset: ["start center", "start start"],
+  });
+  
+  const [isActive, setIsActive] = useState(false);
+  
+  useMotionValueEvent(scrollYProgress, "change", (latest) => {
+    setIsActive(latest > 0);
+  });
+
+  return (
+    <div
+      className={`relative flex flex-col md:flex-row items-start md:items-center ${
+        isEven ? "md:flex-row" : "md:flex-row-reverse"
+      } gap-8 md:gap-12 group`}
+    >
+      {/* Glowing Checkpoint & Depth Marker */}
+      <div className="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center z-10">
+        <div ref={dotRef} className="relative flex items-center justify-center w-4 h-4">
+          {/* Depth Text */}
+          <span className={`absolute top-1/2 -translate-y-1/2 text-[10px] font-mono tracking-widest transition-colors duration-300 group-hover:text-glow-blue ${
+            isEven ? "left-8 md:right-8 md:left-auto" : "left-8"
+          } ${isActive ? "text-glow-blue" : "text-glow-blue/60"}`}>
+            {depth}
+          </span>
+          
+          {/* Dot */}
+          <div className={`w-3 h-3 rounded-full bg-abyss border-2 transition-all duration-300 z-10 group-hover:border-glow-blue group-hover:bg-glow-blue/20 ${
+            isActive ? "border-glow-blue bg-glow-blue/20" : "border-glow-blue/50"
+          }`} />
+          
+          {/* Pulse effect */}
+          <div className={`absolute inset-0 rounded-full bg-glow-blue/30 transition-all duration-300 group-hover:opacity-100 group-hover:scale-125 ${
+            isActive ? "opacity-100 scale-125" : "opacity-0"
+          }`} />
+        </div>
+      </div>
+
+      {/* Empty space for alternating layout on desktop */}
+      <div className="hidden md:block w-1/2" />
+
+      {/* Card Content */}
+      <motion.div
+        initial={{ opacity: 0, x: isEven ? 30 : -30 }}
+        whileInView={{ opacity: 1, x: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ duration: 0.6, ease: "easeOut" }}
+        onClick={() => navigate(`/portfolio/${exp.slug}`)}
+        className="w-full md:w-1/2 pl-16 md:pl-0 cursor-pointer"
+      >
+        <div className={`relative p-8 md:p-10 lg:p-12 min-h-[280px] lg:min-h-[340px] backdrop-blur-xl border rounded-2xl transition-all duration-500 overflow-hidden group/card flex flex-col justify-center hover:bg-white/[0.04] hover:border-glow-blue/30 hover:shadow-[0_0_40px_rgba(91,91,247,0.2)] ${
+          isActive 
+            ? "bg-white/[0.04] border-glow-blue/30 shadow-[0_0_40px_rgba(91,91,247,0.2)]" 
+            : "bg-white/[0.02] border-white/5 shadow-2xl"
+        }`}>
+          {/* Inner subtle glow */}
+          <div className={`absolute inset-0 bg-gradient-to-br from-glow-blue/5 to-transparent transition-opacity duration-500 pointer-events-none z-0 group-hover/card:opacity-100 ${
+            isActive ? "opacity-100" : "opacity-0"
+          }`} />
+
+          {/* Visual Artifact Preview on Hover (Scattered Collage) */}
+          {exp.galleryImages && exp.galleryImages.length > 0 && (
+            <div className={`absolute inset-0 z-0 transition-all duration-700 pointer-events-none overflow-hidden rounded-2xl group-hover/card:opacity-100 ${
+              isActive ? "opacity-100" : "opacity-0"
+            }`}>
+              
+              {/* Image Container */}
+              <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[75%] h-[90%] lg:w-[70%] lg:h-[85%] flex items-center justify-center perspective-[1000px]">
+                {exp.galleryImages.slice(0, 3).reverse().map((img: string, idx: number) => {
+                  const total = Math.min(exp.galleryImages!.length, 3);
+                  const i = total - 1 - idx; // 0 is top, 1 is middle, 2 is bottom
+                  
+                  return (
+                    <img 
+                      key={i}
+                      src={img} 
+                      alt={`preview-${i}`}
+                      className={`absolute w-full h-full object-cover rounded-xl border border-white/10 shadow-2xl transition-transform duration-1000 ease-[0.22,1,0.36,1] will-change-transform
+                        ${
+                          i === 2 ? `z-10 group-hover/card:translate-x-12 group-hover/card:translate-y-8 group-hover/card:rotate-[15deg] group-hover/card:scale-90 opacity-20 delay-200 ${isActive ? "translate-x-12 translate-y-8 rotate-[15deg] scale-90" : "translate-y-32 translate-x-32 rotate-[35deg] scale-125"}` :
+                          i === 1 ? `z-20 group-hover/card:translate-x-4 group-hover/card:translate-y-0 group-hover/card:rotate-[5deg] group-hover/card:scale-95 opacity-40 delay-100 ${isActive ? "translate-x-4 translate-y-0 rotate-[5deg] scale-95" : "translate-y-32 translate-x-32 rotate-[35deg] scale-125"}` :
+                          `z-30 group-hover/card:-translate-x-6 group-hover/card:-translate-y-6 group-hover/card:-rotate-[4deg] group-hover/card:scale-100 opacity-70 delay-0 ${isActive ? "-translate-x-6 -translate-y-6 -rotate-[4deg] scale-100" : "translate-y-32 translate-x-32 rotate-[35deg] scale-125"}`
+                        } 
+                      `}
+                    />
+                  );
+                })}
+              </div>
+
+            <div className="absolute inset-0 bg-gradient-to-r from-[#020617] from-30% via-[#020617]/90 to-transparent z-40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/50 via-transparent to-[#020617]/80 z-40" />
+          </div>
+        )}
+
+        <div className="relative z-10 flex flex-col gap-4 lg:gap-5 md:max-w-[90%]">
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex items-center gap-3">
+                <div className={`w-10 h-10 shrink-0 bg-white/[0.03] border rounded-xl flex items-center justify-center shadow-inner transition-colors duration-300 group-hover/card:border-glow-blue/50 ${
+                  isActive ? "border-glow-blue/50" : "border-white/10"
+                }`}>
+                  {getIcon(exp.type)}
+                </div>
+                <div className="flex flex-col">
+                  <h3 className={`text-lg md:text-xl font-bold transition-colors duration-300 group-hover/card:text-glow-blue ${
+                    isActive ? "text-glow-blue" : "text-ocean-text"
+                  }`}>
+                    {exp.title}
+                  </h3>
+                  <span className="text-sm text-ocean-text/50 font-medium">
+                    {exp.company.text}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex items-center gap-3 flex-wrap">
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[11px] font-mono tracking-wider text-ocean-text/40">
+                {exp.year || exp.period}
+              </div>
+              {exp.subtitle && (
+                <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-bioluminescent-purple/10 border border-bioluminescent-purple/20 text-[11px] font-medium tracking-wide text-bioluminescent-purple">
+                  {exp.subtitle}
+                </div>
+              )}
+            </div>
+
+            <p className="text-sm md:text-base leading-relaxed text-ocean-text/60 line-clamp-2 mt-2 font-light">
+              {exp.companyProfile}
+            </p>
+
+            <div className={`flex items-center gap-2 mt-2 text-xs font-semibold tracking-wider uppercase transition-colors duration-300 group-hover/card:text-glow-blue ${
+              isActive ? "text-glow-blue" : "text-glow-blue/70"
+            }`}>
+              {t("projects.see_project", "View Details")}
+              <svg
+                className={`w-4 h-4 transform transition-transform duration-300 group-hover/card:translate-x-1 ${
+                  isActive ? "translate-x-1" : ""
+                }`}
+                fill="none"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+          </div>
+        </div>
+      </motion.div>
+    </div>
+  );
+};
 
 const ExperienceSection = () => {
   const { t, i18n } = useTranslation();
@@ -81,127 +249,16 @@ const ExperienceSection = () => {
               const depth = depthMarkers[Math.min(index, depthMarkers.length - 1)];
 
               return (
-                <div
+                <ExperienceItem
                   key={exp.id}
-                  className={`relative flex flex-col md:flex-row items-start md:items-center ${
-                    isEven ? "md:flex-row" : "md:flex-row-reverse"
-                  } gap-8 md:gap-12 group`}
-                >
-                  {/* Glowing Checkpoint & Depth Marker */}
-                  <div className="absolute left-[24px] md:left-1/2 top-0 md:top-1/2 -translate-x-1/2 md:-translate-y-1/2 flex items-center justify-center z-10">
-                    <div className="relative flex items-center justify-center w-4 h-4">
-                      {/* Depth Text */}
-                      <span className={`absolute top-1/2 -translate-y-1/2 text-[10px] font-mono tracking-widest text-glow-blue/60 transition-colors duration-300 group-hover:text-glow-blue ${
-                        isEven ? "left-8 md:right-8 md:left-auto" : "left-8"
-                      }`}>
-                        {depth}
-                      </span>
-                      
-                      {/* Dot */}
-                      <div className="w-3 h-3 rounded-full bg-abyss border-2 border-glow-blue/50 group-hover:border-glow-blue group-hover:bg-glow-blue/20 transition-all duration-300 z-10" />
-                      
-                      {/* Pulse effect */}
-                      <div className="absolute inset-0 rounded-full bg-glow-blue/30 opacity-0 group-hover:opacity-100 group-hover:scale-125 transition-all duration-300" />
-                    </div>
-                  </div>
-
-                  {/* Empty space for alternating layout on desktop */}
-                  <div className="hidden md:block w-1/2" />
-
-                  {/* Card Content */}
-                  <motion.div
-                    initial={{ opacity: 0, x: isEven ? 30 : -30 }}
-                    whileInView={{ opacity: 1, x: 0 }}
-                    viewport={{ once: true, amount: 0.2 }}
-                    transition={{ duration: 0.6, ease: "easeOut" }}
-                    onClick={() => navigate(`/portfolio/${exp.slug}`)}
-                    className="w-full md:w-1/2 pl-16 md:pl-0 cursor-pointer"
-                  >
-                    <div className="relative p-8 md:p-10 lg:p-12 min-h-[280px] lg:min-h-[340px] bg-white/[0.02] hover:bg-white/[0.04] backdrop-blur-xl border border-white/5 hover:border-glow-blue/30 rounded-2xl transition-all duration-500 overflow-hidden shadow-2xl hover:shadow-[0_0_40px_rgba(91,91,247,0.2)] group/card flex flex-col justify-center">
-                      {/* Inner subtle glow */}
-                      <div className="absolute inset-0 bg-gradient-to-br from-glow-blue/5 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity duration-500 pointer-events-none z-0" />
-
-                      {/* Visual Artifact Preview on Hover (Scattered Collage) */}
-                      {exp.galleryImages && exp.galleryImages.length > 0 && (
-                        <div className="absolute inset-0 z-0 opacity-0 group-hover/card:opacity-100 transition-all duration-700 pointer-events-none overflow-hidden rounded-2xl">
-                          
-                          
-                          {/* Image Container */}
-                          <div className="absolute right-[-5%] top-1/2 -translate-y-1/2 w-[75%] h-[90%] lg:w-[70%] lg:h-[85%] flex items-center justify-center perspective-[1000px]">
-                            {exp.galleryImages.slice(0, 3).reverse().map((img, idx) => {
-                              const total = Math.min(exp.galleryImages!.length, 3);
-                              const i = total - 1 - idx; // 0 is top, 1 is middle, 2 is bottom
-                              
-                              return (
-                                <img 
-                                  key={i}
-                                  src={img} 
-                                  alt={`preview-${i}`}
-                                  className={`absolute w-full h-full object-cover rounded-xl border border-white/10 shadow-2xl transition-transform duration-1000 ease-[0.22,1,0.36,1] will-change-transform
-                                    ${
-                                      i === 2 ? "z-10 group-hover/card:translate-x-12 group-hover/card:translate-y-8 group-hover/card:rotate-[15deg] group-hover/card:scale-90 opacity-20 delay-200" :
-                                      i === 1 ? "z-20 group-hover/card:translate-x-4 group-hover/card:translate-y-0 group-hover/card:rotate-[5deg] group-hover/card:scale-95 opacity-40 delay-100" :
-                                      "z-30 group-hover/card:-translate-x-6 group-hover/card:-translate-y-6 group-hover/card:-rotate-[4deg] group-hover/card:scale-100 opacity-70 delay-0"
-                                    } 
-                                    translate-y-32 translate-x-32 rotate-[35deg] scale-125
-                                  `}
-                                />
-                              );
-                            })}
-                          </div>
-
-                        <div className="absolute inset-0 bg-gradient-to-r from-[#020617] from-30% via-[#020617]/90 to-transparent z-40" />
-                        <div className="absolute inset-0 bg-gradient-to-b from-[#020617]/50 via-transparent to-[#020617]/80 z-40" />
-                      </div>
-                    )}
-
-                    <div className="relative z-10 flex flex-col gap-4 lg:gap-5 md:max-w-[90%]">
-                        <div className="flex items-center justify-between gap-4">
-                          <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 shrink-0 bg-white/[0.03] border border-white/10 rounded-xl flex items-center justify-center shadow-inner group-hover/card:border-glow-blue/50 transition-colors duration-300">
-                              {getIcon(exp.type)}
-                            </div>
-                            <div className="flex flex-col">
-                              <h3 className="text-lg md:text-xl font-bold text-ocean-text group-hover/card:text-glow-blue transition-colors duration-300">
-                                {exp.title}
-                              </h3>
-                              <span className="text-sm text-ocean-text/50 font-medium">
-                                {exp.company.text}
-                              </span>
-                            </div>
-                          </div>
-                        </div>
-
-                        <div className="flex items-center gap-3 flex-wrap">
-                          <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-md bg-white/[0.03] border border-white/5 text-[11px] font-mono tracking-wider text-ocean-text/40">
-                            {exp.year || exp.period}
-                          </div>
-                          {exp.subtitle && (
-                            <div className="inline-flex items-center px-2.5 py-1 rounded-md bg-bioluminescent-purple/10 border border-bioluminescent-purple/20 text-[11px] font-medium tracking-wide text-bioluminescent-purple">
-                              {exp.subtitle}
-                            </div>
-                          )}
-                        </div>
-
-                        <p className="text-sm md:text-base leading-relaxed text-ocean-text/60 line-clamp-2 mt-2 font-light">
-                          {exp.companyProfile}
-                        </p>
-
-                        <div className="flex items-center gap-2 mt-2 text-xs font-semibold tracking-wider uppercase text-glow-blue/70 group-hover/card:text-glow-blue transition-colors duration-300">
-                          {t("projects.see_project", "View Details")}
-                          <svg
-                            className="w-4 h-4 transform group-hover/card:translate-x-1 transition-transform duration-300"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                          </svg>
-                        </div>
-                      </div>
-                    </div>
-                  </motion.div>
-                </div>
+                  exp={exp}
+                  index={index}
+                  depth={depth}
+                  isEven={isEven}
+                  t={t}
+                  navigate={navigate}
+                  getIcon={getIcon}
+                />
               );
             })}
           </div>

@@ -195,13 +195,13 @@ function HeroSection({ proj, t }: { proj: Project; t: TFunction }) {
               href={proj.liveUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group relative flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white overflow-hidden transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              className="group relative flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-white overflow-hidden transition-all duration-300 active:scale-[0.98]"
               style={{ background: "linear-gradient(135deg, #5B5BF7 0%, #7C8CFF 100%)" }}
             >
               <span className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-white/10" />
               <FiExternalLink className="w-4 h-4 relative z-10" />
               <span className="relative z-10">{t("project_detail.live_preview", "View Live Preview")}</span>
-              <FiArrowUpRight className="w-4 h-4 relative z-10 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <FiArrowUpRight className="w-4 h-4 relative z-10 transition-transform" />
             </a>
           )}
           {proj.githubUrl && (
@@ -209,11 +209,11 @@ function HeroSection({ proj, t }: { proj: Project; t: TFunction }) {
               href={proj.githubUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="group flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-ocean-text/80 border border-ocean-text/10 bg-ocean-text/[0.03] backdrop-blur-md hover:bg-ocean-text/[0.08] hover:border-ocean-text/20 transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
+              className="group flex items-center gap-2.5 px-7 py-3.5 rounded-xl font-semibold text-sm text-ocean-text/80 border border-ocean-text/10 bg-ocean-text/[0.03] backdrop-blur-md hover:bg-ocean-text/[0.08] hover:border-ocean-text/20 transition-all duration-300 active:scale-[0.98]"
             >
               <FiGithub className="w-4 h-4" />
               <span>{t("project_detail.source_code", "View Source Code")}</span>
-              <FiArrowUpRight className="w-4 h-4 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 transition-transform" />
+              <FiArrowUpRight className="w-4 h-4 transition-transform" />
             </a>
           )}
         </motion.div>
@@ -297,7 +297,6 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
             .map((img, idx) => (
               <motion.div
                 key={idx}
-                whileHover={{ y: -5, scale: 1.02 }}
                 className="rounded-2xl overflow-hidden cursor-pointer shadow-xl aspect-video bg-abyss border border-white/5 hover:border-glow-blue/30 group transition-colors duration-300"
                 onClick={() => setSelectedImg(idx)}
               >
@@ -311,7 +310,6 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
 
           {proj.galleryImages.length > 8 && (
             <motion.div
-              whileHover={{ y: -5, scale: 1.02 }}
               className="relative rounded-2xl overflow-hidden cursor-pointer shadow-xl aspect-video bg-abyss border border-white/5 hover:border-glow-blue/30 group transition-colors duration-300"
               onClick={() => setSelectedImg(7)}
             >
@@ -443,11 +441,10 @@ function GallerySection({ proj, t, selectedImg, setSelectedImg, isGridMode, setI
                     {proj.galleryImages.map((img, idx) => (
                       <motion.div
                         key={idx}
-                        whileHover={{ scale: 1.02 }}
-                        className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border ${
+                        className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border transition-colors ${
                           selectedImg === idx
                             ? "border-glow-blue ring-2 ring-glow-blue/50"
-                            : "border-white/5"
+                            : "border-white/5 hover:border-white/20"
                         }`}
                         onClick={() => {
                           setSelectedImg(idx);
@@ -601,7 +598,6 @@ function TechStackSection({ proj, t }: { proj: Project; t: TFunction }) {
               whileInView={{ opacity: 1, y: 0, scale: 1 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: i * 0.07 }}
-              whileHover={{ y: -6, scale: 1.04 }}
               className="group relative bg-white/[0.02] backdrop-blur-xl rounded-2xl p-5 border border-white/5 hover:border-glow-blue/30 transition-colors duration-500 text-center overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-glow-blue/5 via-bioluminescent-purple/3 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
@@ -640,7 +636,6 @@ function FeaturesSection({ proj, t }: { proj: Project; t: TFunction }) {
               key={i}
               initial={{ opacity: 0, y: 30 }} whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }} transition={{ duration: 0.6, delay: i * 0.1 }}
-              whileHover={{ y: -4 }}
               className="group bg-white/[0.02] backdrop-blur-xl rounded-2xl p-7 border border-white/5 hover:border-bioluminescent-purple/20 transition-colors duration-500 relative overflow-hidden"
             >
               <div className="absolute inset-0 bg-gradient-to-br from-bioluminescent-purple/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />

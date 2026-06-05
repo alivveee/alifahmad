@@ -37,7 +37,6 @@ export default function ArtifactsSection({ exp, t, selectedIndex, setSelectedInd
                 key={idx}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }} transition={{ duration: 0.5, delay: idx * 0.07 }}
-                whileHover={{ y: -5, scale: 1.02 }}
                 className="rounded-2xl overflow-hidden cursor-pointer shadow-xl aspect-video bg-abyss border border-white/5 hover:border-glow-blue/30 group transition-colors duration-300"
                 onClick={() => setSelectedIndex(idx)}
               >
@@ -47,7 +46,6 @@ export default function ArtifactsSection({ exp, t, selectedIndex, setSelectedInd
             ))}
             {exp.galleryImages.length > 9 && (
               <motion.div
-                whileHover={{ y: -5, scale: 1.02 }}
                 className="relative rounded-2xl overflow-hidden cursor-pointer shadow-xl aspect-video bg-abyss border border-white/5 hover:border-glow-blue/30 group transition-colors duration-300"
                 onClick={() => setSelectedIndex(8)}
               >
@@ -92,8 +90,8 @@ export default function ArtifactsSection({ exp, t, selectedIndex, setSelectedInd
                 <div className="flex-1 overflow-y-auto p-4 my-4 scrollbar-thin scrollbar-thumb-white/10 scrollbar-track-transparent" onClick={e => e.stopPropagation()}>
                   <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
                     {exp.galleryImages.map((img, idx) => (
-                      <motion.div key={idx} whileHover={{ scale: 1.02 }}
-                        className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border ${selectedIndex === idx ? "border-glow-blue ring-2 ring-glow-blue/50" : "border-white/5"}`}
+                      <motion.div key={idx}
+                        className={`rounded-2xl overflow-hidden cursor-pointer shadow-lg aspect-video bg-abyss border transition-colors ${selectedIndex === idx ? "border-glow-blue ring-2 ring-glow-blue/50" : "border-white/5 hover:border-white/20"}`}
                         onClick={() => { setSelectedIndex(idx); setIsGridMode(false); }}>
                         <img src={img} alt={`Gallery ${idx + 1}`} className="w-full h-full object-cover hover:opacity-80 transition-opacity" />
                       </motion.div>

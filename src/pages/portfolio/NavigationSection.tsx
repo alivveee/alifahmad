@@ -29,7 +29,7 @@ export default function NavigationSection({ prev, next, t }: Props) {
               className="group bg-white/[0.02] backdrop-blur-xl rounded-2xl overflow-hidden border border-white/5 hover:border-glow-blue/20 transition-colors duration-500 relative">
               <div className="relative z-10 p-6">
                 <div className="flex items-center gap-2 text-ocean-text/40 mb-3">
-                  <FaArrowLeft className="w-3 h-3 group-hover:-translate-x-1 transition-transform" />
+                  <FaArrowLeft className="w-3 h-3 transition-transform" />
                   <span className="text-xs uppercase tracking-[0.2em] font-semibold">
                     {t("experience.prev_mission", "Previous Mission")}
                   </span>
@@ -48,7 +48,7 @@ export default function NavigationSection({ prev, next, t }: Props) {
                   <span className="text-xs uppercase tracking-[0.2em] font-semibold">
                     {t("experience.next_mission", "Next Mission")}
                   </span>
-                  <FaArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
+                  <FaArrowRight className="w-3 h-3 transition-transform" />
                 </div>
                 <h3 className="text-lg font-bold text-ocean-text group-hover:text-glow-blue transition-colors duration-300">{next.title}</h3>
                 <p className="text-xs text-ocean-text/40 font-mono tracking-wider mt-1">{next.company.text}</p>
