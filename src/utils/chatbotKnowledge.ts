@@ -45,14 +45,29 @@ export const chatRules: ChatRule[] = [
   {
     id: "about",
     keywords: [
-      "who",
-      "about",
-      "siapa",
-      "tentang",
-      "introduce",
-      "perkenalkan",
-      "tell me about",
-      "ceritakan",
+      "who are you",
+      "who is alif",
+      "who's alif",
+      "about you",
+      "about yourself",
+      "about alif",
+      "siapa kamu",
+      "siapa alif",
+      "siapa anda",
+      "siapa dia",
+      "tentang dirimu",
+      "tentang alif",
+      "tentang kamu",
+      "introduce yourself",
+      "introduce alif",
+      "perkenalkan dirimu",
+      "perkenalkan alif",
+      "tell me about yourself",
+      "tell me about you",
+      "tell me about alif",
+      "ceritakan tentang dirimu",
+      "ceritakan tentang alif",
+      "ceritakan tentang kamu",
       "yourself",
       "dirinya",
       "background",
@@ -61,8 +76,8 @@ export const chatRules: ChatRule[] = [
       "profil",
     ],
     response: {
-      en: "Alif Ahmad is a **Frontend Engineer with Full-Stack Capabilities** based in Indonesia 🇮🇩. He specializes in building robust **Web Applications** (using React, Next.js), cross-platform **Mobile Applications** (using React Native), and **Automation Systems** (like smart chatbots, custom scripts, and workflow automations). He works across the stack, merging pixel-perfect interfaces with backend and process automation.",
-      id: "Alif Ahmad adalah seorang **Frontend Engineer dengan Kemampuan Full-Stack** yang berbasis di Indonesia 🇮🇩. Ia berspesialisasi dalam membangun **Aplikasi Web** (menggunakan React, Next.js), **Aplikasi Mobile** (menggunakan React Native), dan **Sistem Otomasi** (seperti chatbot pintar, skrip kustom, dan otomasi alur kerja). Ia bekerja lintas stack, menggabungkan antarmuka presisi tinggi dengan backend dan otomasi proses.",
+      en: "Alif Ahmad is a **Frontend Engineer with Full-Stack Capabilities** based in Indonesia 🇮🇩. He's focused on building scalable web applications, business systems, and modern digital products using React, Next.js, TypeScript, and modern frontend technologies. Beyond the frontend, he also works across the stack — integrating APIs, databases, and business processes to deliver complete solutions.",
+      id: "Alif Ahmad adalah seorang **Frontend Engineer dengan Kemampuan Full-Stack** yang berbasis di Indonesia 🇮🇩. Ia fokus membangun aplikasi web, sistem bisnis, dan produk digital modern menggunakan React, Next.js, TypeScript, dan teknologi frontend modern. Di luar frontend, ia juga bekerja lintas stack — mengintegrasikan API, database, dan proses bisnis untuk memberikan solusi lengkap.",
     },
     suggestions: {
       en: ["What are his skills?", "Where has he worked?", "What projects has he built?"],
@@ -121,6 +136,7 @@ export const chatRules: ChatRule[] = [
     keywords: [
       "experience",
       "work",
+      "working",
       "job",
       "career",
       "pengalaman",
@@ -175,8 +191,10 @@ export const chatRules: ChatRule[] = [
       "portofolio",
       "built",
       "build",
-      "buat",
+      "membuat",
       "dibuat",
+      "bikin",
+      "dibikin",
       "app",
       "application",
       "aplikasi",
@@ -243,8 +261,8 @@ export const chatRules: ChatRule[] = [
       "brawijaya",
     ],
     response: {
-      en: "Alif studied at **Universitas Brawijaya** in Indonesia. He completed his undergraduate thesis on distribution route optimization using Genetic Algorithms. He also holds a certificate from the **IDCamp scholarship** by Indosat (React App Developer path via Dicoding Indonesia).",
-      id: "Alif kuliah di **Universitas Brawijaya** di Indonesia. Ia menyelesaikan skripsi tentang optimasi rute distribusi menggunakan Algoritma Genetika. Ia juga memiliki sertifikat dari program **beasiswa IDCamp** oleh Indosat (jalur React App Developer melalui Dicoding Indonesia).",
+      en: "Alif studied **Information Technology** at **Universitas Brawijaya** in Indonesia. He completed his undergraduate thesis on distribution route optimization using Genetic Algorithms. He also holds a certificate from the **IDCamp scholarship** by Indosat (React App Developer path via Dicoding Indonesia).",
+      id: "Alif kuliah di jurusan **Teknologi Informasi** di **Universitas Brawijaya** di Indonesia. Ia menyelesaikan skripsi tentang optimasi rute distribusi menggunakan Algoritma Genetika. Ia juga memiliki sertifikat dari program **beasiswa IDCamp** oleh Indosat (jalur React App Developer melalui Dicoding Indonesia).",
     },
   },
 
@@ -322,7 +340,10 @@ export const chatRules: ChatRule[] = [
       "hire",
       "hiring",
       "freelance",
-      "open",
+      "open to work",
+      "open for work",
+      "open for hire",
+      "open opportunity",
       "looking",
       "opportunity",
       "tersedia",
@@ -335,6 +356,62 @@ export const chatRules: ChatRule[] = [
     response: {
       en: "Yes! Alif is **actively seeking opportunities** as a Frontend Engineer. He's open to full-time, contract, or project-based roles. Feel free to reach out via email at alifahmadmukhtar@gmail.com or connect on LinkedIn!",
       id: "Ya! Alif **sedang aktif mencari peluang** sebagai Frontend Engineer. Ia terbuka untuk posisi full-time, kontrak, atau berbasis proyek. Silakan hubungi via email di alifahmadmukhtar@gmail.com atau connect di LinkedIn!",
+    },
+  },
+
+  // ─── Location / Origin ───
+  {
+    id: "location",
+    keywords: [
+      "asal",
+      "tinggal",
+      "lokasi",
+      "darimana",
+      "dari mana",
+      "rumah",
+      "probolinggo",
+      "jawa timur",
+      "jatim",
+      "where is he from",
+      "where does he live",
+      "origin",
+      "location",
+      "live in",
+      "lives in",
+      "lives",
+      "living",
+      "hometown",
+      "kota",
+      "city",
+    ],
+    response: {
+      en: "Alif is from **Probolinggo, East Java, Indonesia** 🇮🇩.",
+      id: "Alif berasal dari **Probolinggo, Jawa Timur, Indonesia** 🇮🇩.",
+    },
+    suggestions: {
+      en: ["Where did he study?", "What are his skills?"],
+      id: ["Di mana dia kuliah?", "Apa saja skill-nya?"],
+    },
+  },
+
+  // ─── Girlfriend ───
+  {
+    id: "girlfriend",
+    keywords: [
+      "pacar",
+      "girlfriend",
+      "gf",
+      "pasangan",
+      "partner",
+      "ima",
+      "alif punya pacar",
+      "pacar alif",
+      "who is alif's girlfriend",
+      "does alif have a girlfriend",
+    ],
+    response: {
+      en: "Yes, Alif has a beautiful girlfriend named **Ima**! ❤️",
+      id: "Ya, Alif punya pacar cantik bernama **Ima**! ❤️",
     },
   },
 
@@ -415,7 +492,11 @@ export function matchRule(input: string): ChatRule | null {
   for (const rule of chatRules) {
     let score = 0;
     for (const keyword of rule.keywords) {
-      if (normalised.includes(keyword.toLowerCase())) {
+      const kw = keyword.toLowerCase();
+      // Use regex with word boundaries to avoid partial matches (e.g. "yo" matching in "yogyakarta")
+      const escaped = kw.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+      const regex = new RegExp(`\\b${escaped}\\b`, "i");
+      if (regex.test(normalised)) {
         // Longer keyword matches are worth more
         score += keyword.length;
       }
@@ -427,4 +508,66 @@ export function matchRule(input: string): ChatRule | null {
   }
 
   return bestRule;
+}
+
+/**
+ * Detect language of the input string, falling back to website language if undecided.
+ */
+export function detectLanguage(input: string, fallbackLang: "en" | "id"): "en" | "id" {
+  const normalised = input.toLowerCase().trim();
+
+  // Common Indonesian words/particles
+  const idWords = [
+    "saya", "aku", "kamu", "dia", "mereka", "kita", "kami", "anda",
+    "yang", "dan", "di", "ke", "dari", "untuk", "dengan", "ini", "itu",
+    "bisa", "tidak", "ada", "adalah", "ya", "tidak", "apa", "siapa",
+    "bagaimana", "kenapa", "kapan", "dimana", "di mana", "dari mana",
+    "pacar", "tinggal", "asal", "kerja", "kuliah", "sekolah", "proyek",
+    "pengalaman", "hubungi", "bisa", "buat", "tanya", "tunjukkan",
+    "ceritakan", "bagaimana", "salam", "halo", "hai", "makasih", "terima",
+    "kasih", "bagus", "siapa", "pacar", "punya", "alamat", "lahir",
+    "kuliah", "jurusan", "skripsi", "tugas", "akhir", "magang", "kontak",
+    "situs", "web", "ini", "saran", "bagaimana", "dibuat", "laut", "dalam",
+    "yakin", "kurang", "tau", "tahu", "bisa", "tolong", "bantu", "jawab"
+  ];
+
+  // Common English words
+  const enWords = [
+    "i", "you", "he", "she", "they", "we", "me", "him", "her", "us",
+    "the", "and", "in", "to", "of", "for", "with", "this", "that",
+    "is", "are", "am", "was", "were", "be", "been", "have", "has", "had",
+    "do", "does", "did", "can", "could", "will", "would", "should",
+    "not", "yes", "no", "what", "who", "how", "why", "when", "where",
+    "work", "project", "experience", "college", "school", "girlfriend",
+    "live", "origin", "contact", "website", "resume", "cv", "hi", "hello",
+    "hey", "thanks", "thank", "about", "your", "his", "her", "my", "tell",
+    "show", "give", "please", "can i", "how is", "sure", "about", "that"
+  ];
+
+  let idScore = 0;
+  let enScore = 0;
+
+  // Split by non-alphanumeric characters to get individual words
+  const words = normalised.split(/\W+/);
+  for (const word of words) {
+    if (!word) continue;
+    if (idWords.includes(word)) idScore++;
+    if (enWords.includes(word)) enScore++;
+  }
+
+  // If scores are tied, try substring matches for key particles/words
+  if (idScore === enScore) {
+    for (const word of idWords) {
+      if (normalised.includes(word)) idScore++;
+    }
+    for (const word of enWords) {
+      if (normalised.includes(word)) enScore++;
+    }
+  }
+
+  if (idScore === enScore) {
+    return fallbackLang;
+  }
+
+  return idScore > enScore ? "id" : "en";
 }

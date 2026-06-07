@@ -12,6 +12,7 @@ import {
   matchRule,
   fallbackResponse,
   fallbackSuggestions,
+  detectLanguage,
 } from "../utils/chatbotKnowledge";
 
 /* ─── Types ─── */
@@ -268,15 +269,16 @@ export default function Chatbot() {
 
       setTimeout(() => {
         const rule = matchRule(messageText);
+        const chatLang = detectLanguage(messageText, lang);
 
         const botMsg: Message = {
           id: uid(),
           role: "bot",
-          text: rule ? rule.response[lang] : fallbackResponse[lang],
+          text: rule ? rule.response[chatLang] : fallbackResponse[chatLang],
           timestamp: new Date(),
           suggestions:
-            rule?.suggestions?.[lang] ??
-            (rule ? undefined : fallbackSuggestions[lang]),
+            rule?.suggestions?.[chatLang] ??
+            (rule ? undefined : fallbackSuggestions[chatLang]),
         };
 
         setMessages((prev) => [...prev, botMsg]);
@@ -366,7 +368,7 @@ export default function Chatbot() {
                     {lang === "id" ? "Asisten Deep Sea" : "Deep Sea Assistant"}
                   </h3>
                   <p className="text-[11px] text-ocean-text/40 font-medium">
-                    {lang === "id" ? "Selalu online" : "Always online"}
+                    Online
                   </p>
                 </div>
               </div>
