@@ -9,7 +9,7 @@
     "eyebrow": "Diving Into Digital Depths",
     "headline": "Frontend Engineer",
     "subheadline": "with Full-Stack Capabilities",
-    "description": "Building scalable web applications, business systems, and AI-assisted solutions with React, Next.js, TypeScript, and modern development practices.",
+    "description": "Building high-performance web applications, cross-platform mobile apps, and workflow automations using React, Next.js, React Native, and other modern technologies.",
     "see_cv": "View Resume",
     "projects": "Projects",
     "portfolio": "Dive Into My Work",
@@ -17,12 +17,19 @@
   },
   "about": {
     "title": "About Me",
-    "headline": "Frontend Engineer with Full-Stack Capabilities",
-    "p1": "I'm a Frontend Engineer focused on building scalable web applications, business systems, and modern digital products.",
-    "p2": "My primary expertise is creating responsive, accessible, and intuitive user experiences using React, Next.js, TypeScript, and modern frontend technologies. Beyond the frontend, I also work across the stack, integrating APIs, databases, and business processes to deliver complete solutions.",
-    "p3": "I enjoy transforming complex requirements into maintainable, production-ready applications that create real value.",
+    "headline": "Developer Specializing in Web, Mobile, and Automation",
+    "p1": "I'm a developer focused on building interactive web applications, high-performance cross-platform mobile apps, and custom workflow automations.",
+    "p2": "My primary stack spans the React ecosystem—including Next.js for scalable web apps and React Native for seamless mobile experiences. Additionally, I design and implement automated workflows and integrate robust backends to create cohesive end-to-end solutions.",
+    "p3": "I love turning complex requirements into clean, maintainable, and production-ready applications that optimize efficiency and deliver real value.",
     "lets_connect": "Let's connect or just say Hi",
-    "skills": "Skills"
+    "skills": "Skills",
+    "capabilities_title": "Core Capabilities",
+    "capability_web_title": "Web App Development",
+    "capability_web_desc": "Crafting highly interactive, responsive, and performance-optimized web applications and dashboard systems using React, Next.js, and modern CSS frameworks.",
+    "capability_mobile_title": "Mobile App Development",
+    "capability_mobile_desc": "Building seamless, cross-platform mobile applications for iOS and Android using React Native, focusing on smooth performance and offline-first systems.",
+    "capability_auto_title": "Automation & Chatbots",
+    "capability_auto_desc": "Developing smart chatbot assistants, custom automation workflows, data scraping scripts, and workflow integrations connecting APIs to streamline business processes."
   },
   "experience": {
     "title": "Portfolio",

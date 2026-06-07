@@ -123,6 +123,37 @@
   .scrollbar-hide::-webkit-scrollbar {
     display: none;
   }
+
+  /* Chatbot custom scrollbar */
+  .chatbot-scrollbar {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(124, 140, 255, 0.15) transparent;
+  }
+  .chatbot-scrollbar::-webkit-scrollbar {
+    width: 4px;
+  }
+  .chatbot-scrollbar::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  .chatbot-scrollbar::-webkit-scrollbar-thumb {
+    background: rgba(124, 140, 255, 0.15);
+    border-radius: 4px;
+  }
+  .chatbot-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: rgba(124, 140, 255, 0.3);
+  }
+
+  /* Chatbot FAB pulse animation */
+  @keyframes chatbot-pulse {
+    0%, 100% {
+      transform: scale(1);
+      opacity: 0.4;
+    }
+    50% {
+      transform: scale(1.4);
+      opacity: 0;
+    }
+  }
 }
 
 @layer base {

@@ -2,7 +2,7 @@ import { socials } from "../../utils/data";
 import { motion } from "framer-motion";
 import { useTranslation } from "react-i18next";
 import { FaInstagram, FaLinkedin, FaGithub } from "react-icons/fa";
-import { FiMail } from "react-icons/fi";
+import { FiMail, FiGlobe, FiSmartphone, FiCpu } from "react-icons/fi";
 
 const oceanZones = [
   {
@@ -42,11 +42,11 @@ const oceanZones = [
     border: "border-ocean-text/20",
     bg: "bg-white/[0.02]",
     iconColor: "bg-ocean-text/70",
-    skills: ["Supabase", "MongoDB", "SQL", "Express.js", "Laravel"],
+    skills: ["Supabase", "Nest.js", "MongoDB", "SQL", "Express.js", "Laravel"],
   },
   {
     name: "Abyss Tools",
-    depth: "DevOps & Performance",
+    depth: "DevOps & Automation",
     color: "text-ocean-text/50",
     border: "border-white/5",
     bg: "bg-black/40",
@@ -57,6 +57,7 @@ const oceanZones = [
       "GitLab",
       "VS Code",
       "Cursor",
+      "n8n",
       "Vercel",
       "GitHub Actions",
       "Lighthouse",
@@ -79,6 +80,7 @@ const highlightedSkills = [
   "SQL",
   "GitHub Actions",
   "SEO Optimization",
+  "n8n",
 ];
 
 const AboutSection = () => {
@@ -204,6 +206,69 @@ const AboutSection = () => {
               </div>
             </motion.div>
           </div>
+
+          {/* Core Capabilities */}
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.1, ease: "easeOut" }}
+            className="flex flex-col w-full"
+          >
+            <div className="flex items-center gap-4 mb-8">
+              <div className="w-8 h-px bg-glow-blue/40" />
+              <h2 className="text-sm tracking-[0.2em] uppercase text-glow-blue/80 font-medium">
+                {t('about.capabilities_title')}
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {/* Web App */}
+              <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-glow-blue/20 transition-all duration-300 flex flex-col gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-glow-blue/10 flex items-center justify-center text-glow-blue group-hover:scale-110 transition-transform duration-300">
+                  <FiGlobe className="w-6 h-6" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg font-semibold text-ocean-text">
+                    {t('about.capability_web_title')}
+                  </h3>
+                  <p className="text-sm text-ocean-text/50 leading-relaxed font-light">
+                    {t('about.capability_web_desc')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Mobile App */}
+              <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-bioluminescent-purple/20 transition-all duration-300 flex flex-col gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-bioluminescent-purple/10 flex items-center justify-center text-bioluminescent-purple group-hover:scale-110 transition-transform duration-300">
+                  <FiSmartphone className="w-6 h-6" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg font-semibold text-ocean-text">
+                    {t('about.capability_mobile_title')}
+                  </h3>
+                  <p className="text-sm text-ocean-text/50 leading-relaxed font-light">
+                    {t('about.capability_mobile_desc')}
+                  </p>
+                </div>
+              </div>
+
+              {/* Automation */}
+              <div className="p-6 rounded-2xl border border-white/5 bg-white/[0.02] hover:bg-white/[0.04] hover:border-ocean-text/20 transition-all duration-300 flex flex-col gap-4 group">
+                <div className="w-12 h-12 rounded-xl bg-white/[0.05] flex items-center justify-center text-ocean-text group-hover:scale-110 transition-transform duration-300">
+                  <FiCpu className="w-6 h-6" />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <h3 className="text-lg font-semibold text-ocean-text">
+                    {t('about.capability_auto_title')}
+                  </h3>
+                  <p className="text-sm text-ocean-text/50 leading-relaxed font-light">
+                    {t('about.capability_auto_desc')}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </motion.div>
 
           {/* Full Width: Skills & Tech Card */}
           <motion.div

@@ -5,6 +5,8 @@ import DepthIndicator from "./components/ui/DepthIndicator";
 import GlobalAtmosphere from "./components/GlobalAtmosphere";
 import SplashScreen from "./components/ui/SplashScreen";
 
+const Chatbot = lazy(() => import("./components/Chatbot"));
+
 const AboutSection = lazy(() => import("./components/sections/About"));
 const ExperienceSection = lazy(() => import("./components/sections/Experience"));
 const ProjectsSection = lazy(() => import("./components/sections/Projects"));
@@ -65,6 +67,13 @@ function App() {
           />
         </Routes>
       </div>
+
+      {/* Global Chatbot — visible on all pages after splash */}
+      {!(showSplash && location.pathname === "/") && (
+        <Suspense fallback={null}>
+          <Chatbot />
+        </Suspense>
+      )}
     </>
   );
 }

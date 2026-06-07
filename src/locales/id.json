@@ -9,7 +9,7 @@
     "eyebrow": "Menyelami Kedalaman Digital",
     "headline": "Frontend Engineer",
     "subheadline": "dengan Kemampuan Full-Stack",
-    "description": "Membangun aplikasi web, sistem bisnis, dan solusi berbantuan AI yang terukur menggunakan React, Next.js, TypeScript, dan praktik pengembangan modern.",
+    "description": "Membangun aplikasi web berkinerja tinggi, aplikasi mobile lintas platform, dan otomasi alur kerja menggunakan React, Next.js, React Native, dan teknologi modern lainnya.",
     "see_cv": "Lihat Resume",
     "projects": "Proyek",
     "portfolio": "Eksplorasi Karya Saya",
@@ -17,12 +17,19 @@
   },
   "about": {
     "title": "Tentang Saya",
-    "headline": "Frontend Engineer dengan Kemampuan Full-Stack",
-    "p1": "Saya seorang Frontend Engineer yang berfokus pada membangun aplikasi web, sistem bisnis, dan produk digital modern yang terukur.",
-    "p2": "Keahlian utama saya adalah menciptakan pengalaman pengguna yang responsif, dapat diakses, dan intuitif menggunakan React, Next.js, TypeScript, dan teknologi frontend modern. Di luar frontend, saya juga bekerja lintas stack, mengintegrasikan API, basis data, dan proses bisnis untuk memberikan solusi lengkap.",
-    "p3": "Saya senang mengubah kebutuhan yang kompleks menjadi aplikasi yang siap produksi dan mudah dipelihara yang memberikan nilai nyata.",
+    "headline": "Developer Spesialis Web, Mobile, dan Otomasi",
+    "p1": "Saya seorang pengembang yang berfokus membangun aplikasi web interaktif, aplikasi mobile lintas platform berkinerja tinggi, dan otomasi alur kerja kustom.",
+    "p2": "Tech stack utama saya mencakup ekosistem React—termasuk Next.js untuk aplikasi web terukur dan React Native untuk pengalaman mobile yang mulus. Selain itu, saya merancang dan mengimplementasikan alur kerja otomatis serta mengintegrasikan backend yang solid untuk menghasilkan solusi ujung-ke-ujung yang kohesif.",
+    "p3": "Saya senang mengubah kebutuhan yang kompleks menjadi aplikasi yang bersih, mudah dipelihara, dan siap produksi guna mengoptimalkan efisiensi serta memberikan nilai nyata.",
     "lets_connect": "Mari terhubung atau sekadar menyapa",
-    "skills": "Keahlian"
+    "skills": "Keahlian",
+    "capabilities_title": "Spesialisasi Utama",
+    "capability_web_title": "Pengembangan Web App",
+    "capability_web_desc": "Membangun aplikasi web dan sistem dasbor admin yang interaktif, responsif, serta teroptimasi performanya menggunakan React, Next.js, dan framework CSS modern.",
+    "capability_mobile_title": "Pengembangan Mobile App",
+    "capability_mobile_desc": "Membangun aplikasi mobile lintas platform (iOS & Android) yang mulus menggunakan React Native, berfokus pada performa tinggi dan sistem offline-first.",
+    "capability_auto_title": "Otomasi & Chatbot",
+    "capability_auto_desc": "Mengembangkan asisten chatbot pintar, alur kerja otomasi kustom, skrip otomasi kustom, serta integrasi alur kerja antar-API untuk merampingkan proses bisnis."
   },
   "experience": {
     "title": "Portofolio",
