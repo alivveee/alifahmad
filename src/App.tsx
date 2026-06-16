@@ -1,5 +1,7 @@
 import { useState, useEffect, Suspense, lazy } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useLenis } from "@studio-freight/react-lenis";
+import { cubicBezier } from "framer-motion";
 import HeroSection from "./components/sections/Hero";
 import DepthIndicator from "./components/ui/DepthIndicator";
 import GlobalAtmosphere from "./components/GlobalAtmosphere";
@@ -16,13 +18,37 @@ const PortfolioDetail = lazy(() => import("./pages/PortfolioDetail"));
 function App() {
   const [showSplash, setShowSplash] = useState(true);
   const location = useLocation();
+  const lenis = useLenis();
 
-  // Reset scroll on navigation, except when splash is showing initially
+  // Reset scroll or scroll to hash when splash finishes or path changes
   useEffect(() => {
-    if (!showSplash) {
+    if (showSplash) return;
+
+    if (location.pathname === "/") {
+      if (location.hash) {
+        // Scroll to the hash after splash finishes, with a short delay to ensure DOM is fully painted
+        const timeoutId = setTimeout(() => {
+          if (lenis) {
+            if (typeof lenis.resize === "function") {
+              lenis.resize();
+            }
+            lenis.scrollTo(location.hash, {
+              offset: -100,
+              easing: cubicBezier(0.65, 0, 0.35, 1),
+              duration: 1.2,
+            });
+            // Clear hash from URL immediately after starting scroll
+            window.history.replaceState(null, "", "/");
+          }
+        }, 150);
+        return () => clearTimeout(timeoutId);
+      } else {
+        window.scrollTo(0, 0);
+      }
+    } else {
       window.scrollTo(0, 0);
     }
-  }, [location.pathname, showSplash]);
+  }, [location.pathname, location.hash, showSplash, lenis]);
 
   return (
     <>

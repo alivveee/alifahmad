@@ -18,22 +18,51 @@ const Navbar = () => {
   const { t, i18n } = useTranslation();
   const location = useLocation();
   const navigate = useNavigate();
+  const [activeSection, setActiveSection] = useState(location.hash || "#home");
 
+  // Update active section when pathname or hash changes (e.g. initial load or popstate)
   useEffect(() => {
-    if (location.pathname === "/" && location.hash && lenis) {
-      const timeoutId = setTimeout(() => {
-        if (typeof lenis.resize === "function") {
-          lenis.resize();
-        }
-        lenis.scrollTo(location.hash, {
-          offset: -100,
-          easing: cubicBezier(0.65, 0, 0.35, 1),
-          duration: 1,
-        });
-      }, 300);
-      return () => clearTimeout(timeoutId);
+    if (location.pathname === "/") {
+      setActiveSection(location.hash || "#home");
     }
-  }, [location.pathname, location.hash, lenis]);
+  }, [location.pathname, location.hash]);
+
+  // Track active section and update URL hash silently on scroll
+  useEffect(() => {
+    if (location.pathname !== "/") {
+      setActiveSection("");
+      return;
+    }
+
+    const sections = ["home", "about", "portfolio", "projects"];
+
+    const observerOptions = {
+      root: null,
+      rootMargin: "-40% 0px -50% 0px",
+      threshold: 0,
+    };
+
+    const observerCallback = (entries: IntersectionObserverEntry[]) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const id = entry.target.id;
+          const hash = id === "home" ? "#home" : `#${id}`;
+          setActiveSection(hash);
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    sections.forEach((id) => {
+      const el = document.getElementById(id);
+      if (el) observer.observe(el);
+    });
+
+    return () => {
+      observer.disconnect();
+    };
+  }, [location.pathname]);
 
   const handleNavClick = (e: React.MouseEvent, target: string) => {
     e.preventDefault();
@@ -45,6 +74,10 @@ const Navbar = () => {
           duration: 1,
         });
       }
+      // Update hash in URL (pushState so user can navigate back)
+      const hash = target === "#home" ? "/" : target;
+      window.history.pushState(null, "", hash);
+      setActiveSection(target);
     } else {
       navigate(`/${target}`);
     }
@@ -74,7 +107,7 @@ const Navbar = () => {
       >
         <div className="mx-auto flex items-center justify-between backdrop-blur-xl transition-all duration-500 ease-out max-w-3xl bg-white/[0.02] rounded-2xl border border-white/5 shadow-xl shadow-black/50 py-2 px-5 hover:bg-white/[0.04] hover:border-white/10 pointer-events-auto">
           <Logo onNavClick={handleNavClick} />
-          <DesktopMenu t={t} onNavClick={handleNavClick} />
+          <DesktopMenu t={t} onNavClick={handleNavClick} activeSection={activeSection} />
           <div className="flex items-center gap-3 md:gap-4">
             <div className="relative flex items-center bg-black/40 backdrop-blur-sm rounded-lg p-1 border border-white/5 shadow-inner select-none">
               <div
@@ -117,20 +150,27 @@ const Navbar = () => {
               <li className="text-xl font-bold mb-2 text-glow-blue">
                 {t("navbar.menu")}
               </li>
-              {menuItems.map((item) => (
-                <li key={item.href}>
-                  <a
-                    href={item.href}
-                    onClick={(e) => {
-                      setOpen(false);
-                      handleNavClick(e, item.href);
-                    }}
-                    className="text-lg font-medium hover:text-glow-blue transition-colors"
-                  >
-                    {t(`navbar.${item.key}`)}
-                  </a>
-                </li>
-              ))}
+              {menuItems.map((item) => {
+                const isActive = activeSection === item.href;
+                return (
+                  <li key={item.href}>
+                    <a
+                      href={item.href}
+                      onClick={(e) => {
+                        setOpen(false);
+                        handleNavClick(e, item.href);
+                      }}
+                      className={`text-lg font-medium transition-colors ${
+                        isActive
+                          ? "text-glow-blue text-white font-semibold"
+                          : "hover:text-glow-blue"
+                      }`}
+                    >
+                      {t(`navbar.${item.key}`)}
+                    </a>
+                  </li>
+                );
+              })}
             </ul>
           </div>
         </div>
@@ -161,21 +201,30 @@ const Logo = ({
 const DesktopMenu = ({
   t,
   onNavClick,
+  activeSection,
 }: {
   t: TFunction;
   onNavClick: (e: React.MouseEvent, target: string) => void;
+  activeSection: string;
 }) => (
   <ul className="menu hidden md:flex items-center gap-8">
-    {menuItems.map((item) => (
-      <li key={item.href}>
-        <a
-          href={item.href}
-          onClick={(e) => onNavClick(e, item.href)}
-          className="text-sm md:text-base font-medium transition-colors cursor-pointer text-ocean-text/80 hover:text-glow-blue"
-        >
-          {t(`navbar.${item.key}`)}
-        </a>
-      </li>
-    ))}
+    {menuItems.map((item) => {
+      const isActive = activeSection === item.href;
+      return (
+        <li key={item.href}>
+          <a
+            href={item.href}
+            onClick={(e) => onNavClick(e, item.href)}
+            className={`text-sm md:text-base font-medium transition-colors cursor-pointer ${
+              isActive
+                ? "text-glow-blue text-white"
+                : "text-ocean-text/80 hover:text-glow-blue"
+            }`}
+          >
+            {t(`navbar.${item.key}`)}
+          </a>
+        </li>
+      );
+    })}
   </ul>
 );
